@@ -2,15 +2,23 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+// actions
+import { login } from '../actions/auth';
+import { getQuinielaInvitations } from '../actions/quiniela';
+
+// utils
+import queryString from 'query-string';
+
+// Design
 import { Layout, Row, Col, Button } from 'antd'; // Ant Styles
 import {Card} from 'material-ui/Card';
 import welcome from '../src/images/welcome.png';
-import { login } from '../actions/auth';
-import queryString from 'query-string';
-import {URLQUINIELA, PLCONNECT_URL, API_URL, PLCONNECT_SIGNOFF, REACT_URL} from '../constants/urls';
-
 const style = { marginTop: 20, marginLeft: 60, marginBottom: 50 };
 const h1Style = {  marginTop: 30, marginBottom: 30, marginLeft: -50, color: '#379fe1' };
+
+// urls
+import {URLQUINIELA, PLCONNECT_URL, API_URL, PLCONNECT_SIGNOFF, REACT_URL} from '../constants/urls';
 const PlConnectUrl = PLCONNECT_URL + URLQUINIELA + '?incomingUrl=' + API_URL + 'api/auth';
 const PlConnectSignOff = PLCONNECT_SIGNOFF + URLQUINIELA + '?incomingUrl=' + REACT_URL;
 
@@ -35,7 +43,7 @@ class Welcome extends React.Component {
         }
     }
     componentDidMount() {
-        const { loginFunction } = this.props.actions;
+        const { loginFunction, getUserInvitations } = this.props.actions;
         const { user } = this.props;
         const apiToken = user.api_token || '';
 
@@ -45,9 +53,12 @@ class Welcome extends React.Component {
         }
 
         const token = localStorage.getItem('PrensaToken');
+        const id = localStorage.getItem('PrensaUserId');
+
         if(token) {
             console.log(token);
             loginFunction();
+            getUserInvitations(id); // Quiniela Invitations
         }
     }
     render() {
@@ -96,7 +107,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators({
-            loginFunction: login
+            loginFunction: login,
+            getUserInvitations: getQuinielaInvitations,
         }, dispatch)
     };
 }

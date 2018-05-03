@@ -6,7 +6,7 @@ const initialState = {
     AllQuinielas: [],
     UserInvitations: [],
     Quiniela: {},
-    superQuiniela: false,
+    superQuiniela: 0,
     usersByQuiniela: {},
     quinielasByType: {},
     invitationsByState: {},
@@ -60,7 +60,7 @@ export default (state = initialState, action = {}) => {
             return {
                 ...state,
                 error: false,
-                superQuiniela: !isEmpty(action.superQuiniela)
+                superQuiniela: action.superQuiniela
             };
         case types.GET_QUINIELA_USERS: // action done
             return {

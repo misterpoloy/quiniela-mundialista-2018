@@ -80,8 +80,8 @@ const Fases = [
         name: 'Fase de semifinales',
         agrupaciones: [
             {
-                0: [ 'A', 'B', 'C', 'D' ],
-                1: [ 'E', 'F', 'G', 'H' ]
+                0: [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' ],
+                1: [ 'E', 'F', 'G', 'H', 'A', 'B', 'C', 'D' ]
             }
         ],
         CantidadDeAgrupaciones: 2,
@@ -91,6 +91,11 @@ const Fases = [
     },
     {
         name: 'Fase de final',
+        agrupaciones: [
+            {
+                0: [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' ]
+            }
+        ],
         CantidadDeAgrupaciones: 1,
         GruposPorAgrupacion: 4,
         partidosPorAgrupacion: 1,
@@ -198,13 +203,19 @@ class Quiniela extends React.Component {
         this.props.history.push('/mis-quinielas');
     };
     renderFases = () => {
-        const { CountriesByGroup } = this.props;
-        const grupoA = _.filter(CountriesByGroup, group => { return group.CODIGO === 'A'; });
+        // const { CountriesByGroup } = this.props;
+        // const grupoA = _.filter(CountriesByGroup, group => { return group.CODIGO === 'A'; });
 
         const Cards = _.map(Fases, fase => {
-            const renderPaises = _.map(grupoA, pais => {
-                return <div>{ pais.NOMBRE }</div>;
+            const renderPaises = _.map(fase.agrupaciones, agrupacionPorFase => {
+                _.map(agrupacionPorFase, agrupacion => {
+                    _.map(agrupacion, grupo => {
+                        console.log(grupo);
+                        return <div>{grupo}</div>;
+                    });
+                });
             });
+            // Render final de cada una de las agrupaciones
             return (
                 <Card
                     type="inner"

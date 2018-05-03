@@ -169,9 +169,9 @@ export function getQuinielaInvitations(userId) {
 export function superQuinielaExist() {
     return dispatch => {
         API.get('configuration/SUPER_QUINIELA/name/')
-            .then(superQuiniela => {
-                console.log(superQuiniela);
-                dispatch(setSuperQuiniela(superQuiniela));
+            .then(response => {
+                console.log(response);
+                dispatch(setSuperQuiniela(parseInt(response.data.VALOR, 10)));
             }).catch(e => {
                 console.log('Error "superQuiniela": ' + e);
             });
@@ -192,7 +192,7 @@ export function getQuinielaPositionsAndUsers(quinielaId) {
 // POST_INVITE_QUINIELA_USER
 export function sendQuinielaInvitations(invitationBody) {
     return dispatch => {
-        API.post('/quinela_invitation/invite', {
+        API.post('quinela_invitation/invite/byEmail', {
             ...invitationBody
         })
             .then(message => {

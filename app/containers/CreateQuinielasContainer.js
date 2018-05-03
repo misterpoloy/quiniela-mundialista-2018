@@ -10,7 +10,7 @@ const _ = require('lodash');
 // actions
 import { bindActionCreators } from 'redux';
 import {login} from '../actions/auth';
-import {createQuiniela} from '../actions/quiniela';
+import {createQuiniela, sendQuinielaInvitations} from '../actions/quiniela';
 
 // Design
 import {Card as CardAnt, Steps, Input,
@@ -60,7 +60,7 @@ class CreateQuiniela extends  React.Component {
     handleBack() {
         this.setState({ step: this.state.step - 1 });
     }
-    handleSubmit = (e) => {
+    handleSubmit = e => {
         const { createQuinielaFunction } = this.props.actions;
         const TIPO_DE_QUINIELA = 1; // normal
         const CREADO_POR = parseInt(localStorage.getItem('PrensaUserId'), 10);
@@ -78,17 +78,44 @@ class CreateQuiniela extends  React.Component {
     handleFinish = () => {
         this.props.history.push('/mis-quinielas');
     };
-    sendInvitation = () => {
-        const { createdQuiniela } = this.props;
-        if (!_.isEmpty(createdQuiniela)) {
-            console.log(createdQuiniela);
-        } else {
-            notification.error({
-                message: 'Se ha producido un error',
-                description: 'Se ha producido un con el API al momento de crear la Quiniela',
-                placement: 'bottomRight'
-            });
-        }
+    sendInvitation = e => {
+        const { recentQuiniela } = this.props;
+        const { inviteToQuiniela } = this.props.actions;
+
+        e.preventDefault();
+        this.props.form.validateFields((err, object) => {
+            if (!err) {
+                if (!_.isEmpty(recentQuiniela)) {
+                    const quinela_id = recentQuiniela.ID;
+
+                    const regex = /([^;:<>!?\n]+\@[^;:<>!?\n]+\.[^;:<>!?\n]+)/gmi;
+                    const str = object.emailStrings;
+                    const emailsFound = str.match(regex);
+                    let totalEmailString = '';
+
+                    emailsFound.forEach(function(email) {
+                        totalEmailString += email;
+                        const body = {
+                            email,
+                            quinela_id
+                        };
+                        inviteToQuiniela(body);
+                    });
+                    this.handleNext();
+                    notification.success({
+                        message: 'Exito',
+                        description: 'La invitación se ha enviado con exito a ' + totalEmailString,
+                        placement: 'bottomRight'
+                    });
+                } else {
+                    notification.error({
+                        message: 'Se ha producido un error',
+                        description: 'Se ha producido un con el API, por favor intenta de nuevo',
+                        placement: 'bottomRight'
+                    });
+                }
+            }
+        });
     };
     renderSteps = () => {
         const {step} = this.state;
@@ -139,20 +166,26 @@ class CreateQuiniela extends  React.Component {
                             showIcon
                         />
                         <div style={{ margin: '24px 0' }} />
-                        <Input placeholder="Ingresa el correo de tus amigos, separados por coma." />
-                        <div style={{ margin: '24px 0' }} />
-                        <Row>
-                            <Col span={10}>
+                        <Form onSubmit={this.sendInvitation} className="login-form">
+                            <FormItem>
+                                <span>Ingresa el coreo</span>
+                                {getFieldDecorator('emailStrings', {
+                                    rules: [{required: true, message: 'Por favor ingresa los correos'}],
+                                })(<Input placeholder="Ingresa los correos electronicos" />)}
+                            </FormItem>
+                            <FormItem>
                                 <Button
                                     type="primary"
+                                    htmlType="submit"
                                     icon="mail"
                                     size="large"
                                     style={{ background: '#454545', border: '#454545' }}
-                                    onClick={this.sendInvitation}
                                 >
                                     Enviar invitaciones
                                 </Button>
-                            </Col>
+                            </FormItem>
+                        </Form>
+                        <Row>
                             <Col span={3} offset={11}>
                                 <ButtonGroup>
                                     <Button onClick={this.handleNext} type="primary" size="large">
@@ -229,7 +262,8 @@ function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators({
             loginFunction: login,
-            createQuinielaFunction: createQuiniela
+            createQuinielaFunction: createQuiniela,
+            inviteToQuiniela: sendQuinielaInvitations
         }, dispatch)
     };
 }
