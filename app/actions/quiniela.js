@@ -19,6 +19,12 @@ export function setQuiniela(Quiniela) {
         Quiniela
     };
 }
+export function setQuinielaStructures(quinielaStructures) {
+    return {
+        type: types.GET_QUINIELA_STRUCTURES,
+        quinielaStructures
+    };
+}
 // GET_QUINIELA_ERROR
 export function setQuinielaError() {
     return {
@@ -51,6 +57,25 @@ export function setQuinielasInvitations(UserInvitations) {
     return {
         type: types.GET_INVITATION_QUINIELAS,
         UserInvitations
+    };
+}
+// invitations
+export function setsendInvitations(sendInvitations) {
+    return {
+        type: types.GET_INVITATION_SENT,
+        sendInvitations
+    };
+}
+export function setAcceptedInvitations(acceptedInvitations) {
+    return {
+        type: types.GET_INVITATION_ACCEPTED,
+        acceptedInvitations
+    };
+}
+export function setRefusedInvitations(refusedInvitations) {
+    return {
+        type: types.GET_INVITATION_REFUSED,
+        refusedInvitations
     };
 }
 // GET_SUPER_EXIST
@@ -95,11 +120,20 @@ export function getQuiniela(quinielaId) {
     return dispatch => {
         API.get(`quinela/${quinielaId}/`)
             .then(Quiniela => {
-                console.log(Quiniela);
                 dispatch(setQuiniela(Quiniela.data));
-            }).catch(e => {
-                console.log('Error "getQuiniela": ' + e);
+            }).catch(() => {
                 dispatch(setQuinielaError());
+            });
+    };
+}
+// GET_QUINIELA_STRUCTURES
+export function getQuinielaStructures() {
+    return dispatch => {
+        API.get('structure/')
+            .then(response => {
+                dispatch(setQuinielaStructures(response.data));
+            }).catch(e => {
+                console.log('Error "getQuinielaStructures": ' + e);
             });
     };
 }
@@ -110,7 +144,6 @@ export function createQuiniela(QuinielaBody) {
             ...QuinielaBody
         })
             .then(userQuinielas => {
-                console.log(userQuinielas);
                 dispatch(setQuinielaCreated(userQuinielas.data));
             }).catch(e => {
                 console.log('Error "createQuiniela": ' + e);
@@ -121,8 +154,7 @@ export function createQuiniela(QuinielaBody) {
 export function deleteQuiniela(quinielaId) {
     return dispatch => {
         API.delete(`quinela/${quinielaId}`)
-            .then(message => {
-                console.log(message);
+            .then(() => {
                 dispatch(deleteQuinielaDispatch());
             }).catch(e => {
                 console.log('Error "deleteQuiniela": ' + e);
@@ -134,7 +166,6 @@ export function getMyQuinielas(userId) {
     return dispatch => {
         API.get(`user/${userId}/quinela`)
             .then(userQuinielas => {
-                console.log(userQuinielas);
                 dispatch(setQuinielasByUser(userQuinielas.data));
             }).catch(e => {
                 console.log('Error "getMyQuinielas": ' + e);
@@ -146,7 +177,6 @@ export function getAllQuinielas(userId) {
     return dispatch => {
         API.get(`user/${userId}/quinela/belongs`)
             .then(AllQuinielas => {
-                console.log(AllQuinielas);
                 dispatch(setAllQuinielas(AllQuinielas.data));
             }).catch(e => {
                 console.log('Error "getAllQuinielas": ' + e);
@@ -158,10 +188,32 @@ export function getQuinielaInvitations(userId) {
     return dispatch => {
         API.get(`user/${userId}/quinela/invited`)
             .then(UserInvitations => {
-                console.log(UserInvitations);
                 dispatch(setQuinielasInvitations(UserInvitations.data));
             }).catch(e => {
                 console.log('Error "getQuinielaInvitations": ' + e);
+            });
+    };
+}
+// SET_INVITATIONS
+export function getInivtationsById(quinielaId) {
+    return dispatch => {
+        API.get(`quinela_invitation/quiniela/${quinielaId}/status/1`) // sent
+            .then(response => {
+                dispatch(setsendInvitations(response.data));
+                API.get(`quinela_invitation/quiniela/${quinielaId}/status/2`) // accepted
+                    .then(responseAccepted => {
+                        dispatch(setAcceptedInvitations(responseAccepted.data));
+                        API.get(`quinela_invitation/quiniela/${quinielaId}/status/3`) // refused
+                            .then(responseRefused => {
+                                dispatch(setRefusedInvitations(responseRefused.data));
+                            }).catch(e => {
+                                console.log('Error "GetInvitationsRefused": ' + e);
+                            });
+                    }).catch(e => {
+                        console.log('Error "GetInvitationsAccepted": ' + e);
+                    });
+            }).catch(e => {
+                console.log('Error "GetInivtationsSent": ' + e);
             });
     };
 }
@@ -170,7 +222,6 @@ export function superQuinielaExist() {
     return dispatch => {
         API.get('configuration/SUPER_QUINIELA/name/')
             .then(response => {
-                console.log(response);
                 dispatch(setSuperQuiniela(parseInt(response.data.VALOR, 10)));
             }).catch(e => {
                 console.log('Error "superQuiniela": ' + e);
@@ -182,7 +233,6 @@ export function getQuinielaPositionsAndUsers(quinielaId) {
     return dispatch => {
         API.get(`${apiPrefix}/${quinielaId}/stats`)
             .then(usersByQuiniela => {
-                console.log(usersByQuiniela);
                 dispatch(setQuinielaPositionsUsers(usersByQuiniela));
             }).catch(e => {
                 console.log('Error "getQuinielaPositionsAndUsers": ' + e);
@@ -195,8 +245,7 @@ export function sendQuinielaInvitations(invitationBody) {
         API.post('quinela_invitation/invite/byEmail', {
             ...invitationBody
         })
-            .then(message => {
-                console.log(message);
+            .then(() => {
                 dispatch(setUserInvited());
             }).catch(e => {
                 console.log('Error "sendQuinielaInvitations": ' + e);
@@ -208,7 +257,6 @@ export function getQuinielasByType(quinielaType) {
     return dispatch => {
         API.get(`${apiPrefix}/quiniela_type/${quinielaType}`)
             .then(quinielasByType => {
-                console.log(quinielasByType);
                 dispatch(setQuinielasByType(quinielasByType));
             }).catch(e => {
                 console.log('Error "getQuinielasByType": ' + e);
@@ -221,7 +269,6 @@ export function getInvitationsByState(userId, statusId) {
     return dispatch => {
         API.get(`/quinela_invitations/${userId}/status/${statusId}`)
             .then(invitationsByState => {
-                console.log(invitationsByState);
                 dispatch(setInvitationsByState(invitationsByState));
             }).catch(e => {
                 console.log('Error "getInvitationsByState": ' + e);

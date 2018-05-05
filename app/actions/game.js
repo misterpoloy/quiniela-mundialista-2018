@@ -50,7 +50,6 @@ export function postGame(gameBody) {
             ...gameBody
         })
             .then(userQuinielas => {
-                console.log(userQuinielas);
                 dispatch(setPostGame(userQuinielas));
             }).catch(e => {
                 console.log('Error al traer "Quiniela": ' + e);
@@ -62,7 +61,6 @@ export function getGame(userId) {
     return dispatch => {
         API.get(`user/${userId}/quinela`)
             .then(game => {
-                console.log(game);
                 dispatch(setGame(game));
             }).catch(e => {
                 console.log('Error "getGame": ' + e);
@@ -74,7 +72,6 @@ export function getGroupList() {
     return dispatch => {
         API.get('countries_groups/')
             .then(countriesByGroup => {
-                console.log(countriesByGroup);
                 dispatch(setQuinielaByGroups(countriesByGroup.data));
             }).catch(e => {
                 console.log('Error "getGroupList": ' + e);

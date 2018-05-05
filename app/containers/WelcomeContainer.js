@@ -56,7 +56,6 @@ class Welcome extends React.Component {
         const id = localStorage.getItem('PrensaUserId');
 
         if(token) {
-            console.log(token);
             loginFunction();
             getUserInvitations(id); // Quiniela Invitations
         }

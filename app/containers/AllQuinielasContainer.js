@@ -30,12 +30,7 @@ class AllQuinielas extends React.Component {
         const token = localStorage.getItem('PrensaToken');
         const id = localStorage.getItem('PrensaUserId');
         if (!token || token === 'Token invalido' || !id) {
-            notification.error({
-                message: 'Necesitas iniciar sesión',
-                description: 'Para poder acceder a todas las funcnioes de la Quiniela primero debes de iniciar sesión.',
-                placement: 'bottomRight'
-            });
-            this.props.history.push('/');
+            this.updateToken();
         } else {
             getUserAllQuinielas(id); // Quinielas a las que pertenezco
             getUserInvitations(id); // Quiniela Invitations
@@ -44,12 +39,25 @@ class AllQuinielas extends React.Component {
             }
         }
     }
+    updateToken = () => {
+        notification.error({
+            message: 'Necesitas iniciar sesión',
+            description: 'Para poder acceder a todas las funcnioes de la Quiniela primero debes de iniciar sesión.',
+            placement: 'bottomRight'
+        });
+        this.props.history.push('/');
+    };
     onTabChange = (key, type) => {
         this.setState({[type]: key});
     };
 
     render() {
-        const { AllQuinielasArray, UserInvitationsArray } = this.props;
+        const { AllQuinielasArray, UserInvitationsArray, user } = this.props;
+        const { api_token } = user;
+
+        if (api_token === 'Token invalido') {
+            this.updateToken();
+        }
 
         const tabList = [{
             key: 'tab1',
@@ -60,9 +68,10 @@ class AllQuinielas extends React.Component {
         }];
 
         const contentList = {
-            tab1: AllQuinielasArray.length !== 0 ? <List
+            tab1: <List
                 itemLayout="horizontal"
                 dataSource={AllQuinielasArray}
+                locale={{ emptyText: 'Aún no perteneces a ninguna quiniela'}}
                 renderItem={item => (
                     <List.Item actions={[<a>visualizar</a>]}>
                         <List.Item.Meta
@@ -72,20 +81,21 @@ class AllQuinielas extends React.Component {
                         />
                     </List.Item>
                 )}
-            /> : <div>No perteneces a ninguna Quiniela</div>,
-            tab2: UserInvitationsArray.length !== 0 ? <List
+            />,
+            tab2: <List
                 itemLayout="horizontal"
                 dataSource={UserInvitationsArray}
+                locale={{ emptyText: 'Aún no tienes invitaciones'}}
                 renderItem={item => (
-                    <List.Item actions={[<a>jugar</a>, <a>rechazar</a>]}>
+                    <List.Item actions={[<a>Jugar</a>, <a>Rechazar</a>]}>
                         <List.Item.Meta
                             avatar={<Avatar src={pelota} />}
-                            title={<a href="https://ant.design">{item.NOMBRE}</a>}
-                            description="Ant Design, a design language for background applications, is refined by Ant UED"
+                            title={item.NOMBRE}
+                            description={item.DESCRIPCION}
                         />
                     </List.Item>
                 )}
-            /> : <div>Aún no tienes invitaciones</div>,
+            />
         };
 
         return (

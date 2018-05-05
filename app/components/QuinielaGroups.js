@@ -8,9 +8,6 @@ const style = {
     width: 38,
     borderRadius: 5
 };
-const styleRow = {
-    width: '100%'
-};
 
 
 class QuinielaGroups extends React.Component {
@@ -49,35 +46,46 @@ class QuinielaGroups extends React.Component {
     }
     render() {
         return (
-                <Row style={styleRow}>
-                    <Col span={10}>
-                        <ButtonGroup>
-                            <Button onClick={this.decline}>
-                                <Icon type="minus" />
-                            </Button>
-                            <Button onClick={this.increase}>
-                                <Icon type="plus" />
-                            </Button>
-                        </ButtonGroup>
-                        <Flag style={style} code={this.props.country1.code} height="20" /><label style={style}>{this.props.country1.name}</label>
-                        <Badge showZero count={this.state.count} />
-                    </Col>
-                    <Col span={2} offset={1}>
-                        <h1 style={{ color: '#d6d6d6' }}>VS</h1>
-                    </Col>
-                    <Col span={10}>
-                        <ButtonGroup>
-                            <Button onClick={this.decline2}>
-                                <Icon type="minus" />
-                            </Button>
-                            <Button onClick={this.increase2}>
-                                <Icon type="plus" />
-                            </Button>
-                        </ButtonGroup>
-                        <Flag style={style} code={this.props.country2.code} height="20" /><label style={style}>{this.props.country2.name}</label>
-                        <Badge showZero count={this.state.count2} />
-                    </Col>
-                </Row>
+                <div style={{ width: '100%' }}>
+                    <Row>
+                        <Col span={8}>
+                            <label style={style}>{this.props.country1.name}</label>
+                        </Col>
+                        <Col span={8} offset={5}>
+                            <label style={style}>{this.props.country2.name}</label>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={6}>
+                            <ButtonGroup>
+                                <Button onClick={this.decline}>
+                                    <Icon type="minus" />
+                                </Button>
+                                <Button onClick={this.increase}>
+                                    <Icon type="plus" />
+                                </Button>
+                            </ButtonGroup>
+                            <Flag style={style} code={this.props.country1.code} height="20" />
+                            <Badge showZero count={this.state.count} />
+                        </Col>
+                        <Col span={2} offset={3}>
+                            <h1 style={{ color: '#d6d6d6' }}>VS</h1>
+                        </Col>
+                        <Col span={6} offset={2}>
+                            <ButtonGroup>
+                                <Button onClick={this.decline2}>
+                                    <Icon type="minus" />
+                                </Button>
+                                <Button onClick={this.increase2}>
+                                    <Icon type="plus" />
+                                </Button>
+                            </ButtonGroup>
+                            <Flag style={style} code={this.props.country2.code} height="20" />
+                            <Badge showZero count={this.state.count2} />
+                        </Col>
+                    </Row>
+                </div>
+
         );
     }
 }

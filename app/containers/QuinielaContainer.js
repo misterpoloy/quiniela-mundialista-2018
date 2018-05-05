@@ -1,116 +1,36 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
 // Design
-import { Card, Button, Icon, Tabs, List, Modal, Avatar, Input, Row, Col} from 'antd';
-import {notification} from 'antd/lib/index';
+import { Card, Button, Icon, Tabs, List, Modal, Avatar, Input, Row, Col, Form, notification} from 'antd';
 import { CardMedia, CardTitle} from 'material-ui/Card';
 import bannerSource from '../src/images/banner4.jpg';
+import avatar from '../src/images/avatar.png';
 const confirm = Modal.confirm;
 const TabPane = Tabs.TabPane;
+// instances
+const FormItem = Form.Item;
 
 // Actions
 import {login} from '../actions/auth';
 import { getGroupList } from '../actions/game';
-import {getQuiniela, deleteQuiniela} from '../actions/quiniela';
+import {getQuiniela,
+    deleteQuiniela,
+    sendQuinielaInvitations,
+    getInivtationsById,
+    getQuinielaStructures
+} from '../actions/quiniela';
 import {bindActionCreators} from 'redux';
 
 // util
 const _ = require('lodash');
 
 // Components
-// import QuinielaGroups from '../components/QuinielaGroups';
+import QuinielaGroups from '../components/QuinielaGroups';
 
-const Fases = [
-    {
-        name: 'Fase de grupos',
-        agrupaciones: [
-            {
-                0: [ 'A' ],
-                1: [ 'B' ],
-                2: [ 'C' ],
-                3: [ 'D' ],
-                4: [ 'E' ],
-                5: [ 'F' ],
-                6: [ 'G' ],
-                7: [ 'H' ],
-            }
-        ],
-        CantidadDeAgrupaciones: 8,
-        GruposPorAgrupacion: 1,
-        partidosPorAgrupacion: 6,
-        cantidadTotalDePartidos: 48
-    },
-    {
-        name: 'Fase de Octavos de Final',
-        agrupaciones: [
-            {
-                0: [ 'A', 'B' ],
-                1: [ 'C', 'D' ],
-                2: [ 'E', 'F' ],
-                3: [ 'G', 'H' ],
-                4: [ 'B', 'A' ],
-                5: [ 'D', 'C' ],
-                6: [ 'F', 'E' ],
-                7: [ 'H', 'G' ],
-            }
-        ],
-        CantidadDeAgrupaciones: 8,
-        GruposPorAgrupacion: 2,
-        partidosPorAgrupacion: 1,
-        cantidadTotalDePartidos: 8
-    },
-    {
-        name: 'Fase de cuartos de final',
-        agrupaciones: [
-            {
-                0: [ 'A', 'B', 'C', 'D' ],
-                1: [ 'E', 'F', 'G', 'H' ],
-                2: [ 'A', 'B', 'C', 'D' ],
-                3: [ 'E', 'F', 'G', 'H' ],
-            }
-        ],
-        CantidadDeAgrupaciones: 4,
-        GruposPorAgrupacion: 4,
-        partidosPorAgrupacion: 1,
-        cantidadTotalDePartidos: 4
-    },
-    {
-        name: 'Fase de semifinales',
-        agrupaciones: [
-            {
-                0: [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' ],
-                1: [ 'E', 'F', 'G', 'H', 'A', 'B', 'C', 'D' ]
-            }
-        ],
-        CantidadDeAgrupaciones: 2,
-        GruposPorAgrupacion: 4,
-        partidosPorAgrupacion: 1,
-        cantidadTotalDePartidos: 4
-    },
-    {
-        name: 'Fase de final',
-        agrupaciones: [
-            {
-                0: [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' ]
-            }
-        ],
-        CantidadDeAgrupaciones: 1,
-        GruposPorAgrupacion: 4,
-        partidosPorAgrupacion: 1,
-        cantidadTotalDePartidos: 1
-    }
-];
-
-const dataRejected = [
-    {
-        title: 'Juan',
-    },
-    {
-        title: 'Diego',
-    }
-];
+// Hardcoded data
 const dataPosition = [
     {
         title: '1er lugar',
@@ -129,7 +49,7 @@ class Quiniela extends React.Component {
         super();
         this.state = {
             userId: false,
-            /** countries: [
+            countries: [
                 {
                     country1: { code: 'usa', name: 'United States'},
                     country2: { code: 'NIC', name: 'Nicaragua'},
@@ -146,7 +66,7 @@ class Quiniela extends React.Component {
                     country1: { code: 'CAN', name: 'Canada'},
                     country2: { code: 'SWE', name: 'Suecia'},
                 }
-            ] **/
+            ]
         };
     }
     componentWillMount() {
@@ -157,28 +77,39 @@ class Quiniela extends React.Component {
         }
     }
     componentDidMount() {
-        const { loginFunction, getQuinielaInfo, getByGroup } = this.props.actions;
+        const {
+            loginFunction,
+            getQuinielaInfo,
+            getByGroup,
+            getAllQuinielaInvitations,
+            getStructures
+        } = this.props.actions;
+
         const { params } = this.props.match;
         const { quinielaId } = params;
         const token = localStorage.getItem('PrensaToken');
         const id = localStorage.getItem('PrensaUserId');
         if (!token || token === 'Token invalido' || !id) {
-            notification.error({
-                message: 'Necesitas iniciar sesión',
-                description: 'Para poder acceder a todas las funcnioes de la Quiniela primero debes de iniciar sesión.',
-                placement: 'bottomRight'
-            });
-            this.props.history.push('/');
+            this.updateToken();
         } else {
-            console.log('else');
             loginFunction();
             getByGroup(1);
+            getStructures();
 
             if (quinielaId) {
                 getQuinielaInfo(quinielaId);
+                getAllQuinielaInvitations(quinielaId);
             }
         }
     }
+    updateToken = () => {
+        notification.error({
+            message: 'Necesitas iniciar sesión',
+            description: 'Para poder acceder a todas las funcnioes de la Quiniela primero debes de iniciar sesión.',
+            placement: 'bottomRight'
+        });
+        this.props.history.push('/');
+    };
     callback() {
         // console.log(key);
     }
@@ -197,51 +128,109 @@ class Quiniela extends React.Component {
             },
         });
     };
+    sendInvitation = e => {
+        const { inviteToQuiniela } = this.props.actions;
+
+        e.preventDefault();
+        this.props.form.validateFields((err, object) => {
+            const { params } = this.props.match;
+            const { quinielaId } = params;
+            if (!err) {
+                if (quinielaId) {
+                    const quinela_id = quinielaId;
+
+                    const regex = /([^;:<>!?\n]+\@[^;:<>!?\n]+\.[^;:<>!?\n]+)/gmi;
+                    const str = object.emailStrings;
+                    const emailsFound = str.match(regex);
+                    let totalEmailString = '';
+
+                    emailsFound.forEach(function(email) {
+                        totalEmailString += email;
+                        const body = {
+                            email,
+                            quinela_id
+                        };
+                        inviteToQuiniela(body);
+                    });
+                    notification.success({
+                        message: 'Exito',
+                        description: 'La invitación se ha enviado con exito a ' + totalEmailString,
+                        placement: 'bottomRight'
+                    });
+                } else {
+                    notification.error({
+                        message: 'Se ha producido un error',
+                        description: 'Se ha producido un con el API, por favor intenta de nuevo',
+                        placement: 'bottomRight'
+                    });
+                }
+            }
+        });
+    };
     onDeleteConfirm = (quinielaId) => {
         const { DeleteQuinielaAction } = this.props.actions;
         DeleteQuinielaAction(quinielaId);
         this.props.history.push('/mis-quinielas');
     };
     renderFases = () => {
-        // const { CountriesByGroup } = this.props;
-        // const grupoA = _.filter(CountriesByGroup, group => { return group.CODIGO === 'A'; });
+        const { quinielaStructures } = this.props;
 
-        const Cards = _.map(Fases, fase => {
-            const renderPaises = _.map(fase.agrupaciones, agrupacionPorFase => {
-                _.map(agrupacionPorFase, agrupacion => {
-                    _.map(agrupacion, grupo => {
-                        console.log(grupo);
-                        return <div>{grupo}</div>;
-                    });
-                });
+        const Cards = _.map(quinielaStructures, fase => {
+            // getGamesById API PENDING
+            const data = this.state.countries.map((countries) => {
+                return <QuinielaGroups country1={countries.country1} country2={countries.country2} />;
             });
-            // Render final de cada una de las agrupaciones
+
             return (
                 <Card
                     type="inner"
-                    title={fase.name}
+                    title={'Fase de ' + fase.NOMBRE}
                 >
-                    { renderPaises }
+                    {/**
+                     // const grupoA = _.filter(CountriesByGroup, group => { return group.ID === 'A'; });
+                     Aqui es donde se hace el render de paises
+                     **/}
+                    <List
+                        bordered
+                        dataSource={data}
+                        renderItem={item => (<List.Item>{item}</List.Item>)}
+                    />
                 </Card>
             );
         });
         return Cards;
     };
     render() {
-        const { quiniela, error } = this.props;
+        const {
+            quiniela,
+            error,
+            user
+        } = this.props;
+        const { api_token } = user;
         const { userId } = this.state;
+        const { getFieldDecorator } = this.props.form;
 
-        /**
-        const grupoA = _.filter(CountriesByGroup, group => { return group.CODIGO === 'A'; });
-        const grupoB = _.filter(CountriesByGroup, group => { return group.CODIGO === 'B'; });
-        const grupoC = _.filter(CountriesByGroup, group => { return group.CODIGO === 'C'; });
-        const grupoD = _.filter(CountriesByGroup, group => { return group.CODIGO === 'D'; });
-        const grupoE = _.filter(CountriesByGroup, group => { return group.CODIGO === 'E'; });
-        const grupoF = _.filter(CountriesByGroup, group => { return group.CODIGO === 'F'; });
-        const grupoG = _.filter(CountriesByGroup, group => { return group.CODIGO === 'G'; });
-        const grupoH = _.filter(CountriesByGroup, group => { return group.CODIGO === 'H'; });
-         **/
+        if (api_token === 'Token invalido') {
+            this.updateToken();
+        }
 
+        // Invitations arrays
+        const invitationsTypes = [
+            { propName: 'sendInvitations', human: 'Enviadas'},
+            { propName: 'refusedInvitations', human: 'Rechazadas'},
+            { propName: 'acceptedInvitations', human: 'Aceptadas'},
+        ];
+        const invitations = {};
+        _.chain(invitationsTypes)
+            .each(item => {
+                invitations[item.propName] = {
+                    invitation: this.props[item.propName],
+                    human: item.human
+                };
+            })
+            .value();
+
+        // Check if token expires
         if (error) {
             notification.error({
                 message: 'Se ha producido un error',
@@ -250,11 +239,9 @@ class Quiniela extends React.Component {
             });
             this.props.history.push('/mis-quinielas');
         }
-
+        // Check if admin to delete quniela
         const operations = <a onClick={this.showDeleteConfirm} type="dashed">Eliminar quiniela</a>;
-        /** const data = CountriesByGroup.map((countries) => {
-            return <QuinielaGroups country1={countries.country1} country2={countries.country2} />;
-        }); **/
+        let i = 2; // to have the control of dynamic tab keys
         return (
             <div>
                 <CardMedia
@@ -272,11 +259,6 @@ class Quiniela extends React.Component {
                     >
                         <TabPane tab={<span><Icon type="profile" />Mi predicción</span>} key="1">
                             { this.renderFases() }
-                            { /** <List
-                                 bordered
-                                 dataSource={CountriesByGroup ? data : []}
-                                 renderItem={item => (<List.Item>{item}</List.Item>)}
-                                 / >**/ }
                             <Row>
                                 <Col offset={16}>
                                     <Button
@@ -288,39 +270,49 @@ class Quiniela extends React.Component {
                                 </Col>
                             </Row>
                         </TabPane>
-                        <TabPane tab={<span><Icon type="user-add" />Invitar</span>} key="2">
+                        <TabPane tab={<span><Icon type="user-add" />Invitaciones</span>} key="2">
                             <Tabs defaultActiveKey="1" onChange={this.callback}>
                                 <TabPane tab="Invitar" key="1">
                                     <div style={{ margin: '24px 0' }} />
-                                    <Input placeholder="Ingresa el correo de tus amigos, separados por coma." />
-                                    <div style={{ margin: '24px 0' }} />
-                                    <Row>
-                                        <Col span={10}>
+                                    <Form onSubmit={this.sendInvitation} className="login-form">
+                                        <FormItem>
+                                            <span>Ingresa el coreo</span>
+                                            {getFieldDecorator('emailStrings', {
+                                                rules: [{required: true, message: 'Por favor ingresa los correos'}],
+                                            })(<Input placeholder="Ingresa los correos electronicos" />)}
+                                        </FormItem>
+                                        <FormItem>
                                             <Button
                                                 type="primary"
+                                                htmlType="submit"
                                                 icon="mail"
                                                 size="large"
                                                 style={{ background: '#454545', border: '#454545' }}
                                             >
                                                 Enviar invitaciones
                                             </Button>
-                                        </Col>
-                                    </Row>
+                                        </FormItem>
+                                    </Form>
                                 </TabPane>
-                                <TabPane tab="Inivtaciones rechazadas" key="2">
-                                    <List
-                                        itemLayout="horizontal"
-                                        dataSource={dataRejected}
-                                        renderItem={item => (
-                                            <List.Item actions={[<a onClick={this.showQuiniela}>ocultar</a>]}>
-                                                <List.Item.Meta
-                                                    avatar={<Avatar src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" />}
-                                                    title={<a href="https://ant.design">{item.title}</a>}
-                                                />
-                                            </List.Item>
-                                        )}
-                                    />
-                                </TabPane>
+                                {_.map(invitations, invitation => {
+                                    return (
+                                        <TabPane tab={invitation.human} key={i++}>
+                                            <List
+                                                itemLayout="horizontal"
+                                                dataSource={invitation.invitation}
+                                                locale={{ emptyText: 'Aún no hay ' + invitation.human }}
+                                                renderItem={item => (
+                                                    <List.Item>
+                                                        <List.Item.Meta
+                                                            avatar={<Avatar src={avatar} />}
+                                                            title={<a href="https://ant.design">{item.NOMBRE || 'Nombre no disponible'}</a>}
+                                                        />
+                                                    </List.Item>
+                                                )}
+                                            />
+                                        </TabPane>
+                                    );
+                                })}
                             </Tabs>
                         </TabPane>
                         <TabPane tab={<span><Icon type="trophy" />Tabla de posiciones</span>} key="3">
@@ -348,11 +340,16 @@ Quiniela.propTypes = {
     history: React.PropTypes.object.isRequired,
     userId: React.PropTypes.string.isRequired,
     match: React.PropTypes.object.isRequired,
+    actions: React.PropTypes.object.isRequired,
     user: React.PropTypes.object.isRequired,
     quiniela: React.PropTypes.object.isRequired,
     error: React.PropTypes.object.isRequired,
-    actions: React.PropTypes.object.isRequired,
-    CountriesByGroup: React.PropTypes.object.isRequired
+    CountriesByGroup: React.PropTypes.array.isRequired,
+    refusedInvitations: React.PropTypes.array.isRequired,
+    acceptedInvitations: React.PropTypes.array.isRequired,
+    sendInvitations: React.PropTypes.array.isRequired,
+    quinielaStructures: React.PropTypes.array.isRequired,
+    form: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -360,7 +357,11 @@ function mapStateToProps(state) {
         user: state.auth.user,
         error: state.quiniela.error,
         quiniela: state.quiniela.Quiniela,
-        CountriesByGroup: state.game.countriesByGroup
+        CountriesByGroup: state.game.countriesByGroup,
+        refusedInvitations: state.quiniela.refusedInvitations,
+        acceptedInvitations: state.quiniela.acceptedInvitations,
+        quinielaStructures: state.quiniela.quinielaStructures,
+        sendInvitations: state.quiniela.sendInvitations
     });
 }
 
@@ -368,12 +369,19 @@ function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators({
             loginFunction: login,
+            getStructures: getQuinielaStructures,
             getQuinielaInfo: getQuiniela,
             DeleteQuinielaAction: deleteQuiniela,
-            getByGroup: getGroupList
+            inviteToQuiniela: sendQuinielaInvitations,
+            getByGroup: getGroupList,
+            getAllQuinielaInvitations: getInivtationsById
         }, dispatch)
     };
 }
-const WithRouterWithForm = withRouter(Quiniela);
+const ShowTheLocationWithRouter = withRouter(Quiniela);
+
+const WithRouterWithForm = Form.create()(ShowTheLocationWithRouter);
+
 export default connect(mapStateToProps, mapDispatchToProps)(WithRouterWithForm);
+
 

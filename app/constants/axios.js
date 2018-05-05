@@ -5,5 +5,6 @@ const token = localStorage.getItem('PrensaToken');
 
 export default axios.create({
     baseURL: API_URL + 'api/',
-    headers: { 'api-key': token }
+    headers: { 'api-key': token },
+    crossdomain: true
 });

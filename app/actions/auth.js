@@ -16,7 +16,6 @@ export function login() {
         return axios.get(PLGETUSER_URL + userToken + '.json').then(res => {
             if(res) {
                 const user = res.data.data;
-                console.log(user);
                 dispatch(serCurrentUser(user));
             }
         }).catch(e => {

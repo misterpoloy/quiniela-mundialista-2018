@@ -8,9 +8,13 @@ const initialState = {
     Quiniela: {},
     superQuiniela: 0,
     usersByQuiniela: {},
+    refusedInvitations: [],
+    acceptedInvitations: [],
+    sendInvitations: [],
     quinielasByType: {},
     invitationsByState: {},
     recentQuiniela: {},
+    quinielaStructures: [],
     error: false
 };
 
@@ -21,6 +25,12 @@ export default (state = initialState, action = {}) => {
                 ...state,
                 error: false,
                 UserQuinielas: action.UserQuinielas
+            };
+        case types.GET_QUINIELA_STRUCTURES: // action done
+            return {
+                ...state,
+                error: false,
+                quinielaStructures: action.quinielaStructures
             };
         case types.GET_QUINIELA_ERROR:
             return {
@@ -33,6 +43,32 @@ export default (state = initialState, action = {}) => {
                 error: false,
                 AllQuinielas: action.AllQuinielas,
             };
+        case types.GET_INVITATION_BY_STATUS: // action done
+            return {
+                ...state,
+                error: false,
+                invitationsById: action.invitationsById
+            };
+            /**  invitations reducers **/
+        case types.GET_INVITATION_SENT: // action done
+            return {
+                ...state,
+                error: false,
+                sendInvitations: action.sendInvitations
+            };
+        case types.GET_INVITATION_ACCEPTED: // action done
+            return {
+                ...state,
+                error: false,
+                acceptedInvitations: action.acceptedInvitations
+            };
+        case types.GET_INVITATION_REFUSED: // action done
+            return {
+                ...state,
+                error: false,
+                refusedInvitations: action.refusedInvitations
+            };
+        /**  invitations reducers END **/
         case types.GET_INVITATION_QUINIELAS: // action done
             return {
                 ...state,

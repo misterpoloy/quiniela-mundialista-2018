@@ -31,12 +31,7 @@ class MyQuinielas extends React.Component {
         const token = localStorage.getItem('PrensaToken');
         const id = localStorage.getItem('PrensaUserId');
         if (!token || token === 'Token invalido' || !id) {
-            notification.error({
-                message: 'Necesitas iniciar sesión',
-                description: 'Para poder acceder a todas las funcnioes de la Quiniela primero debes de iniciar sesión.',
-                placement: 'bottomRight'
-            });
-            this.props.history.push('/');
+            this.updateToken();
         } else {
             // Load user Quinielas and getUser if neccesary
             getUserQuinielas(id);
@@ -45,6 +40,14 @@ class MyQuinielas extends React.Component {
             }
         }
     }
+    updateToken = () => {
+        notification.error({
+            message: 'Necesitas iniciar sesión',
+            description: 'Para poder acceder a todas las funcnioes de la Quiniela primero debes de iniciar sesión.',
+            placement: 'bottomRight'
+        });
+        this.props.history.push('/');
+    };
     handleClick() {
         this.props.history.push('/create');
     }
@@ -53,6 +56,13 @@ class MyQuinielas extends React.Component {
     }
     render() {
         const { quinielasByUser } = this.props;
+        const { user } = this.props;
+        const { api_token } = user;
+
+        if (api_token === 'Token invalido') {
+            this.updateToken();
+        }
+
         return (
             <div>
                 <CardMedia
@@ -69,6 +79,7 @@ class MyQuinielas extends React.Component {
                     <List
                         itemLayout="horizontal"
                         dataSource={quinielasByUser}
+                        locale={{ emptyText: 'Aún no has creado ninguna quiniela'}}
                         renderItem={item => (
                             <List.Item actions={[<Link to={'/quiniela/' + item.ID}>visualizar</Link>]}>
                                 <List.Item.Meta
@@ -80,9 +91,6 @@ class MyQuinielas extends React.Component {
                         )}
                     />
                     }
-                    {!quinielasByUser && (
-                      <div> No tienes quinielas aún, crea tu primer quiniela.</div>
-                    )}
                 </Card>
             </div>
         );
