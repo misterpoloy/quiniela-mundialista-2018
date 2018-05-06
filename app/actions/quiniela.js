@@ -19,6 +19,20 @@ export function setQuiniela(Quiniela) {
         Quiniela
     };
 }
+// ACCEPT_INVITATION_QUINIELA
+export function acceptQuiniela(quinielaId) {
+    return {
+        type: types.ACCEPT_INVITATION_QUINIELA,
+        quinielaId
+    };
+}
+// REFUSE_INVITATION_QUINIELA
+export function refuseQuiniela(quinielaId) {
+    return {
+        type: types.REFUSE_INVITATION_QUINIELA,
+        quinielaId
+    };
+}
 export function setQuinielaStructures(quinielaStructures) {
     return {
         type: types.GET_QUINIELA_STRUCTURES,
@@ -121,6 +135,29 @@ export function getQuiniela(quinielaId) {
         API.get(`quinela/${quinielaId}/`)
             .then(Quiniela => {
                 dispatch(setQuiniela(Quiniela.data));
+            }).catch(() => {
+                dispatch(setQuinielaError());
+            });
+    };
+}
+// ACCEPT_INVITATION_QUINIELA
+export function accepetInvitation(quinielaId) {
+    return dispatch => {
+        API.get(`quinela_invitation/${quinielaId}/accept/`)
+            .then(() => {
+                dispatch(acceptQuiniela(quinielaId));
+            }).catch(() => {
+                dispatch(acceptQuiniela(quinielaId));
+                dispatch(setQuinielaError());
+            });
+    };
+}
+// REFUSE_INVITATION_QUINIELA
+export function refuseInvitation(quinielaId) {
+    return dispatch => {
+        API.get(`quinela_invitation/${quinielaId}/refuse/`)
+            .then(() => {
+                dispatch(refuseQuiniela(quinielaId));
             }).catch(() => {
                 dispatch(setQuinielaError());
             });

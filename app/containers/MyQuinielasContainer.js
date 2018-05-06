@@ -101,8 +101,6 @@ MyQuinielas.propTypes = {
     history: React.PropTypes.object.isRequired,
     user: React.PropTypes.object.isRequired,
     actions: React.PropTypes.object.isRequired,
-    getUserQuinielas: React.PropTypes.func.isRequired,
-    myQuinielas: React.PropTypes.object.isRequired,
     quinielasByUser: React.PropTypes.array.isRequired
 };
 function mapStateToProps(state) {

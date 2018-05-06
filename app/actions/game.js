@@ -25,26 +25,66 @@ export function setQuinielaByGroups(countriesByGroup) {
         countriesByGroup
     };
 }
-/**
-// 3
-export function setQuinielasByUser(userQuinielas) {
-    return {
-        type: SET_CURRENT_USER,
-        userQuinielas
-    };
-}
-// 4
-export function setQuinielasByUser(userQuinielas) {
-    return {
-        type: SET_CURRENT_USER,
-        userQuinielas
-    };
-}
 
+// GET_GAMES_BY_STRUCTURE
+export function setGamesByStructure() {
+    return {
+        type: types.GET_GAMES_BY_STRUCTURE
+    };
+}
+// GET_GAMES_BY_STRUCTURE
+export function setGrupos(grupos) {
+    return {
+        type: types.SET_GAME_GRUPOS,
+        grupos
+    };
+}
+export function setOctavos(octavos) {
+    return {
+        type: types.SET_GAME_OCTAVOS,
+        octavos
+    };
+}
+export function setCuartos(cuartos) {
+    return {
+        type: types.SET_GAME_CUARTOS,
+        cuartos
+    };
+}
+export function setSemiFinales(semiFinales) {
+    return {
+        type: types.SET_GAME_SEMIFINALES,
+        semiFinales
+    };
+}
+export function setTercerPuesto(tercer) {
+    return {
+        type: types.SET_GAME_TERCEROS,
+        tercer
+    };
+}
+export function setFinal(final) {
+    return {
+        type: types.SET_GAME_FINAL,
+        final
+    };
+}
 /** ACTIONS **/
-
 // POST_GAME
 export function postGame(gameBody) {
+    return dispatch => {
+        API.get(`user/${gameBody}/quinela`, {
+            ...gameBody
+        })
+            .then(userQuinielas => {
+                dispatch(setPostGame(userQuinielas));
+            }).catch(e => {
+                console.log('Error al traer "Quiniela": ' + e);
+            });
+    };
+}
+// GET_GAMES_BY_STRUCTURE
+export function gamesByStructure(gameBody) {
     return dispatch => {
         API.get(`user/${gameBody}/quinela`, {
             ...gameBody
@@ -78,15 +118,45 @@ export function getGroupList() {
             });
     };
 }
-/** // 4
-export function getQuiniela(userId) {
+// SET_INVITATIONS
+export function getAllGamesByGroups() {
+    console.log('dispatch');
     return dispatch => {
-        API.get(`user/${userId}/quinela`)
-            .then(userQuinielas => {
-                console.log(userQuinielas);
-                dispatch(setQuinielasByUser(userQuinielas));
+        API.get('game/estructura/1') // grupos
+            .then(grupos => {
+                dispatch(setGrupos(grupos.data));
+                API.get('game/estructura/2') // octavos
+                    .then(octavos => {
+                        dispatch(setOctavos(octavos.data));
+                        API.get('game/estructura/3') // cuartos
+                            .then(cuartos => {
+                                dispatch(setCuartos(cuartos.data));
+                                API.get('game/estructura/4') // semifinales
+                                    .then(semifinales => {
+                                        dispatch(setSemiFinales(semifinales.data));
+                                        API.get('game/estructura/5') // tercer puesto
+                                            .then(tercer => {
+                                                dispatch(setTercerPuesto(tercer.data));
+                                                API.get('game/estructura/6') // final
+                                                    .then(final => {
+                                                        dispatch(setFinal(final.data));
+                                                    }).catch(e => {
+                                                        console.log('Error "getAllGamesByGroups 6": ' + e);
+                                                    });
+                                            }).catch(e => {
+                                                console.log('Error "getAllGamesByGroups 5": ' + e);
+                                            });
+                                    }).catch(e => {
+                                        console.log('Error "getAllGamesByGroups 4": ' + e);
+                                    });
+                            }).catch(e => {
+                                console.log('Error "getAllGamesByGroups 3": ' + e);
+                            });
+                    }).catch(e => {
+                        console.log('Error "getAllGamesByGroups asdasd 2": ' + e);
+                    });
             }).catch(e => {
-            console.log('Error al traer "Quiniela": ' + e);
-        });
+                console.log('Error "getAllGamesByGroups 1": ' + e);
+            });
     };
-}*/
+}

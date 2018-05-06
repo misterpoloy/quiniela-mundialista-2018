@@ -15,7 +15,7 @@ const FormItem = Form.Item;
 
 // Actions
 import {login} from '../actions/auth';
-import { getGroupList } from '../actions/game';
+import { getGroupList, getAllGamesByGroups } from '../actions/game';
 import {getQuiniela,
     deleteQuiniela,
     sendQuinielaInvitations,
@@ -44,29 +44,12 @@ const dataPosition = [
 ];
 
 
-class Quiniela extends React.Component {
+class QuinielaGame extends React.Component {
     constructor() {
         super();
         this.state = {
             userId: false,
-            countries: [
-                {
-                    country1: { code: 'usa', name: 'United States'},
-                    country2: { code: 'NIC', name: 'Nicaragua'},
-                },
-                {
-                    country1: { code: 'NER', name: 'Nigeria'},
-                    country2: { code: 'ECU', name: 'Ecuador'},
-                },
-                {
-                    country1: { code: 'UGA', name: 'Uganda'},
-                    country2: { code: 'LUX', name: 'Luxemburgo'},
-                },
-                {
-                    country1: { code: 'CAN', name: 'Canada'},
-                    country2: { code: 'SWE', name: 'Suecia'},
-                }
-            ]
+            games: {}
         };
     }
     componentWillMount() {
@@ -82,7 +65,8 @@ class Quiniela extends React.Component {
             getQuinielaInfo,
             getByGroup,
             getAllQuinielaInvitations,
-            getStructures
+            getStructures,
+            getAllGamesByGroupsAction
         } = this.props.actions;
 
         const { params } = this.props.match;
@@ -95,12 +79,16 @@ class Quiniela extends React.Component {
             loginFunction();
             getByGroup(1);
             getStructures();
+            getAllGamesByGroupsAction();
 
             if (quinielaId) {
                 getQuinielaInfo(quinielaId);
                 getAllQuinielaInvitations(quinielaId);
             }
         }
+    }
+    shouldComponentUpdate(nextProps) {
+        return this.props !== nextProps;
     }
     updateToken = () => {
         notification.error({
@@ -110,9 +98,12 @@ class Quiniela extends React.Component {
         });
         this.props.history.push('/');
     };
-    callback() {
-        // console.log(key);
-    }
+    callback = () => {
+        const { getAllQuinielaInvitations } = this.props.actions;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        getAllQuinielaInvitations(quinielaId);
+    };
     showDeleteConfirm = () => {
         const { params } = this.props.match;
         const { quinielaId } = params;
@@ -172,35 +163,43 @@ class Quiniela extends React.Component {
         DeleteQuinielaAction(quinielaId);
         this.props.history.push('/mis-quinielas');
     };
+    setNewPrediction = prediction => {
+        const { games } = this.state;
+        const gamesCopy = games;
+        const updateGames = { ...gamesCopy, ...prediction };
+        this.setState(() => ({ games: updateGames }));
+    };
     renderFases = () => {
         const { quinielaStructures } = this.props;
+        const fasesState = ['grupos', 'octavos', 'cuartos', 'semiFinales', 'tercer', 'final'];
 
+        let i = 0;
         const Cards = _.map(quinielaStructures, fase => {
-            // getGamesById API PENDING
-            const data = this.state.countries.map((countries) => {
-                return <QuinielaGroups country1={countries.country1} country2={countries.country2} />;
-            });
+            const currentProp = fasesState[i];
+            const currentFaseProps = this.props[currentProp];
 
+            const data = currentFaseProps.map((juego) => {
+                return <QuinielaGroups addGame={this.setNewPrediction} game={juego} />;
+            });
+            i++;
             return (
-                <Card
-                    type="inner"
-                    title={'Fase de ' + fase.NOMBRE}
-                >
-                    {/**
-                     // const grupoA = _.filter(CountriesByGroup, group => { return group.ID === 'A'; });
-                     Aqui es donde se hace el render de paises
-                     **/}
+                <Card type="inner" title={'Fase de ' + fase.NOMBRE}>
                     <List
                         bordered
                         dataSource={data}
+                        locale={{ emptyText: 'Cargando, por favor espera...' }}
                         renderItem={item => (<List.Item>{item}</List.Item>)}
-                    />
+                    />{/**
+                 // const grupoA = _.filter(CountriesByGroup, group => { return group.ID === 'A'; });
+                 Aqui es donde se hace el render de paises
+                 **/}
                 </Card>
             );
         });
         return Cards;
     };
     render() {
+        console.log('render container');
         const {
             quiniela,
             error,
@@ -305,7 +304,7 @@ class Quiniela extends React.Component {
                                                     <List.Item>
                                                         <List.Item.Meta
                                                             avatar={<Avatar src={avatar} />}
-                                                            title={<a href="https://ant.design">{item.NOMBRE || 'Nombre no disponible'}</a>}
+                                                            title={<a href="https://ant.design">{item.USUARIO.CORREO || 'Nombre no disponible'}</a>}
                                                         />
                                                     </List.Item>
                                                 )}
@@ -336,15 +335,13 @@ class Quiniela extends React.Component {
         );
     }
 }
-Quiniela.propTypes = {
+QuinielaGame.propTypes = {
     history: React.PropTypes.object.isRequired,
-    userId: React.PropTypes.string.isRequired,
     match: React.PropTypes.object.isRequired,
     actions: React.PropTypes.object.isRequired,
     user: React.PropTypes.object.isRequired,
     quiniela: React.PropTypes.object.isRequired,
     error: React.PropTypes.object.isRequired,
-    CountriesByGroup: React.PropTypes.array.isRequired,
     refusedInvitations: React.PropTypes.array.isRequired,
     acceptedInvitations: React.PropTypes.array.isRequired,
     sendInvitations: React.PropTypes.array.isRequired,
@@ -361,7 +358,13 @@ function mapStateToProps(state) {
         refusedInvitations: state.quiniela.refusedInvitations,
         acceptedInvitations: state.quiniela.acceptedInvitations,
         quinielaStructures: state.quiniela.quinielaStructures,
-        sendInvitations: state.quiniela.sendInvitations
+        sendInvitations: state.quiniela.sendInvitations,
+        grupos: state.game.grupos,
+        octavos: state.game.octavos,
+        cuartos: state.game.cuartos,
+        semiFinales: state.game.semiFinales,
+        tercer: state.game.tercer,
+        final: state.game.final,
     });
 }
 
@@ -374,11 +377,12 @@ function mapDispatchToProps(dispatch) {
             DeleteQuinielaAction: deleteQuiniela,
             inviteToQuiniela: sendQuinielaInvitations,
             getByGroup: getGroupList,
-            getAllQuinielaInvitations: getInivtationsById
+            getAllQuinielaInvitations: getInivtationsById,
+            getAllGamesByGroupsAction: getAllGamesByGroups
         }, dispatch)
     };
 }
-const ShowTheLocationWithRouter = withRouter(Quiniela);
+const ShowTheLocationWithRouter = withRouter(QuinielaGame);
 
 const WithRouterWithForm = Form.create()(ShowTheLocationWithRouter);
 

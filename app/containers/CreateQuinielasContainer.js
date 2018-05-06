@@ -246,7 +246,6 @@ CreateQuiniela.propTypes = {
     history: React.PropTypes.object.isRequired,
     user: React.PropTypes.object.isRequired,
     recentQuiniela: React.PropTypes.object.isRequired,
-    createdQuiniela: React.PropTypes.object.isRequired,
     actions: React.PropTypes.object.isRequired,
     form: React.PropTypes.object.isRequired
 };

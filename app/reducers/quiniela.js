@@ -1,5 +1,7 @@
 import * as types from '../actions/types';
 import isEmpty from 'lodash/isEmpty';
+// utils
+const _ = require('lodash');
 
 const initialState = {
     UserQuinielas: [],
@@ -19,6 +21,20 @@ const initialState = {
 };
 
 export default (state = initialState, action = {}) => {
+    function updateInvitations(invitationId) {
+        const CopyUserInvitationsArray = state.UserInvitations;
+        const invitationIndex = _.findIndex(CopyUserInvitationsArray, invitation => {
+            return invitation.INVITATION_ID === invitationId;
+        });
+        const newInvitations = [
+            {
+                ...CopyUserInvitationsArray.slice(0, invitationIndex),
+                ...CopyUserInvitationsArray.slice(invitationIndex + 1)
+            }
+        ];
+        return newInvitations;
+    }
+
     switch (action.type) {
         case types.GET_MY_QUINIELAS: // action done
             return {
@@ -31,6 +47,20 @@ export default (state = initialState, action = {}) => {
                 ...state,
                 error: false,
                 quinielaStructures: action.quinielaStructures
+            };
+        case types.ACCEPT_INVITATION_QUINIELA: // ***
+            const newInvitations = updateInvitations(action.quinielaId);
+            return {
+                ...state,
+                error: false,
+                quinielaStructures: newInvitations
+            };
+        case types.REFUSE_INVITATION_QUINIELA: // ***
+            const newRefused = updateInvitations(action.quinielaId);
+            return {
+                ...state,
+                error: false,
+                quinielaStructures: newRefused
             };
         case types.GET_QUINIELA_ERROR:
             return {

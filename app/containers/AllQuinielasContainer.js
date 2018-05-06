@@ -5,8 +5,14 @@ import {connect} from 'react-redux';
 
 // Actions
 import { bindActionCreators} from 'redux';
-import { getAllQuinielas, getQuinielaInvitations } from '../actions/quiniela';
 import { login } from '../actions/auth';
+import {
+    getAllQuinielas,
+    getQuinielaInvitations,
+    refuseInvitation,
+    accepetInvitation
+} from '../actions/quiniela';
+
 
 // utils
 const _ = require('lodash');
@@ -21,7 +27,7 @@ import bannerSource from '../src/images/banner3.jpg';
 class AllQuinielas extends React.Component {
     state = {
         key: 'tab1',
-        noTitleKey: 'article',
+        noTitleKey: 'article'
     };
     componentDidMount() {
         const { user } = this.props;
@@ -50,9 +56,19 @@ class AllQuinielas extends React.Component {
     onTabChange = (key, type) => {
         this.setState({[type]: key});
     };
+    acceptInvitation = invitationId => {
+        const { acceptInvitationAction } = this.props.actions;
+        console.log('Accept: ' + invitationId);
+        acceptInvitationAction(invitationId);
+    };
+    refuseInvitation = invitationId => {
+        const { refuseInvitationAction } = this.props.actions;
+        console.log('refuse: ' + invitationId);
+        refuseInvitationAction(invitationId);
+    };
 
     render() {
-        const { AllQuinielasArray, UserInvitationsArray, user } = this.props;
+        const { AllQuinielasArray, user, UserInvitationsArray } = this.props;
         const { api_token } = user;
 
         if (api_token === 'Token invalido') {
@@ -87,7 +103,10 @@ class AllQuinielas extends React.Component {
                 dataSource={UserInvitationsArray}
                 locale={{ emptyText: 'Aún no tienes invitaciones'}}
                 renderItem={item => (
-                    <List.Item actions={[<a>Jugar</a>, <a>Rechazar</a>]}>
+                    <List.Item actions={[
+                        <a onClick={() => this.acceptInvitation(item.INVITACIONES_ID)}>Jugar</a>,
+                        <a onClick={() => this.refuseInvitation(item.INVITACIONES_ID)}>Rechazar</a>
+                    ]}>
                         <List.Item.Meta
                             avatar={<Avatar src={pelota} />}
                             title={item.NOMBRE}
@@ -139,6 +158,8 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators({
             getUserAllQuinielas: getAllQuinielas,
             getUserInvitations: getQuinielaInvitations,
+            refuseInvitationAction: refuseInvitation,
+            acceptInvitationAction: accepetInvitation,
             loginFunction: login
         }, dispatch)
     };
