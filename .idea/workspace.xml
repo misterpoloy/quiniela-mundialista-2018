@@ -2,212 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/actions/game.js" afterPath="$PROJECT_DIR$/app/actions/game.js" />
-      <change beforePath="$PROJECT_DIR$/app/actions/quiniela.js" afterPath="$PROJECT_DIR$/app/actions/quiniela.js" />
-      <change beforePath="$PROJECT_DIR$/app/actions/types.js" afterPath="$PROJECT_DIR$/app/actions/types.js" />
       <change beforePath="$PROJECT_DIR$/app/components/QuinielaGroups.js" afterPath="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" afterPath="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" afterPath="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" afterPath="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" />
       <change beforePath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" afterPath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/game.js" afterPath="$PROJECT_DIR$/app/reducers/game.js" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/quiniela.js" afterPath="$PROJECT_DIR$/app/reducers/quiniela.js" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/ARG.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/AUS.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Afghanistan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Albania.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Algeria.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Andorra.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Antigua-and-Barbuda.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Armenia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Austria.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Azerbaijan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/BEL.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/BRA.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Bahamas.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Bahrain.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Bangladesh.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Barbados.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Belarus.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Belize.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Benin.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Bhutan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Bolivia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Bosnia-and-Herzegovina.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Botswana.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Brunei.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Bulgaria.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Burkina-Faso.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Burundi.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/CHE.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/COL.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/CRI.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Cambodia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Cameroon.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Canada.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Cape-Verde.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Central-African-Republic.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Chad.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Chile.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/China.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Comoros.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Congo-(Democratic).png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Congo-(Republic).png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Cote-d'Ivoire.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Cuba.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Cyprus.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Czech-Republic.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/DEU.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/DNK.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Djibouti.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Dominica.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Dominican-Republic.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/EGY.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/ESP.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/East-Timor.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Ecuador.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/El-Salvador.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Equatorial-Guinea.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Eritrea.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Estonia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Ethiopia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/FRA.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Fiji.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Finland.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/GBR.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Gabon.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Gambia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Georgia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Ghana.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Grecee.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Grenada.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Guatemala.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Guinea-Bissau.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Guinea.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Guyana.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/HRV.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Haiti.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Honduras.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Hungary.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/IRN.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Iceland.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/India.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Indonesia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Iraq.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Ireland.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Israel.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Italy.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/JPN.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Jamaica.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Jordan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/KOR.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Kazakhstan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Kenya.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Kiribati.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Korea,-North.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Kosovo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Kuwait.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Kyrgyzstan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Laos.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Latvia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Lebanon.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Lesotho.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Liberia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Libya.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Liechtenstein.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Lithuania.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Luxembourg.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/MAR.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/MEX.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Macedonia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Madagascar.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Malawi.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Malaysia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Maldives.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Mali.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Malta.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Marshall-Islands.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Mauritania.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Mauritius.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Micronesia-(Federated).png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Moldova.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Monaco.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Mongolia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Montenegro.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Mozambique.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Myanmar.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/NGA.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Namibia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Nauru.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Nepal.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Netherlands.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/New-Zealand.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Nicaragua.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Nigeria.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Norway.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Oman.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/PAN.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/PER.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/POL.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/PRT.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Pakistan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Palau.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Papua-New-Guinea.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Paraguay.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Philippines.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Qatar.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/RUS.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Romania.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Rwanda.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/SAU.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/SCG.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/SEN.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/SWE.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Saint-Kitts-and-Nevis.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Saint-Lucia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Saint-Vincent-and-the-Grenadines.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Samoa.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/San-Marino.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Sao-Tome-and-Principe.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Seychelles.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Sierra-Leone.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Singapore.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Slovakia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Slovenia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Solomon-Islands.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Somalia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/South-Africa.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/South-Sudan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Sri-Lanka.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Sudan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Suriname.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Sweden.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Syria.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/TUN.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Taiwan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Tajikistan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Tanzania.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Thailand.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Togo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Tonga.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Trinidad-and-Tobago.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Turkey.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Turkmenistan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Tuvalu.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Uganda.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Ukraine.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/United-Arab-Emirates.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/United-States-of-America.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Uruguay.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Uzbekistan.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Vanuatu.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Vatican-City.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Venezuela.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Vietnam.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Yemen.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Zambia.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/flags/Zimbabwe.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -221,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="89" column="37" lean-forward="false" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+            <state relative-caret-position="-2749">
+              <caret line="187" column="29" lean-forward="false" selection-start-line="187" selection-start-column="29" selection-end-line="187" selection-end-column="29" />
               <folding>
                 <element signature="e#976#1101#0" expanded="false" />
                 <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
@@ -235,23 +31,20 @@
                 <element signature="e#3076#3560#0" expanded="false" />
                 <element signature="e#3588#5104#0" expanded="false" />
                 <element signature="e#5144#5305#0" expanded="false" />
-                <element signature="e#12480#13426#0" expanded="false" />
+                <element signature="e#12813#13759#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuinielaGroups.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuinielaGroups.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="86" column="32" lean-forward="false" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
+            <state relative-caret-position="1241">
+              <caret line="73" column="30" lean-forward="true" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#1196#1337#0" expanded="false" />
-                <element signature="e#1378#1466#0" expanded="false" />
-                <element signature="e#1489#1635#0" expanded="false" />
-                <element signature="e#1686#1724#0" expanded="false" />
+                <element signature="e#2073#2111#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -514,12 +307,12 @@
       <workItem from="1525411399407" duration="13376000" />
       <workItem from="1525436143013" duration="345000" />
       <workItem from="1525473702749" duration="10419000" />
-      <workItem from="1525555860248" duration="17120000" />
+      <workItem from="1525555860248" duration="18940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213279000" />
+    <option name="totallyTimeSpent" value="215099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -924,10 +717,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="30" lean-forward="true" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#2073#2111#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="89" column="37" lean-forward="false" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+        <state relative-caret-position="-2749">
+          <caret line="187" column="29" lean-forward="false" selection-start-line="187" selection-start-column="29" selection-end-line="187" selection-end-column="29" />
           <folding>
             <element signature="e#976#1101#0" expanded="false" />
             <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
@@ -937,21 +741,7 @@
             <element signature="e#3076#3560#0" expanded="false" />
             <element signature="e#3588#5104#0" expanded="false" />
             <element signature="e#5144#5305#0" expanded="false" />
-            <element signature="e#12480#13426#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="86" column="32" lean-forward="false" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#1196#1337#0" expanded="false" />
-            <element signature="e#1378#1466#0" expanded="false" />
-            <element signature="e#1489#1635#0" expanded="false" />
-            <element signature="e#1686#1724#0" expanded="false" />
+            <element signature="e#12813#13759#0" expanded="false" />
           </folding>
         </state>
       </provider>

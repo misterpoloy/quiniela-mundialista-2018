@@ -24,18 +24,21 @@ class QuinielaGroups extends React.Component {
         };
     }
     updateGame = () => {
-        const { addGame, game } = this.props;
+        const { addGame, game, quinielaId, userId } = this.props;
         const { count, count2 } = this.state;
         const predictionID = game.ID;
+        const jugador1ID = game.JUGADOR_1 && game.JUGADOR_1.NOMBRE || 'use prediction start';
+        const jugador2ID = game.JUGADOR_2 && game.JUGADOR_2.NOMBRE || 'use prediction start';
+
         const prediction = {
             [predictionID]: {
                 JUEGO: predictionID,
-                QUINIELA: '',
-                USUARIO: '',
+                QUINIELA: quinielaId,
+                USUARIO: userId,
                 GOL_1: count,
                 GOL_2: count2,
-                JUEGO_1: '',
-                JUEGO_2: ''
+                JUEGO_1: jugador1ID,
+                JUEGO_2: jugador2ID
             }
         };
         addGame(prediction);
@@ -51,19 +54,25 @@ class QuinielaGroups extends React.Component {
         if (count < 0) {
             count = 0;
         }
-        this.setState({ count });
+        this.setState({ count }, () => {
+            this.updateGame();
+        });
     };
     // Country 2
     increase2 = () => {
         const count2 = this.state.count2 + 1;
-        this.setState({ count2 });
+        this.setState({ count2 }, () => {
+            this.updateGame();
+        });
     };
     decline2 = () => {
         let count2 = this.state.count2 - 1;
         if (count2 < 0) {
             count2 = 0;
         }
-        this.setState({ count2 });
+        this.setState({ count2 }, () => {
+            this.updateGame();
+        });
     };
     // select Country 1
     selecCountry = () => {
@@ -191,6 +200,8 @@ class QuinielaGroups extends React.Component {
 }
 QuinielaGroups.propTypes = {
     game: React.PropTypes.object.isRequired,
-    addGame: React.PropTypes.func.isRequired
+    addGame: React.PropTypes.func.isRequired,
+    quinielaId: React.PropTypes.object.isRequired,
+    userId: React.PropTypes.object.isRequired
 };
 export default QuinielaGroups;

@@ -171,6 +171,9 @@ class QuinielaGame extends React.Component {
     };
     renderFases = () => {
         const { quinielaStructures } = this.props;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
         const fasesState = ['grupos', 'octavos', 'cuartos', 'semiFinales', 'tercer', 'final'];
 
         let i = 0;
@@ -179,7 +182,14 @@ class QuinielaGame extends React.Component {
             const currentFaseProps = this.props[currentProp];
 
             const data = currentFaseProps.map((juego) => {
-                return <QuinielaGroups addGame={this.setNewPrediction} game={juego} />;
+                return (
+                    <QuinielaGroups
+                        quinielaId={quinielaId}
+                        userId={id}
+                        addGame={this.setNewPrediction}
+                        game={juego}
+                    />
+                );
             });
             i++;
             return (
