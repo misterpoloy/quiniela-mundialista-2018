@@ -24,13 +24,11 @@ export default (state = initialState, action = {}) => {
     function updateInvitations(invitationId) {
         const CopyUserInvitationsArray = state.UserInvitations;
         const invitationIndex = _.findIndex(CopyUserInvitationsArray, invitation => {
-            return invitation.INVITATION_ID === invitationId;
+            return invitation.INVITACIONES_ID === parseInt(invitationId, 10);
         });
         const newInvitations = [
-            {
-                ...CopyUserInvitationsArray.slice(0, invitationIndex),
-                ...CopyUserInvitationsArray.slice(invitationIndex + 1)
-            }
+            ...CopyUserInvitationsArray.slice(0, invitationIndex),
+            ...CopyUserInvitationsArray.slice(invitationIndex + 1)
         ];
         return newInvitations;
     }
@@ -50,17 +48,25 @@ export default (state = initialState, action = {}) => {
             };
         case types.ACCEPT_INVITATION_QUINIELA: // ***
             const newInvitations = updateInvitations(action.quinielaId);
+            const AllQuinielasCopy = state.AllQuinielas;
+            const invitationIndex = _.findIndex(state.UserInvitations, invitation => {
+                return invitation.INVITACIONES_ID === parseInt(action.quinielaId, 10);
+            });
+            const AllQuinielasCopyNew = [
+                ...AllQuinielasCopy, state.UserInvitations[invitationIndex]
+            ];
             return {
                 ...state,
                 error: false,
-                quinielaStructures: newInvitations
+                UserInvitations: newInvitations,
+                AllQuinielas: AllQuinielasCopyNew
             };
         case types.REFUSE_INVITATION_QUINIELA: // ***
             const newRefused = updateInvitations(action.quinielaId);
             return {
                 ...state,
                 error: false,
-                quinielaStructures: newRefused
+                UserInvitations: newRefused
             };
         case types.GET_QUINIELA_ERROR:
             return {

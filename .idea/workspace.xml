@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/components/PredictionContry.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/actions/game.js" afterPath="$PROJECT_DIR$/app/actions/game.js" />
-      <change beforePath="$PROJECT_DIR$/app/actions/types.js" afterPath="$PROJECT_DIR$/app/actions/types.js" />
-      <change beforePath="$PROJECT_DIR$/app/components/QuinielaGroups.js" afterPath="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" afterPath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/game.js" afterPath="$PROJECT_DIR$/app/reducers/game.js" />
-      <change beforePath="$PROJECT_DIR$/app/styles/styles.scss" afterPath="$PROJECT_DIR$/app/styles/styles.scss" />
+      <change beforePath="$PROJECT_DIR$/app/actions/quiniela.js" afterPath="$PROJECT_DIR$/app/actions/quiniela.js" />
+      <change beforePath="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" afterPath="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" />
+      <change beforePath="$PROJECT_DIR$/app/reducers/quiniela.js" afterPath="$PROJECT_DIR$/app/reducers/quiniela.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,89 +18,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
+      <file leaf-file-name="MyQuinielasContainer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/containers/MyQuinielasContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="221" column="24" lean-forward="false" selection-start-line="221" selection-start-column="24" selection-end-line="221" selection-end-column="24" />
+            <state relative-caret-position="68">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllQuinielasContainer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/containers/AllQuinielasContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
               <folding>
                 <element signature="e#31#57#0" expanded="true" />
-                <element signature="e#147#261#0" expanded="true" />
-                <element signature="e#533#571#0" expanded="true" />
-                <element signature="e#925#983#0" expanded="true" />
-                <element signature="e#1087#1212#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="n#!!block;n#componentDidMount#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="n#!!block;n#componentWillReceiveProps#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="n#!!block;n#shouldComponentUpdate#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="e#3304#3593#0" expanded="false" />
-                <element signature="e#3616#3820#0" expanded="false" />
-                <element signature="e#3852#4336#0" expanded="false" />
-                <element signature="e#4364#5880#0" expanded="false" />
-                <element signature="e#5920#6081#0" expanded="false" />
-                <element signature="e#6120#6314#0" expanded="false" />
-                <element signature="e#11762#11972#0" expanded="false" />
-                <element signature="e#12113#12229#0" expanded="false" />
-                <element signature="e#12322#12629#0" expanded="false" />
-                <element signature="e#12887#13180#0" expanded="false" />
-                <element signature="e#17760#18706#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuinielaGroups.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-              <folding>
-                <element signature="e#260#317#0" expanded="false" />
-                <element signature="e#340#402#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#QuinielaGroups#0" expanded="false" />
-                <element signature="e#1056#1353#0" expanded="false" />
-                <element signature="e#1086#1343#0" expanded="false" />
-                <element signature="e#1412#1818#0" expanded="false" />
-                <element signature="e#1768#1810#0" expanded="false" />
-                <element signature="e#1840#2301#0" expanded="false" />
-                <element signature="e#2177#2211#0" expanded="false" />
-                <element signature="e#2251#2293#0" expanded="false" />
-                <element signature="e#2342#2750#0" expanded="false" />
-                <element signature="e#2700#2742#0" expanded="false" />
-                <element signature="e#2773#3239#0" expanded="false" />
-                <element signature="e#3113#3148#0" expanded="false" />
-                <element signature="e#3189#3231#0" expanded="false" />
-                <element signature="e#3296#3433#0" expanded="false" />
-                <element signature="e#3464#3588#0" expanded="false" />
-                <element signature="e#4505#4803#0" expanded="false" />
-                <element signature="e#4578#4647#0" expanded="false" />
-                <element signature="e#4702#4787#0" expanded="false" />
-                <element signature="e#5872#6040#0" expanded="false" />
-                <element signature="e#6104#8129#0" expanded="false" />
-                <element signature="e#6142#6849#0" expanded="false" />
-                <element signature="e#6193#6633#0" expanded="false" />
-                <element signature="e#6247#6394#0" expanded="false" />
-                <element signature="e#6435#6582#0" expanded="false" />
-                <element signature="e#6882#7340#0" expanded="false" />
-                <element signature="e#6944#7301#0" expanded="false" />
-                <element signature="e#7373#8094#0" expanded="false" />
-                <element signature="e#7435#7877#0" expanded="false" />
-                <element signature="e#7489#7637#0" expanded="false" />
-                <element signature="e#7678#7826#0" expanded="false" />
-                <element signature="e#10707#10955#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PredictionContry.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/PredictionContry.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#456#517#0" expanded="true" />
+                <element signature="e#1461#1750#0" expanded="false" />
+                <element signature="e#1785#1830#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -115,14 +47,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getAllGamesByGroups</find>
-      <find>COUNSTRIES_BY_GROUP</find>
-      <find>menu</find>
-      <find>SELECCION_1</find>
-      <find>menuRigth</find>
-      <find>selecCountry2</find>
-      <find>chain</find>
-      <find>mis reslu</find>
       <find>countriesByGroup</find>
       <find>&quot;</find>
       <find>isGroups</find>
@@ -143,8 +67,16 @@
       <find>componentWill</find>
       <find>postSuccesfull</find>
       <find>console.</find>
-      <find>game</find>
       <find>JUEGO_1</find>
+      <find>game</find>
+      <find>UserInvitations</find>
+      <find>quinielaStructures</find>
+      <find>AllQuinielasArray</find>
+      <find>user/${userId}/quinela/belongs</find>
+      <find>getUserAllQuinielas</find>
+      <find>GET_MY_QUINIELAS</find>
+      <find>AllQuinielas</find>
+      <find>Link</find>
     </findStrings>
     <replaceStrings>
       <replace>MainContainer</replace>
@@ -203,18 +135,18 @@
         <option value="$PROJECT_DIR$/app/actions/auth.js" />
         <option value="$PROJECT_DIR$/app/containers/WelcomeContainer.js" />
         <option value="$PROJECT_DIR$/app/constants/axios.js" />
-        <option value="$PROJECT_DIR$/app/actions/quiniela.js" />
-        <option value="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
-        <option value="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" />
         <option value="$PROJECT_DIR$/app/styles/styles.scss" />
         <option value="$PROJECT_DIR$/app/actions/types.js" />
-        <option value="$PROJECT_DIR$/app/reducers/quiniela.js" />
         <option value="$PROJECT_DIR$/app/reducers/game.js" />
         <option value="$PROJECT_DIR$/app/actions/game.js" />
         <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
         <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
         <option value="$PROJECT_DIR$/app/components/PredictionContry.js" />
+        <option value="$PROJECT_DIR$/app/reducers/quiniela.js" />
+        <option value="$PROJECT_DIR$/app/actions/quiniela.js" />
+        <option value="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" />
+        <option value="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" />
       </list>
     </option>
   </component>
@@ -268,7 +200,7 @@
               <item name="react widget" type="b2602c69:ProjectViewProjectNode" />
               <item name="react widget" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react widget" type="b2602c69:ProjectViewProjectNode" />
@@ -377,12 +309,12 @@
       <workItem from="1525627817706" duration="21024000" />
       <workItem from="1525705893931" duration="1219000" />
       <workItem from="1525720635778" duration="835000" />
-      <workItem from="1525740690766" duration="18903000" />
+      <workItem from="1525740690766" duration="23391000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257080000" />
+    <option name="totallyTimeSpent" value="261568000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -686,29 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/AllQuinielasContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="142" column="4" lean-forward="false" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="4" />
-          <folding>
-            <element signature="e#31#57#0" expanded="false" />
-            <element signature="e#148#190#0" expanded="false" />
-            <element signature="e#415#476#0" expanded="false" />
-            <element signature="n#!!block;n#componentDidMount#0;n#AllQuinielas#0" expanded="false" />
-            <element signature="e#1420#1709#0" expanded="false" />
-            <element signature="e#1744#1789#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/actions/quiniela.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="255" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2081">
@@ -724,14 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/MyQuinielasContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="103" column="4" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/styles.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -743,14 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
           <caret line="30" column="47" lean-forward="false" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/reducers/quiniela.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -771,12 +664,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/PredictionContry.js">
+    <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+        <state relative-caret-position="1428">
+          <caret line="221" column="24" lean-forward="false" selection-start-line="221" selection-start-column="24" selection-end-line="221" selection-end-column="24" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#31#57#0" expanded="true" />
+            <element signature="e#147#261#0" expanded="true" />
+            <element signature="e#533#571#0" expanded="true" />
+            <element signature="e#925#983#0" expanded="true" />
+            <element signature="e#1087#1212#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="n#!!block;n#componentDidMount#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="n#!!block;n#shouldComponentUpdate#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="e#3304#3593#0" expanded="false" />
+            <element signature="e#3616#3820#0" expanded="false" />
+            <element signature="e#3852#4336#0" expanded="false" />
+            <element signature="e#4364#5880#0" expanded="false" />
+            <element signature="e#5920#6081#0" expanded="false" />
+            <element signature="e#6120#6314#0" expanded="false" />
+            <element signature="e#11762#11972#0" expanded="false" />
+            <element signature="e#12113#12229#0" expanded="false" />
+            <element signature="e#12322#12629#0" expanded="false" />
+            <element signature="e#12887#13180#0" expanded="false" />
+            <element signature="e#17760#18706#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -823,32 +736,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
+    <entry file="file://$PROJECT_DIR$/app/components/PredictionContry.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="221" column="24" lean-forward="false" selection-start-line="221" selection-start-column="24" selection-end-line="221" selection-end-column="24" />
+        <state relative-caret-position="237">
+          <caret line="19" column="49" lean-forward="false" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/quiniela.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="75" column="36" lean-forward="false" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/actions/quiniela.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/MyQuinielasContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/AllQuinielasContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
           <folding>
             <element signature="e#31#57#0" expanded="true" />
-            <element signature="e#147#261#0" expanded="true" />
-            <element signature="e#533#571#0" expanded="true" />
-            <element signature="e#925#983#0" expanded="true" />
-            <element signature="e#1087#1212#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="n#!!block;n#componentDidMount#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="n#!!block;n#componentWillReceiveProps#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="n#!!block;n#shouldComponentUpdate#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="e#3304#3593#0" expanded="false" />
-            <element signature="e#3616#3820#0" expanded="false" />
-            <element signature="e#3852#4336#0" expanded="false" />
-            <element signature="e#4364#5880#0" expanded="false" />
-            <element signature="e#5920#6081#0" expanded="false" />
-            <element signature="e#6120#6314#0" expanded="false" />
-            <element signature="e#11762#11972#0" expanded="false" />
-            <element signature="e#12113#12229#0" expanded="false" />
-            <element signature="e#12322#12629#0" expanded="false" />
-            <element signature="e#12887#13180#0" expanded="false" />
-            <element signature="e#17760#18706#0" expanded="false" />
+            <element signature="e#456#517#0" expanded="true" />
+            <element signature="e#1461#1750#0" expanded="false" />
+            <element signature="e#1785#1830#0" expanded="false" />
           </folding>
         </state>
       </provider>

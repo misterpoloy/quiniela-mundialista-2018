@@ -62,7 +62,7 @@ export function setQuinielasByUser(UserQuinielas) {
 // GET_ALL_QUINIELAS
 export function setAllQuinielas(AllQuinielas) {
     return {
-        type: types.GET_MY_QUINIELAS,
+        type: types.GET_ALL_QUINIELAS,
         AllQuinielas
     };
 }

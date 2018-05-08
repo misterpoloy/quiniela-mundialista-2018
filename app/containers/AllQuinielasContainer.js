@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import {withRouter} from 'react-router';
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 // Actions
@@ -89,10 +90,10 @@ class AllQuinielas extends React.Component {
                 dataSource={AllQuinielasArray}
                 locale={{ emptyText: 'Aún no perteneces a ninguna quiniela'}}
                 renderItem={item => (
-                    <List.Item actions={[<a>visualizar</a>]}>
+                    <List.Item actions={[[<Link to={'/quiniela/' + item.ID}>visualizar</Link>]]}>
                         <List.Item.Meta
                             avatar={<Avatar src={pelota} />}
-                            title={<a href="https://ant.design">{item.NOMBRE}</a>}
+                            title={<Link to={'/quiniela/' + item.ID}>{item.NOMBRE}</Link>}
                             description="Ant Design, a design language for background applications, is refined by Ant UED"
                         />
                     </List.Item>
