@@ -12,6 +12,7 @@ const initialState = {
     semiFinales: [],
     tercer: [],
     postSuccesfull: false,
+    quinielaPositions: [],
     final: []
 };
 
@@ -28,6 +29,11 @@ export default (state = initialState, action = {}) => {
             return {
                 ...state,
                 postSuccesfull: action.postSuccesfull
+            };
+        case types.GET_QUINIELA_POSITIONS: // 2
+            return {
+                ...state,
+                quinielaPositions: action.quinielaPositions
             };
         case types.GET_GAME: // 2
             return {

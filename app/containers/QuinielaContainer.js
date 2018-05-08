@@ -8,6 +8,9 @@ import { Card, Button, Icon, Tabs, List, Modal, message, Avatar, Input, Row, Col
 import { CardMedia, CardTitle} from 'material-ui/Card';
 import bannerSource from '../src/images/banner4.jpg';
 import avatar from '../src/images/avatar.png';
+import one from '../src/images/1.png';
+import two from '../src/images/2.png';
+import three from '../src/images/3.png';
 const confirm = Modal.confirm;
 const TabPane = Tabs.TabPane;
 // instances
@@ -15,7 +18,14 @@ const FormItem = Form.Item;
 
 // Actions
 import {login} from '../actions/auth';
-import { getGroupList, getAllGamesByGroups, sendPrediction, getPredictionsPerUser } from '../actions/game';
+import {
+    getGroupList,
+    getAllGamesByGroups,
+    sendPrediction,
+    getPredictionsPerUser,
+    getQuinielaPositions
+} from '../actions/game';
+
 import {getQuiniela,
     deleteQuiniela,
     sendQuinielaInvitations,
@@ -31,18 +41,6 @@ const _ = require('lodash');
 import QuinielaGroups from '../components/QuinielaGroups';
 import PredictionContry from '../components/PredictionContry';
 
-// Hardcoded data
-const dataPosition = [
-    {
-        title: '1er lugar',
-    },
-    {
-        title: '2do Lugar',
-    },
-    {
-        title: '3er Lugar',
-    }
-];
 const styleHeader = {
     color: '#152b5b',
     fontWeight: 200
@@ -70,6 +68,7 @@ class QuinielaGame extends React.Component {
             getAllQuinielaInvitations,
             getStructures,
             getPredictionsPerUserActions,
+            getQuinielaPositionsActions,
             getAllGamesByGroupsAction
         } = this.props.actions;
 
@@ -88,6 +87,7 @@ class QuinielaGame extends React.Component {
 
             if (quinielaId) {
                 getQuinielaInfo(quinielaId);
+                getQuinielaPositionsActions(quinielaId);
                 getAllQuinielaInvitations(quinielaId);
             }
         }
@@ -248,8 +248,9 @@ class QuinielaGame extends React.Component {
         const predictionCard = _.map(fasesState, fase => {
             const PredictionCountryFase =
                 _.filter(predictionsByUsers, prediction => prediction.JUEGO.ESTRUCTURA.NOMBRE === fase);
+            const PredictionCountryFaseOrdered = _.sortBy(PredictionCountryFase, ['ID']);
 
-            const data = _.map(PredictionCountryFase, juego => {
+            const data = _.map(PredictionCountryFaseOrdered, juego => {
                 return (
                     <PredictionContry
                         game={juego}
@@ -299,7 +300,7 @@ class QuinielaGame extends React.Component {
                     <List
                         bordered
                         dataSource={data}
-                        locale={{ emptyText: 'Cargando, por favor espera...' }}
+                        locale={{ emptyText: 'Cargando paises, banderas y opciones. Por favor espera...' }}
                         renderItem={item => (<List.Item>{item}</List.Item>)}
                     />
                 </Card>
@@ -307,13 +308,28 @@ class QuinielaGame extends React.Component {
         });
         return Cards;
     };
+    setFlag = flag => {
+        console.log('attention!!!');
+        console.log(flag);
+        switch (flag) {
+            case 1:
+                return <Avatar src={one} />;
+            case 2:
+                return <Avatar src={two} />;
+            case 3:
+                return <Avatar src={three} />;
+            default:
+                return <Avatar src="https://cdn0.iconfinder.com/data/icons/sport-balls/128/cup.png"/>;
+        }
+    };
     render() {
         console.log('render container');
         const {
             quiniela,
             error,
             user,
-            predictionsByUsers
+            predictionsByUsers,
+            quinielaPositions
         } = this.props;
         const { api_token } = user;
         const { userId } = this.state;
@@ -352,6 +368,7 @@ class QuinielaGame extends React.Component {
         // Check if admin to delete quniela
         const operations = <a onClick={this.showDeleteConfirm} type="dashed">Eliminar quiniela</a>;
         let i = 2; // to have the control of dynamic tab keys
+        let x = 0; // to have the control of dynamic tab keys
         return (
             <div>
                 <CardMedia
@@ -441,16 +458,19 @@ class QuinielaGame extends React.Component {
                         <TabPane tab={<span><Icon type="trophy" />Tabla de posiciones</span>} key="3">
                             <List
                                 itemLayout="horizontal"
-                                dataSource={dataPosition}
-                                renderItem={item => (
-                                    <List.Item>
-                                        <List.Item.Meta
-                                            avatar={<Avatar src="https://cdn0.iconfinder.com/data/icons/sport-balls/128/cup.png"/>}
-                                            title={<a href="https://ant.design">{item.title}</a>}
-                                            description="Ant Design, a design language for background applications, is refined by Ant UED"
-                                        />
-                                    </List.Item>
-                                )}
+                                dataSource={quinielaPositions}
+                                renderItem={item => {
+                                    x++;
+                                    return (
+                                        <List.Item>
+                                            <List.Item.Meta
+                                                avatar={this.setFlag(x)}
+                                                title={'PUESTO: ' + x + '. ' + item.NOMBRE}
+                                                description={'Puntos: ' + item.PUNTOS}
+                                            />
+                                        </List.Item>
+                                    );
+                                }}
                             />
                         </TabPane>
                     </Tabs>
@@ -472,6 +492,7 @@ QuinielaGame.propTypes = {
     refusedInvitations: React.PropTypes.array.isRequired,
     acceptedInvitations: React.PropTypes.array.isRequired,
     sendInvitations: React.PropTypes.array.isRequired,
+    quinielaPositions: React.PropTypes.array.isRequired,
     predictionsByUsers: React.PropTypes.array.isRequired,
     quinielaStructures: React.PropTypes.array.isRequired,
     form: React.PropTypes.object.isRequired
@@ -486,6 +507,7 @@ function mapStateToProps(state) {
         refusedInvitations: state.quiniela.refusedInvitations,
         acceptedInvitations: state.game.acceptedInvitations,
         quinielaStructures: state.quiniela.quinielaStructures,
+        quinielaPositions: state.game.quinielaPositions,
         postSuccesfull: state.game.postSuccesfull,
         sendInvitations: state.quiniela.sendInvitations,
         grupos: state.game.grupos,
@@ -507,6 +529,7 @@ function mapDispatchToProps(dispatch) {
             getPredictionsPerUserActions: getPredictionsPerUser,
             DeleteQuinielaAction: deleteQuiniela,
             sendPredictionAction: sendPrediction,
+            getQuinielaPositionsActions: getQuinielaPositions,
             inviteToQuiniela: sendQuinielaInvitations,
             getByGroup: getGroupList,
             getAllQuinielaInvitations: getInivtationsById,

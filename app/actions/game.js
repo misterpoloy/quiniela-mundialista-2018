@@ -10,6 +10,13 @@ export function predictionSuccess(predictionsByUsers) {
         predictionsByUsers
     };
 }
+// GET_QUINIELA_POSITIONS
+export function setPositions(quinielaPositions) {
+    return {
+        type: types.GET_QUINIELA_POSITIONS,
+        quinielaPositions
+    };
+}
 export function postSuccesfull() {
     return {
         type: types.POST_PREDICTIONS,
@@ -95,7 +102,7 @@ export function getPredictionsPerUser(QuinielaId, userId) {
             });
     };
 }
-// OST_PREDICTIONS
+// POST_PREDICTIONS
 export function sendPrediction(games) {
     return dispatch => {
         API.post('quinela_prediction', {
@@ -108,16 +115,14 @@ export function sendPrediction(games) {
         });
     };
 }
-// POST_GAME
-export function postGame(gameBody) {
+// GET_QUINIELA_POSITIONS
+export function getQuinielaPositions(quinielaId) {
     return dispatch => {
-        API.get(`user/${gameBody}/quinela`, {
-            ...gameBody
-        })
-            .then(userQuinielas => {
-                dispatch(setPostGame(userQuinielas));
+        API.get(`quinela/${quinielaId}/stats`)
+            .then(positions => {
+                dispatch(setPositions(positions.data));
             }).catch(e => {
-                console.log('Error al traer "Quiniela": ' + e);
+                console.log('Error "getQuinielaPositions": ' + e);
             });
     };
 }
