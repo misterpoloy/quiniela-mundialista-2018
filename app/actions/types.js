@@ -27,6 +27,8 @@ export const POST_INVITE_QUINIELA_USER = 'POST_INVITE_QUINIELA_USER';
 export const GET_INVITATIONS_BY_STATE = 'GET_INVITATIONS_BY_STATE'; // (1 aceptadas, 2 pendiente, 3 rechazada)
 // GAME options
 export const POST_GAME = 'POST_GAME';
+export const POST_PREDICTIONS = 'POST_PREDICTIONS';
+export const GET_PREDICTIONS = 'GET_PREDICTIONS';
 export const GET_GAMES_BY_STRUCTURE = 'GET_GAMES_BY_STRUCTURE';
 export const GET_GAME = 'GET_GAME';
 export const GET_USER_PREDICTIONS = 'GET_USER_PREDICTIONS';

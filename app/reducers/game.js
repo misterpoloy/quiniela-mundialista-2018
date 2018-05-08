@@ -11,6 +11,7 @@ const initialState = {
     cuartos: [],
     semiFinales: [],
     tercer: [],
+    postSuccesfull: false,
     final: []
 };
 
@@ -18,6 +19,16 @@ export default (state = initialState, action = {}) => {
     switch (action.type) {
         case types.POST_GAME: // action done
             return state;
+        case types.GET_PREDICTIONS: // 2
+            return {
+                ...state,
+                predictionsByUsers: action.predictionsByUsers
+            };
+        case types.POST_PREDICTIONS: // 2
+            return {
+                ...state,
+                postSuccesfull: action.postSuccesfull
+            };
         case types.GET_GAME: // 2
             return {
                 ...state,

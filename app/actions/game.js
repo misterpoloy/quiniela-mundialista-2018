@@ -3,6 +3,20 @@ import * as types from '../actions/types';
 
 /** ACTIONS DISPATCH **/
 
+// POST_PREDICTIONS
+export function predictionSuccess(predictionsByUsers) {
+    return {
+        type: types.GET_PREDICTIONS,
+        predictionsByUsers
+    };
+}
+export function postSuccesfull() {
+    return {
+        type: types.POST_PREDICTIONS,
+        postSuccesfull: true
+    };
+}
+
 // POST_GAME
 export function setPostGame() {
     return {
@@ -70,6 +84,30 @@ export function setFinal(final) {
     };
 }
 /** ACTIONS **/
+// GET_PREDICTIONS_BY_USER
+export function getPredictionsPerUser(QuinielaId, userId) {
+    return dispatch => {
+        API.get(`quinela_prediction/quiniela/${QuinielaId}/user/${userId}/`)
+            .then(prediction => {
+                dispatch(predictionSuccess(prediction.data));
+            }).catch(e => {
+                console.log('Error "getGame": ' + e);
+            });
+    };
+}
+// OST_PREDICTIONS
+export function sendPrediction(games) {
+    return dispatch => {
+        API.post('quinela_prediction', {
+            games
+        })
+        .then(() => {
+            dispatch(postSuccesfull());
+        }).catch(e => {
+            console.log('Error sendPrediction": ' + e);
+        });
+    };
+}
 // POST_GAME
 export function postGame(gameBody) {
     return dispatch => {

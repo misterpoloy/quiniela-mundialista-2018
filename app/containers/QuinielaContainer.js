@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
 // Design
-import { Card, Button, Icon, Tabs, List, Modal, Avatar, Input, Row, Col, Form, notification} from 'antd';
+import { Card, Button, Icon, Tabs, List, Modal, message, Avatar, Input, Row, Col, Form, notification} from 'antd';
 import { CardMedia, CardTitle} from 'material-ui/Card';
 import bannerSource from '../src/images/banner4.jpg';
 import avatar from '../src/images/avatar.png';
@@ -15,7 +15,7 @@ const FormItem = Form.Item;
 
 // Actions
 import {login} from '../actions/auth';
-import { getGroupList, getAllGamesByGroups } from '../actions/game';
+import { getGroupList, getAllGamesByGroups, sendPrediction, getPredictionsPerUser } from '../actions/game';
 import {getQuiniela,
     deleteQuiniela,
     sendQuinielaInvitations,
@@ -29,6 +29,7 @@ const _ = require('lodash');
 
 // Components
 import QuinielaGroups from '../components/QuinielaGroups';
+import PredictionContry from '../components/PredictionContry';
 
 // Hardcoded data
 const dataPosition = [
@@ -42,8 +43,10 @@ const dataPosition = [
         title: '3er Lugar',
     }
 ];
-
-
+const styleHeader = {
+    color: '#152b5b',
+    fontWeight: 200
+};
 class QuinielaGame extends React.Component {
     constructor() {
         super();
@@ -66,6 +69,7 @@ class QuinielaGame extends React.Component {
             getByGroup,
             getAllQuinielaInvitations,
             getStructures,
+            getPredictionsPerUserActions,
             getAllGamesByGroupsAction
         } = this.props.actions;
 
@@ -79,12 +83,25 @@ class QuinielaGame extends React.Component {
             loginFunction();
             getByGroup(1);
             getStructures();
+            getPredictionsPerUserActions(quinielaId, id);
             getAllGamesByGroupsAction();
 
             if (quinielaId) {
                 getQuinielaInfo(quinielaId);
                 getAllQuinielaInvitations(quinielaId);
             }
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        // If user post Quinielas succesfully seach again
+        const { getPredictionsPerUserActions } = this.props.actions;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        if (this.props.postSuccesfull !== nextProps.postSuccesfull) {
+            console.log('getAllQuinielas');
+            getPredictionsPerUserActions(quinielaId, id);
         }
     }
     shouldComponentUpdate(nextProps) {
@@ -169,8 +186,92 @@ class QuinielaGame extends React.Component {
         const updateGames = { ...gamesCopy, ...prediction };
         this.setState(() => ({ games: updateGames }));
     };
+    savePrediction = () => {
+        const { grupos } = this.props;
+        const { sendPredictionAction } = this.props.actions;
+        const { games } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+        console.log('savePrediction()');
+
+        if(_.isEmpty(games)) {
+            message.error('Hún no has echo ninguna predicción aún...');
+        } else {
+            const prediction = {};
+            // 1. For the groups if zero then create a default object
+            // 1. Generate the 64 games in one simple array
+            _.map(grupos, function(game) {
+                prediction[game.ID] = {
+                    GOL_1: game.GOLES_1 || 0,
+                    GOL_2: game.GOLES_2 || 0,
+                    JUEGO: game.ID,
+                    JUEGO_1: game.JUGADOR_1.ID,
+                    JUEGO_2: game.JUGADOR_2.ID,
+                    QUINIELA: quinielaId,
+                    USUARIO: id
+                };
+            });
+            // 2. Mix the predictions with the original value
+            const curated = {...prediction, ...games};
+            if (_.size(curated) !== 63) {
+                message.error('Aún hay predicciones en blanco');
+            } else {
+                const verifyLeftGame = _.filter(curated, function(verify) { return verify.JUEGO_1 !== null; });
+                const verifyRigth = _.filter(verifyLeftGame, function(verify) { return verify.JUEGO_2 !== null; });
+                // 3. Check if there is no null.
+                // 4. Save the prediction.
+                if (_.size(verifyRigth) === 63) {
+                    // Let's save the game!
+                    confirm({
+                        title: 'Estas seguro que quieres guardar tu Quiniela?',
+                        content: 'Esta opción no la puedes deshacer asi que elige con atención tus ocpciones,',
+                        okText: '¡Si! Guardar',
+                        cancelText: 'No, aún no',
+                        onOk() {
+                            sendPredictionAction(verifyRigth);
+                        }
+                    });
+                } else {
+                    message.error('Aún hay predicciones en blanco');
+                }
+            }
+        }
+    };
+    renderMyPrediction = () => {
+        const { predictionsByUsers } = this.props;
+        // const { params } = this.props.match;
+        // const { quinielaId } = params;
+        // const id = localStorage.getItem('PrensaUserId');
+        const fasesState = ['grupos', 'octavos', 'cuartos', 'semifinales', 'tercer puesto', 'final'];
+
+        const predictionCard = _.map(fasesState, fase => {
+            const PredictionCountryFase =
+                _.filter(predictionsByUsers, prediction => prediction.JUEGO.ESTRUCTURA.NOMBRE === fase);
+
+            const data = _.map(PredictionCountryFase, juego => {
+                return (
+                    <PredictionContry
+                        game={juego}
+                    />
+                );
+            });
+
+            return (
+                <Card type="inner" title={'Fase de ' + fase}>
+                    <List
+                        bordered
+                        dataSource={data}
+                        locale={{ emptyText: 'Cargando, por favor espera...' }}
+                        renderItem={item => (<List.Item>{item}</List.Item>)}
+                    />
+                </Card>
+            );
+        });
+        return predictionCard;
+    };
     renderFases = () => {
-        const { quinielaStructures } = this.props;
+        const { quinielaStructures, CountriesByGroup } = this.props;
         const { params } = this.props.match;
         const { quinielaId } = params;
         const id = localStorage.getItem('PrensaUserId');
@@ -186,6 +287,7 @@ class QuinielaGame extends React.Component {
                     <QuinielaGroups
                         quinielaId={quinielaId}
                         userId={id}
+                        CountriesByGroup={CountriesByGroup}
                         addGame={this.setNewPrediction}
                         game={juego}
                     />
@@ -199,10 +301,7 @@ class QuinielaGame extends React.Component {
                         dataSource={data}
                         locale={{ emptyText: 'Cargando, por favor espera...' }}
                         renderItem={item => (<List.Item>{item}</List.Item>)}
-                    />{/**
-                 // const grupoA = _.filter(CountriesByGroup, group => { return group.ID === 'A'; });
-                 Aqui es donde se hace el render de paises
-                 **/}
+                    />
                 </Card>
             );
         });
@@ -213,12 +312,14 @@ class QuinielaGame extends React.Component {
         const {
             quiniela,
             error,
-            user
+            user,
+            predictionsByUsers
         } = this.props;
         const { api_token } = user;
         const { userId } = this.state;
         const { getFieldDecorator } = this.props.form;
 
+        // Check if is valid token
         if (api_token === 'Token invalido') {
             this.updateToken();
         }
@@ -267,17 +368,29 @@ class QuinielaGame extends React.Component {
                         tabBarExtraContent={quiniela.CREADO_POR === userId ? operations : ''}
                     >
                         <TabPane tab={<span><Icon type="profile" />Mi predicción</span>} key="1">
-                            { this.renderFases() }
+                        {_.isEmpty(predictionsByUsers) ? (
                             <Row>
+                                { this.renderFases() }
                                 <Col offset={16}>
                                     <Button
                                         type="primary"
                                         size="large"
+                                        onClick={this.savePrediction}
                                     >
-                                        Actualizar mis resultados
+                                        Colocar mi quiniela
                                     </Button>
                                 </Col>
                             </Row>
+                        ) : (
+                            <div>
+                                <h1 style={styleHeader}>
+                                    <strong>¡Felicitaciones!</strong> <br />
+                                    Ya estas participando en esta Quiniela
+                                </h1>
+                                    { this.renderMyPrediction() }
+                            </div>
+                            )
+                        }
                         </TabPane>
                         <TabPane tab={<span><Icon type="user-add" />Invitaciones</span>} key="2">
                             <Tabs defaultActiveKey="1" onChange={this.callback}>
@@ -296,6 +409,7 @@ class QuinielaGame extends React.Component {
                                                 htmlType="submit"
                                                 icon="mail"
                                                 size="large"
+                                                onClick={this.sendInvitation}
                                                 style={{ background: '#454545', border: '#454545' }}
                                             >
                                                 Enviar invitaciones
@@ -351,10 +465,14 @@ QuinielaGame.propTypes = {
     actions: React.PropTypes.object.isRequired,
     user: React.PropTypes.object.isRequired,
     quiniela: React.PropTypes.object.isRequired,
-    error: React.PropTypes.object.isRequired,
+    error: React.PropTypes.bool.isRequired,
+    grupos: React.PropTypes.array.isRequired,
+    postSuccesfull: React.PropTypes.bool.isRequired,
+    CountriesByGroup: React.PropTypes.object.isRequired,
     refusedInvitations: React.PropTypes.array.isRequired,
     acceptedInvitations: React.PropTypes.array.isRequired,
     sendInvitations: React.PropTypes.array.isRequired,
+    predictionsByUsers: React.PropTypes.array.isRequired,
     quinielaStructures: React.PropTypes.array.isRequired,
     form: React.PropTypes.object.isRequired
 };
@@ -366,12 +484,14 @@ function mapStateToProps(state) {
         quiniela: state.quiniela.Quiniela,
         CountriesByGroup: state.game.countriesByGroup,
         refusedInvitations: state.quiniela.refusedInvitations,
-        acceptedInvitations: state.quiniela.acceptedInvitations,
+        acceptedInvitations: state.game.acceptedInvitations,
         quinielaStructures: state.quiniela.quinielaStructures,
+        postSuccesfull: state.game.postSuccesfull,
         sendInvitations: state.quiniela.sendInvitations,
         grupos: state.game.grupos,
         octavos: state.game.octavos,
         cuartos: state.game.cuartos,
+        predictionsByUsers: state.game.predictionsByUsers,
         semiFinales: state.game.semiFinales,
         tercer: state.game.tercer,
         final: state.game.final,
@@ -384,7 +504,9 @@ function mapDispatchToProps(dispatch) {
             loginFunction: login,
             getStructures: getQuinielaStructures,
             getQuinielaInfo: getQuiniela,
+            getPredictionsPerUserActions: getPredictionsPerUser,
             DeleteQuinielaAction: deleteQuiniela,
+            sendPredictionAction: sendPrediction,
             inviteToQuiniela: sendQuinielaInvitations,
             getByGroup: getGroupList,
             getAllQuinielaInvitations: getInivtationsById,
