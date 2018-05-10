@@ -186,10 +186,10 @@ class CreateQuiniela extends  React.Component {
                             </FormItem>
                         </Form>
                         <Row>
-                            <Col span={3} offset={11}>
+                            <Col span={3}>
                                 <ButtonGroup>
                                     <Button onClick={this.handleNext} type="primary" size="large">
-                                        Terminar<Icon type="right" />
+                                        Invitar luego<Icon type="right" />
                                     </Button>
                                 </ButtonGroup>
                             </Col>
@@ -207,7 +207,7 @@ class CreateQuiniela extends  React.Component {
                         />
                         <div style={{ margin: '24px 0' }} />
                         <Row>
-                            <Col span={2} offset={10}>
+                            <Col span={2}>
                                 <Button onClick={this.handleFinish} type="primary" size="large">Ver mis quinielas</Button>
                             </Col>
                         </Row>
@@ -233,7 +233,7 @@ class CreateQuiniela extends  React.Component {
                     <Steps current={this.state.step}>
                         <Step title="Información" description="Descripción general." />
                         <Step title="Compartir" description="Invita a amigos." />
-                        <Step title="¡Juega!" description="Haz tu predicción" />
+                        <Step title="¡Juega!" description="Haz tu predicción." />
                     </Steps>
                 </CardAnt>
                 {this.renderSteps()}

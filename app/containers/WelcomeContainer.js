@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 // actions
 import { login } from '../actions/auth';
-import { getQuinielaInvitations } from '../actions/quiniela';
+import {getMyQuinielas, getQuinielaInvitations} from '../actions/quiniela';
 
 // utils
 import queryString from 'query-string';
@@ -43,7 +43,7 @@ class Welcome extends React.Component {
         }
     }
     componentDidMount() {
-        const { loginFunction, getUserInvitations } = this.props.actions;
+        const { loginFunction, getUserInvitations, getUserQuinielas } = this.props.actions;
         const { user } = this.props;
         const apiToken = user.api_token || '';
 
@@ -58,6 +58,7 @@ class Welcome extends React.Component {
         if(token) {
             loginFunction();
             getUserInvitations(id); // Quiniela Invitations
+            getUserQuinielas(id);
         }
     }
     render() {
@@ -76,7 +77,7 @@ class Welcome extends React.Component {
                                 <Col xs={{span: 4, offset: 4}} md={{span: 10, offset: 9}}>
                                     {user.primer_nombre ?
                                         <h1 style={h1Style}>
-                                            !Bienvenido, { user.primer_nombre + ' ' + user.primer_apellido}!
+                                            ¡Bienvenido { user.primer_nombre + ' ' + user.primer_apellido}!
                                         </h1>
                                         :
                                         <Button href={PlConnectUrl} style={style} type={'primary'} size={'large'}>
@@ -107,6 +108,7 @@ function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators({
             loginFunction: login,
+            getUserQuinielas: getMyQuinielas,
             getUserInvitations: getQuinielaInvitations,
         }, dispatch)
     };

@@ -66,7 +66,7 @@ class MyQuinielas extends React.Component {
         return (
             <div>
                 <CardMedia
-                    overlay={<CardTitle title="Mis quinielas" subtitle="Comienza a crear tus quinielas" />}
+                    overlay={<CardTitle title="Mis quinielas" subtitle="Crea, invita y disfruta de tus predicciones" />}
                 >
                     <img src={bannerSource} alt="" />
                 </CardMedia>
@@ -81,7 +81,21 @@ class MyQuinielas extends React.Component {
                         dataSource={quinielasByUser}
                         locale={{ emptyText: 'Aún no has creado ninguna quiniela'}}
                         renderItem={item => (
-                            <List.Item actions={[<Link to={'/quiniela/' + item.ID}>visualizar</Link>]}>
+                            <List.Item actions={[
+                                <Link
+                                    style={{
+                                        background: '#F5F5F5',
+                                        paddingLeft: 15,
+                                        paddingTop: 10,
+                                        paddingRight: 15,
+                                        paddingBottom: 10,
+                                        borderRadius: 3
+                                    }}
+                                    to={'/quiniela/' + item.ID}
+                                >
+                                    Ver quiniela
+                                </Link>
+                            ]}>
                                 <List.Item.Meta
                                     avatar={<Avatar src={pelota} />}
                                     title={<Link to={'/quiniela/' + item.ID}>{item.NOMBRE}</Link>}

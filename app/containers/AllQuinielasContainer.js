@@ -4,6 +4,15 @@ import {withRouter} from 'react-router';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 
+const styleGray = {
+    background: '#F5F5F5',
+    paddingLeft: 15,
+    paddingTop: 10,
+    paddingRight: 15,
+    paddingBottom: 10,
+    borderRadius: 3
+};
+
 // Actions
 import { bindActionCreators} from 'redux';
 import { login } from '../actions/auth';
@@ -57,10 +66,10 @@ class AllQuinielas extends React.Component {
     onTabChange = (key, type) => {
         this.setState({[type]: key});
     };
-    acceptInvitation = invitationId => {
+    acceptInvitation = invitation => {
         const { acceptInvitationAction } = this.props.actions;
-        console.log('Accept: ' + invitationId);
-        acceptInvitationAction(invitationId);
+        acceptInvitationAction(invitation.INVITACIONES_ID);
+        this.props.history.push('/quiniela/' + invitation.ID);
     };
     refuseInvitation = invitationId => {
         const { refuseInvitationAction } = this.props.actions;
@@ -90,7 +99,7 @@ class AllQuinielas extends React.Component {
                 dataSource={AllQuinielasArray}
                 locale={{ emptyText: 'Aún no perteneces a ninguna quiniela'}}
                 renderItem={item => (
-                    <List.Item actions={[[<Link to={'/quiniela/' + item.ID}>visualizar</Link>]]}>
+                    <List.Item actions={[[<Link style={styleGray} to={'/quiniela/' + item.ID}>Ver quiniela</Link>]]}>
                         <List.Item.Meta
                             avatar={<Avatar src={pelota} />}
                             title={<Link to={'/quiniela/' + item.ID}>{item.NOMBRE}</Link>}
@@ -105,8 +114,8 @@ class AllQuinielas extends React.Component {
                 locale={{ emptyText: 'Aún no tienes invitaciones'}}
                 renderItem={item => (
                     <List.Item actions={[
-                        <a onClick={() => this.acceptInvitation(item.INVITACIONES_ID)}>Jugar</a>,
-                        <a onClick={() => this.refuseInvitation(item.INVITACIONES_ID)}>Rechazar</a>
+                        <a style={styleGray} onClick={() => this.acceptInvitation(item)}>Jugar</a>,
+                        <a style={styleGray} onClick={() => this.refuseInvitation(item.INVITACIONES_ID)}>Rechazar</a>
                     ]}>
                         <List.Item.Meta
                             avatar={<Avatar src={pelota} />}
@@ -121,7 +130,7 @@ class AllQuinielas extends React.Component {
         return (
             <div>
                 <CardMedia
-                    overlay={<CardTitle title="Quinielas" subtitle="Comienza a crear tus quinielas" />}
+                    overlay={<CardTitle title="Todas las quinielas" subtitle="Juega, únete y disfruta de todas tus predicciones" />}
                 >
                     <img src={bannerSource} alt="" />
                 </CardMedia>

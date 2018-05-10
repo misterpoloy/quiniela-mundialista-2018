@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
 // Design
-import { Card, Button, Icon, Tabs, List, Modal, message, Avatar, Input, Row, Col, Form, notification} from 'antd';
+import { Card, Button, Icon, Tabs, List, Modal, message, Avatar, Input, Row, Col, Form, Alert, notification} from 'antd';
 import { CardMedia, CardTitle} from 'material-ui/Card';
 import bannerSource from '../src/images/banner4.jpg';
 import avatar from '../src/images/avatar.png';
@@ -41,10 +41,6 @@ const _ = require('lodash');
 import QuinielaGroups from '../components/QuinielaGroups';
 import PredictionContry from '../components/PredictionContry';
 
-const styleHeader = {
-    color: '#152b5b',
-    fontWeight: 200
-};
 class QuinielaGame extends React.Component {
     constructor() {
         super();
@@ -61,6 +57,10 @@ class QuinielaGame extends React.Component {
         }
     }
     componentDidMount() {
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const token = localStorage.getItem('PrensaToken');
+        const id = localStorage.getItem('PrensaUserId');
         const {
             loginFunction,
             getQuinielaInfo,
@@ -71,11 +71,6 @@ class QuinielaGame extends React.Component {
             getQuinielaPositionsActions,
             getAllGamesByGroupsAction
         } = this.props.actions;
-
-        const { params } = this.props.match;
-        const { quinielaId } = params;
-        const token = localStorage.getItem('PrensaToken');
-        const id = localStorage.getItem('PrensaUserId');
         if (!token || token === 'Token invalido' || !id) {
             this.updateToken();
         } else {
@@ -125,11 +120,11 @@ class QuinielaGame extends React.Component {
         const { params } = this.props.match;
         const { quinielaId } = params;
         confirm({
-            title: '¿Seguro que desea eliminar la quiniela?',
-            content: 'Esta acción no puede ser deshecha',
-            okText: 'eliminar',
+            title: '¿Estás seguro que deseas eliminar tu quiniela?',
+            content: 'Las predicciones de tus invitados de esta quiniela también serán eliminadas. Esta acción no puede ser deshecha.',
+            okText: 'Eliminar',
             okType: 'danger',
-            cancelText: 'cancelar',
+            cancelText: 'Cancelar',
             onOk: this.onDeleteConfirm.bind(this, quinielaId),
             onCancel() {
                 // console.log('Cancel');
@@ -224,11 +219,12 @@ class QuinielaGame extends React.Component {
                 if (_.size(verifyRigth) === 63) {
                     // Let's save the game!
                     confirm({
-                        title: 'Estas seguro que quieres guardar tu Quiniela?',
-                        content: 'Esta opción no la puedes deshacer asi que elige con atención tus ocpciones,',
+                        title: '¿Estás seguro que quieres guardar tu quiniela?',
+                        content: 'Recuerda que no puedes editar tu predicción después, así que elige con atención tus predicciones.',
                         okText: '¡Si! Guardar',
                         cancelText: 'No, aún no',
                         onOk() {
+                            window.scrollTo(0, 0);
                             sendPredictionAction(verifyRigth);
                         }
                     });
@@ -319,7 +315,7 @@ class QuinielaGame extends React.Component {
             case 3:
                 return <Avatar src={three} />;
             default:
-                return <Avatar src="https://cdn0.iconfinder.com/data/icons/sport-balls/128/cup.png"/>;
+                return <Avatar src={avatar} />;
         }
     };
     render() {
@@ -342,16 +338,17 @@ class QuinielaGame extends React.Component {
 
         // Invitations arrays
         const invitationsTypes = [
-            { propName: 'sendInvitations', human: 'Enviadas'},
-            { propName: 'refusedInvitations', human: 'Rechazadas'},
-            { propName: 'acceptedInvitations', human: 'Aceptadas'},
+            { propName: 'sendInvitations', human: 'Enviadas', text: 'enviadas'},
+            { propName: 'refusedInvitations', human: 'Rechazadas', text: 'rechazadas'},
+            { propName: 'acceptedInvitations', human: 'Aceptadas', text: 'aceptadas'},
         ];
         const invitations = {};
         _.chain(invitationsTypes)
             .each(item => {
                 invitations[item.propName] = {
                     invitation: this.props[item.propName],
-                    human: item.human
+                    human: item.human,
+                    text: item.text
                 };
             })
             .value();
@@ -366,7 +363,7 @@ class QuinielaGame extends React.Component {
             this.props.history.push('/mis-quinielas');
         }
         // Check if admin to delete quniela
-        const operations = <a onClick={this.showDeleteConfirm} type="dashed">Eliminar quiniela</a>;
+        const operations = <a onClick={this.showDeleteConfirm} style={{ padding: 20 }} type="dashed">Eliminar quiniela</a>;
         let i = 2; // to have the control of dynamic tab keys
         let x = 0; // to have the control of dynamic tab keys
         return (
@@ -388,10 +385,11 @@ class QuinielaGame extends React.Component {
                         {_.isEmpty(predictionsByUsers) ? (
                             <Row>
                                 { this.renderFases() }
-                                <Col offset={16}>
+                                <Col>
                                     <Button
                                         type="primary"
                                         size="large"
+                                        style={{ marginTop: 15 }}
                                         onClick={this.savePrediction}
                                     >
                                         Colocar mi quiniela
@@ -400,10 +398,13 @@ class QuinielaGame extends React.Component {
                             </Row>
                         ) : (
                             <div>
-                                <h1 style={styleHeader}>
-                                    <strong>¡Felicitaciones!</strong> <br />
-                                    Ya estas participando en esta Quiniela
-                                </h1>
+                                <Alert
+                                    message="¡Felicitaciones!"
+                                    description="Ya estás participando en esta quiniela. Actualizaremos los resultados reales después de cada partido, consulta tus puntos y tu lugar en la tabla de posiciones conforme se vayan jugando los partidos."
+                                    type="success"
+                                    showIcon
+                                />
+                                <br />
                                     { this.renderMyPrediction() }
                             </div>
                             )
@@ -415,10 +416,10 @@ class QuinielaGame extends React.Component {
                                     <div style={{ margin: '24px 0' }} />
                                     <Form onSubmit={this.sendInvitation} className="login-form">
                                         <FormItem>
-                                            <span>Ingresa el coreo</span>
+                                            <span>Ingresa el correo</span>
                                             {getFieldDecorator('emailStrings', {
-                                                rules: [{required: true, message: 'Por favor ingresa los correos'}],
-                                            })(<Input placeholder="Ingresa los correos electronicos" />)}
+                                                rules: [{required: true, message: 'Por favor ingresa los correos electrónicos'}],
+                                            })(<Input placeholder="Ingresa los correos electrónicos, separados por coma" />)}
                                         </FormItem>
                                         <FormItem>
                                             <Button
@@ -440,7 +441,7 @@ class QuinielaGame extends React.Component {
                                             <List
                                                 itemLayout="horizontal"
                                                 dataSource={invitation.invitation}
-                                                locale={{ emptyText: 'Aún no hay ' + invitation.human }}
+                                                locale={{ emptyText: 'Aún no hay invitaciones ' + invitation.text }}
                                                 renderItem={item => (
                                                     <List.Item>
                                                         <List.Item.Meta
@@ -455,7 +456,7 @@ class QuinielaGame extends React.Component {
                                 })}
                             </Tabs>
                         </TabPane>
-                        <TabPane tab={<span><Icon type="trophy" />Tabla de posiciones</span>} key="3">
+                        <TabPane tab={<span className={'posiciones'}><Icon type="trophy" />Posiciones </span>} key="3">
                             <List
                                 itemLayout="horizontal"
                                 dataSource={quinielaPositions}
@@ -465,7 +466,7 @@ class QuinielaGame extends React.Component {
                                         <List.Item>
                                             <List.Item.Meta
                                                 avatar={this.setFlag(x)}
-                                                title={'PUESTO: ' + x + '. ' + item.NOMBRE}
+                                                title={'Posición ' + x + ': ' + item.NOMBRE}
                                                 description={'Puntos: ' + item.PUNTOS}
                                             />
                                         </List.Item>

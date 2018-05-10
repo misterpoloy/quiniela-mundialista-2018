@@ -16,13 +16,6 @@ import {PLCONNECT_SIGNOFF, URLQUINIELA, REACT_URL} from '../constants/urls';
 
 const PlConnectSignOff = PLCONNECT_SIGNOFF + URLQUINIELA + '?incomingUrl=' + REACT_URL;
 
-const FbStyle = {
-    position: 'absolute',
-    marginTop: 4,
-    marginLeft: -100,
-    color: '#FFF'
-};
-
 class ComponentHeader extends React.Component {
     constructor(props) {
         super(props);
@@ -55,7 +48,7 @@ class ComponentHeader extends React.Component {
                     title={<img src={bannerLogo} width={230} alt="Prensa Libre 2018" />}
                     iconElementRight={
                         <div>
-                            <FlatButton style={FbStyle} onClick={this.handleClick} label="Reglas" />
+                            <FlatButton className={'reglas'} onClick={this.handleClick} label="Reglas" />
                             <FacebookIcon size={42} round />
                         </div>
                     }

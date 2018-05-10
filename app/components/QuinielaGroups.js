@@ -12,11 +12,6 @@ const style = {
     width: 46,
     borderRadius: 5
 };
-const esatdioStyle = {
-    color: '#86c5ff',
-    fontSize: 12,
-    marginTop: -23
-};
 
 class QuinielaGroups extends React.Component {
     constructor() {
@@ -164,16 +159,16 @@ class QuinielaGroups extends React.Component {
         const menu = () => _.map(optionsPerGame, pais => {
             return (
                 <Option key={pais.PAIS} key={pais.PAIS}>
-                    {pais.NOMBRE}
                     <Flag style={{...style, width: 28, marginLeft: 8}} code={pais.ISO} height="20" />
+                    {pais.NOMBRE}
                 </Option>
             );
         });
         const menuRigth = () => _.map(optionsPerGameR, pais => {
             return (
                 <Option key={pais.PAIS} key={pais.PAIS}>
-                    {pais.NOMBRE}
                     <Flag style={{...style, width: 28, marginLeft: 8}} code={pais.ISO} height="20" />
+                    {pais.NOMBRE}
                 </Option>
             );
         });
@@ -182,15 +177,15 @@ class QuinielaGroups extends React.Component {
                     { isGroups ? (
                         <div>
                             <Row>
-                                <Col span={8}>
+                                <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 2 }}>
                                     <label style={style}>{game.JUGADOR_1.NOMBRE || 'ADIVINA 1'}</label>
                                 </Col>
-                                <Col span={7} offset={7}>
+                                <Col xs={{ offset: 5, span: 8 }} lg={{ span: 5, offset: 6 }}>
                                     <label style={style}>{game.JUGADOR_2.NOMBRE || 'ADIVINA 2'}</label>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col span={8}>
+                                <Col xs={{ offset: 0, span: 9 }} lg={{ span: 8, offset: 2 }}>
                                     <ButtonGroup>
                                         <Button onClick={this.decline}>
                                             <Icon type="minus" />
@@ -202,14 +197,16 @@ class QuinielaGroups extends React.Component {
                                     <Flag style={style} code={game.JUGADOR_1.ISO} height="30" />
                                     <Badge showZero count={this.state.count} />
                                 </Col>
-                                <Col span={4} offset={1}>
+                                <Col xs={{ offset: 0, span: 4 }} lg={{ span: 4 }}>
                                     <div style={{ textAlign: 'center' }}>
-                                        <h1 style={{ color: '#d6d6d6', marginTop: -15 }}>VS</h1>
-                                        <h4 style={esatdioStyle}>{game.UBICACION.NOMBRE}</h4>
-                                        <div>Grupo {game.OPCIONES_DE_SELECCION}</div>
+                                        <h1 className={'customVersus1'}>VS</h1>
+                                        <h4 className={'estadio'}>{game.UBICACION.NOMBRE}</h4>
+                                        <div style={{fontSize: 12, color: '#d6d6d6', marginTop: -5}}>
+                                            Grupo {game.OPCIONES_DE_SELECCION}
+                                        </div>
                                     </div>
                                 </Col>
-                                <Col span={8} offset={2}>
+                                <Col xs={{ offset: 2, span: 9 }} lg={{ span: 8, offset: 2 }}>
                                     <ButtonGroup>
                                         <Button onClick={this.decline2}>
                                             <Icon type="minus" />
@@ -226,8 +223,8 @@ class QuinielaGroups extends React.Component {
                     ) : (
                         <div>
                             <Row>
-                                <Col span={10}>
-                                    <Select onChange={this.selecCountry1} style={{ width: 150, marginRigth: 5 }}>
+                                <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 1 }}>
+                                    <Select onChange={this.selecCountry1} className={'dropDownCustom'}>
                                         { menu() }
                                     </Select>
                                     <ButtonGroup>
@@ -240,15 +237,15 @@ class QuinielaGroups extends React.Component {
                                     </ButtonGroup>
                                     <Badge showZero count={this.state.count} />
                                 </Col>
-                                <Col span={2}>
+                                <Col xs={{ span: 2 }} lg={{ offset: 1 }}>
                                     <div style={{ textAlign: 'center' }}>
-                                        <h1 style={{ color: '#d6d6d6', marginTop: -15 }}>VS</h1>
-                                        <h4 style={esatdioStyle}>{game.UBICACION.NOMBRE}</h4>
+                                        <h1 className={'customVersus'}>VS</h1>
+                                        <h4 className={'estadio'}>{game.UBICACION.NOMBRE}</h4>
                                         {/** options <div>{game.OPCIONES_DE_SELECCION || ''}</div> **/}
                                     </div>
                                 </Col>
-                                <Col span={10} offset={2}>
-                                    <Select onChange={this.selecCountry2} style={{ width: 150, marginRigth: 5 }}>
+                                <Col xs={{ offset: 2, span: 10 }} lg={{ span: 8, offset: 2 }}>
+                                    <Select onChange={this.selecCountry2} className={'dropDownCustom'}>
                                         { menuRigth() }
                                     </Select>
                                     <ButtonGroup>
