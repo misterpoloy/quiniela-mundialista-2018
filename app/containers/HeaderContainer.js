@@ -12,9 +12,10 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import bannerLogo from '../src/images/logo.png';
 import { FacebookIcon } from 'react-share';
-import {PLCONNECT_SIGNOFF, URLQUINIELA, REACT_URL} from '../constants/urls';
+import {PLCONNECT_SIGNOFF, URLQUINIELA, REACT_URL, PLCONNECT_URL, API_URL} from '../constants/urls';
 
 const PlConnectSignOff = PLCONNECT_SIGNOFF + URLQUINIELA + '?incomingUrl=' + REACT_URL;
+const PlConnectUrl = PLCONNECT_URL + URLQUINIELA + '?incomingUrl=' + API_URL + 'api/auth';
 
 class ComponentHeader extends React.Component {
     constructor(props) {
@@ -68,7 +69,7 @@ class ComponentHeader extends React.Component {
                                 <MenuItem onClick={this.signOff}>Cerrar sesión</MenuItem>
                             </div>
                             :
-                            <MenuItem onClick={this.goToWelcome}>Iniciar sesión</MenuItem>
+                            <MenuItem href={PlConnectUrl} onClick={this.goToWelcome}>Iniciar sesión</MenuItem>
                         }
                     </Drawer>
                 </div>

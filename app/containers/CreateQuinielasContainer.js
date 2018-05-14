@@ -50,7 +50,6 @@ class CreateQuiniela extends  React.Component {
             });
             this.props.history.push('/');
         } else {
-            console.log('else');
             loginFunction();
         }
     }
@@ -69,7 +68,6 @@ class CreateQuiniela extends  React.Component {
         this.props.form.validateFields((err, quinielaObject) => {
             if (!err) {
                 const Quiniela = {...quinielaObject, TIPO_DE_QUINIELA, CREADO_POR, CODIGO_COMPARTIR};
-                console.log(Quiniela);
                 createQuinielaFunction({...Quiniela});
                 this.handleNext();
             }
@@ -91,9 +89,18 @@ class CreateQuiniela extends  React.Component {
                     const regex = /([^;:<>!?\n]+\@[^;:<>!?\n]+\.[^;:<>!?\n]+)/gmi;
                     const str = object.emailStrings;
                     const emailsFound = str.match(regex);
+                    if (!emailsFound) {
+                        notification.error({
+                            message: 'No has ingresado correos electrónicos',
+                            description: 'Tienes que ingresar correos electrónicos validos',
+                            placement: 'bottomRight'
+                        });
+                        return;
+                    }
+                    const eachMail = emailsFound[0].split(',');
                     let totalEmailString = '';
 
-                    emailsFound.forEach(function(email) {
+                    eachMail.forEach(function(email) {
                         totalEmailString += email;
                         const body = {
                             email,
