@@ -12,6 +12,11 @@ const style = {
     width: 46,
     borderRadius: 5
 };
+const japanFlag = {
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#e1e1e1'
+};
 
 class QuinielaGroups extends React.Component {
     constructor() {
@@ -161,7 +166,10 @@ class QuinielaGroups extends React.Component {
         const menu = () => _.map(optionsPerGame, pais => {
             return (
                 <Option key={pais.PAIS} key={pais.PAIS}>
-                    <Flag style={{...style, width: 28, marginLeft: 8}} code={pais.ISO} height="20" />
+                    {(pais.ISO === 'JPN') ? (
+                        <Flag style={{...style, ...japanFlag}} code={pais.ISO} height="20" />
+                    ) : (
+                        <Flag style={{...style, width: 28, marginLeft: 8}} code={pais.ISO} height="20" />)}
                     {pais.NOMBRE}
                 </Option>
             );
@@ -169,7 +177,10 @@ class QuinielaGroups extends React.Component {
         const menuRigth = () => _.map(optionsPerGameR, pais => {
             return (
                 <Option key={pais.PAIS} key={pais.PAIS}>
-                    <Flag style={{...style, width: 28, marginLeft: 8}} code={pais.ISO} height="20" />
+                    {(pais.ISO === 'JPN') ? (
+                        <Flag style={{...style, ...japanFlag}} code={pais.ISO} height="20" />
+                    ) : (
+                        <Flag style={{...style, width: 28, marginLeft: 8}} code={pais.ISO} height="20" />)}
                     {pais.NOMBRE}
                 </Option>
             );
@@ -198,7 +209,11 @@ class QuinielaGroups extends React.Component {
                                           </Button>
                                       </ButtonGroup>
                                     }
-                                    <Flag style={style} code={game.JUGADOR_1.ISO} height="30" />
+                                    {(game.JUGADOR_1.ISO === 'JPN') ? (
+                                            <Flag style={{...style, ...japanFlag}} code={game.JUGADOR_1.ISO} height="30" />)
+                                        : (
+                                            <Flag style={style} code={game.JUGADOR_1.ISO} height="30" />
+                                    )}
                                     <Badge
                                         showZero
                                         count={game.GOLES_1 || this.state.count}
@@ -220,7 +235,11 @@ class QuinielaGroups extends React.Component {
                                         count={game.GOLES_2 || this.state.count2}
                                         style={{ backgroundColor: isPlayed ? '#52c41a' : '' }}
                                     />
-                                    <Flag style={style} code={game.JUGADOR_2.ISO} height="30" />
+                                    {(game.JUGADOR_2.ISO === 'JPN') ? (
+                                            <Flag style={{...style, ...japanFlag}} code={game.JUGADOR_2.ISO} height="30" />)
+                                        : (
+                                            <Flag style={style} code={game.JUGADOR_2.ISO} height="30" />
+                                        )}
                                     {!isPlayed &&
                                     <ButtonGroup>
                                         <Button onClick={this.decline2}>

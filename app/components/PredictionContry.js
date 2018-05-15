@@ -13,6 +13,12 @@ const esatdioStyle = {
     marginTop: -23
 };
 
+const japanFlag = {
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#e1e1e1'
+};
+
 class QuinielaGroups extends React.Component {
     render() {
         const { game } = this.props;
@@ -23,26 +29,34 @@ class QuinielaGroups extends React.Component {
                 <div style={{ width: '100%' }}>
                         <div>
                             <Row>
-                                <Col span={8}>
+                                <Col span={4}>
                                     <label style={style}>{game.JUEGO_1.NOMBRE || 'ADIVINA 1'}</label>
                                 </Col>
-                                <Col span={7} offset={7}>
+                                <Col span={4} offset={15}>
                                     <label style={style}>{game.JUEGO_2.NOMBRE || 'ADIVINA 2'}</label>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col span={8}>
-                                    <Flag style={style} code={game.JUEGO_1.ISO} height="30" />
+                                <Col span={5}>
+                                    {(game.JUEGO_1.ISO === 'JPN') ? (
+                                        <Flag style={{...style, ...japanFlag}} code={game.JUEGO_1.ISO} height="30" />)
+                                    : (
+                                        <Flag style={style} code={game.JUEGO_1.ISO} height="30" />
+                                    )}
                                     <Badge showZero count={game.GOL_1} />
                                 </Col>
-                                <Col span={4} offset={1}>
+                                <Col span={3} offset={4}>
                                     <div style={{ textAlign: 'center' }}>
                                         <h1 style={{ color: '#d6d6d6', marginTop: -15 }}>VS</h1>
                                         <h4 style={esatdioStyle}>{game.JUEGO.UBICACION.NOMBRE}</h4>
                                     </div>
                                 </Col>
-                                <Col span={8} offset={2}>
-                                    <Flag style={style} code={game.JUEGO_2.ISO} height="30" />
+                                <Col span={5} offset={7}>
+                                    {(game.JUEGO_2.ISO === 'JPN') ? (
+                                            <Flag style={{...style, ...japanFlag}} code={game.JUEGO_2.ISO} height="30" />)
+                                        : (
+                                            <Flag style={style} code={game.JUEGO_2.ISO} height="30" />
+                                        )}
                                     <Badge showZero count={game.GOL_2} />
                                 </Col>
                             </Row>

@@ -197,11 +197,12 @@ class QuinielaGame extends React.Component {
         const { params } = this.props.match;
         const { quinielaId } = params;
         const id = localStorage.getItem('PrensaUserId');
-        console.log('savePrediction()');
 
         if(_.isEmpty(games)) {
+            console.log('no prediction');
             message.error('Hún no has echo ninguna predicción aún...');
         } else {
+            console.log('mi magia');
             const prediction = {};
             // 1. For the groups if zero then create a default object
             // 1. Generate the 64 games in one simple array
@@ -216,8 +217,37 @@ class QuinielaGame extends React.Component {
                     USUARIO: id
                 };
             });
+            // 1.2 check games already played
+            const { quinielaStructures } = this.props;
+            const fasesState = ['grupos', 'octavos', 'cuartos', 'semiFinales', 'tercer', 'final'];
+
+            let i = 0;
+            let gamesPlayed = {};
+            _.map(quinielaStructures, () => {
+                const currentProp = fasesState[i];
+                const currentFaseProps = this.props[currentProp];
+
+                _.each(currentFaseProps, function(juego) {
+                    if (juego.GOLES_1 !== null && juego.GOLES_2 !== null) {
+                        const gamesPlayedCopy = gamesPlayed;
+                        const predictionAdd = {
+                            [juego.ID]: {
+                                JUEGO: juego.ID,
+                                QUINIELA: quinielaId,
+                                USUARIO: id,
+                                GOL_1: juego.GOLES_1,
+                                GOL_2: juego.GOLES_2,
+                                JUEGO_1: juego.JUGADOR_1.ID,
+                                JUEGO_2: juego.JUGADOR_2.ID
+                            }
+                        };
+                        gamesPlayed = {...gamesPlayedCopy, ...predictionAdd}; // already played games
+                    }
+                });
+                i++;
+            });
             // 2. Mix the predictions with the original value
-            const curated = {...prediction, ...games};
+            const curated = {...prediction, ...games, ...gamesPlayed};
             if (_.size(curated) !== 63) {
                 message.error('Aún hay predicciones en blanco');
             } else {
@@ -287,26 +317,8 @@ class QuinielaGame extends React.Component {
         const Cards = _.map(quinielaStructures, fase => {
             const currentProp = fasesState[i];
             const currentFaseProps = this.props[currentProp];
-            let gamesPlayed = {};
 
             const data = currentFaseProps.map((juego) => {
-                if (juego.GOLES_1 !== null && juego.GOLES_2 !== null) {
-                    const gamesPlayedCopy = gamesPlayed;
-                    const prediction = {
-                        [juego.ID]: {
-                            JUEGO: juego.ID,
-                            QUINIELA: quinielaId,
-                            USUARIO: id,
-                            GOL_1: juego.GOLES_1,
-                            GOL_2: juego.GOLES_2,
-                            JUEGO_1: juego.JUGADOR_1.ID,
-                            JUEGO_2: juego.JUGADOR_2.ID
-                        }
-                    };
-                    console.log('XDXDXDXDXDXD');
-                    console.log(prediction);
-                    gamesPlayed = {...gamesPlayedCopy, ...prediction};
-                }
                 return (
                     <QuinielaGroups
                         quinielaId={quinielaId}
@@ -317,7 +329,6 @@ class QuinielaGame extends React.Component {
                     />
                 );
             });
-            this.setState(() => ({games: {...gamesPlayed}}));
             i++;
             return (
                 <Card type="inner" title={'Fase de ' + fase.NOMBRE}>
