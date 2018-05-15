@@ -145,9 +145,18 @@ class QuinielaGame extends React.Component {
                     const regex = /([^;:<>!?\n]+\@[^;:<>!?\n]+\.[^;:<>!?\n]+)/gmi;
                     const str = object.emailStrings;
                     const emailsFound = str.match(regex);
+                    if (!emailsFound) {
+                        notification.error({
+                            message: 'No has ingresado correos electrónicos',
+                            description: 'Tienes que ingresar correos electrónicos validos',
+                            placement: 'bottomRight'
+                        });
+                        return;
+                    }
+                    const eachMail = emailsFound[0].split(',');
                     let totalEmailString = '';
 
-                    emailsFound.forEach(function(email) {
+                    eachMail.forEach(function(email) {
                         totalEmailString += email;
                         const body = {
                             email,
@@ -278,8 +287,26 @@ class QuinielaGame extends React.Component {
         const Cards = _.map(quinielaStructures, fase => {
             const currentProp = fasesState[i];
             const currentFaseProps = this.props[currentProp];
+            let gamesPlayed = {};
 
             const data = currentFaseProps.map((juego) => {
+                if (juego.GOLES_1 !== null && juego.GOLES_2 !== null) {
+                    const gamesPlayedCopy = gamesPlayed;
+                    const prediction = {
+                        [juego.ID]: {
+                            JUEGO: juego.ID,
+                            QUINIELA: quinielaId,
+                            USUARIO: id,
+                            GOL_1: juego.GOLES_1,
+                            GOL_2: juego.GOLES_2,
+                            JUEGO_1: juego.JUGADOR_1.ID,
+                            JUEGO_2: juego.JUGADOR_2.ID
+                        }
+                    };
+                    console.log('XDXDXDXDXDXD');
+                    console.log(prediction);
+                    gamesPlayed = {...gamesPlayedCopy, ...prediction};
+                }
                 return (
                     <QuinielaGroups
                         quinielaId={quinielaId}
@@ -290,6 +317,7 @@ class QuinielaGame extends React.Component {
                     />
                 );
             });
+            this.setState(() => ({games: {...gamesPlayed}}));
             i++;
             return (
                 <Card type="inner" title={'Fase de ' + fase.NOMBRE}>

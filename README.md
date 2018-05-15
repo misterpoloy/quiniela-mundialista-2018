@@ -1,58 +1,73 @@
 ![](http://jpsierens.com/wp-content/uploads/2016/06/react-eco-wp.gif)
 
-# webpack-react-redux
-A boilerplate for playing around with react, redux and react-router with the help of webpack.
-
-Contains: 
-
-* a working example of a filterable table which you can play around with (look below).
-* ES6 - 7 Support with Babel
-* Redux dev tools to help you keep track of the app's state
-* Routing
-* hot module replacement support so you can change modules or react components without having to reload the browser
-* a webpack production config so you can build the app and make it ready for production
-* Sass support, just import your styles wherever you need them
-* eslint to keep your js readable
-* much more...
 
 
+# Quiniela Widget 2018
 
-![](http://jpsierens.com/wp-content/uploads/2016/06/filterableTable-1.gif)
+Este es un proyecto echo en React para llevar el control de los partidos y predicciones del mundial. Abajo se adjuntan las instrucciones para su instalación y modificación junto a la estructura y detalles para su correcto uso.
+
+![
+](https://preview.ibb.co/jvEW5d/Screen_Shot_2018_05_14_at_2_25_27_AM.png)
 
 
-## Run the app
+## Archivos
 
-0. ```npm install```
-0. ```npm start```
+ 1. **SQL:** Contiene el .sql (MySQL) dump para inicializar el proyecto.
+ 2. **[API](https://github.com/misterpoloy/quiniela-prensa-api):** Rest API (Lumen Laravel) para manejar la información.
+ 3. **[React Widget](https://github.com/misterpoloy/quiniela-widget):** Contiene el código fuente de react para el widget.
+ 4.  **[React Admin:](https://github.com/misterpoloy/quiniela-admin)** Contiene el código para el administrador.
 
-Once running, if you want to hide the redux dev monitor: ```CTRL+H```
 
-Yes, it takes a while to load the first time you open the app.
+# API
+El API es la encargada de la comunicación entre las aplicaciones en React con la base de datos para guardar información del proyecto.
 
-### Is the hot module replacement really working?
+*Los variables que se necesiten modificar se hace desde **.env***
 
-Yup! Take a look:
+Primero, hay que instalar y correr la base de datos MySQL
 
-![](http://jpsierens.com/wp-content/uploads/2016/06/HMR4.gif)
+Luego, Instalar las dependencias en la carpeta del proyecto:
 
-The app updates without the browser having to reload. You don't lose state!
+    composer install
 
-## Build the app
-```npm run build```
+correr comando:
+(www.quiniela.com:8080) representa el host y puerto donde se va a correr:
 
-This will build the app into the "dist" directory in the root of the project. It contains the index.html along with the minified assets, ready for production.
+    php -S www.quiniela.com:8080 -t public
 
-![](http://i.imgur.com/uUg2A3S.png)
 
-It should look something like the above image.
 
-## I don't understand anything!
+# React widget y react Admin
+## Editar y modificar versión de desarollo
+*Atención:  Las variables que se necesiten modificar se hace desde **/constants***
 
-I went ahead and wrote a detailed series of posts on this project for you. I hope it helps you understand better:
+Para correr el proyecto primero es necesario instalar las dependencias:
 
-* [configuring webpack](http://jpsierens.com/tutorial-react-redux-webpack/)
-* [understanding the app, part 1 (index.js, store, reducers)](http://jpsierens.com/simple-react-redux-application/)
-* [understanding the app, part 2 ( Root.js, router and the rest of the app)](http://jpsierens.com/simple-react-redux-application-2/)
+    npm install
 
-## Why doesn't it have async?
-To keep it unopinionated. You choose what async library you want. If you want to check out a full example with async in it, check this simple [todo-app](https://github.com/jpsierens/todo-app) that uses redux-sagas.
+Luego para correro es necesario entrar en la carpeta del proyecto y correr:
+
+    npm start
+
+
+## Compilar para producción
+
+*Atención: esto es necesario hacer cada vez que se modifique el proyecto*
+
+Esto construirá la aplicación en el directorio "dist" en la raíz del proyecto. Contiene el index.html junto con los activos minificados, listo para producción.
+
+Para mas información sobre como correr la versión de producción puede ingresar a la documentación oficial de [Facebook](https://github.com/facebook/create-react-app)
+Esto genera las versiones ejecutables para producción.
+
+Para crear una versión de producción con las archivos:
+
+    npm run build
+
+![enter image description here](https://camo.githubusercontent.com/2e8b474ed6893c4e8055051c497762cf41c278f3/687474703a2f2f692e696d6775722e636f6d2f755567324133532e706e67)
+
+## Recursos:
+
+Para futuras modificaciones si quieren entender mas a fondo como es que funciona el proyecto se puede consultar en:
+
+-   [configuring webpack](http://jpsierens.com/tutorial-react-redux-webpack/)
+-   [understanding the app, part 1 (index.js, store, reducers)](http://jpsierens.com/simple-react-redux-application/)
+-   [understanding the app, part 2 ( Root.js, router and the rest of the app)](http://jpsierens.com/simple-react-redux-application-2/)
