@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/components/PredictionContry.js" afterPath="$PROJECT_DIR$/app/components/PredictionContry.js" />
-      <change beforePath="$PROJECT_DIR$/app/components/QuinielaGroups.js" afterPath="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" afterPath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
-    </list>
+    <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -297,12 +292,12 @@
       <workItem from="1526078515359" duration="578000" />
       <workItem from="1526267964472" duration="8997000" />
       <workItem from="1526339105675" duration="7108000" />
-      <workItem from="1526403100745" duration="377000" />
+      <workItem from="1526403100745" duration="402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="308033000" />
+    <option name="totallyTimeSpent" value="308058000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
