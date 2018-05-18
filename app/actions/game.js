@@ -94,7 +94,7 @@ export function setFinal(final) {
 // GET_PREDICTIONS_BY_USER
 export function getPredictionsPerUser(QuinielaId, userId) {
     return dispatch => {
-        API.get(`quinela_prediction/quiniela/${QuinielaId}/user/${userId}/`)
+        API.get(`quinela_prediction/quiniela/${QuinielaId}/user/${userId}`)
             .then(prediction => {
                 dispatch(predictionSuccess(prediction.data));
             }).catch(e => {
@@ -153,7 +153,7 @@ export function getGame(userId) {
 // COUNSTRIES_BY_GROUP
 export function getGroupList() {
     return dispatch => {
-        API.get('countries_groups/')
+        API.get('countries_groups')
             .then(countriesByGroup => {
                 dispatch(setQuinielaByGroups(countriesByGroup.data));
             }).catch(e => {

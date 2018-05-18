@@ -132,7 +132,7 @@ export function setInvitationsByState(invitationsByState) {
 // GET_QUINIELA
 export function getQuiniela(quinielaId) {
     return dispatch => {
-        API.get(`quinela/${quinielaId}/`)
+        API.get(`quinela/${quinielaId}`)
             .then(Quiniela => {
                 dispatch(setQuiniela(Quiniela.data));
             }).catch(() => {
@@ -143,7 +143,7 @@ export function getQuiniela(quinielaId) {
 // ACCEPT_INVITATION_QUINIELA
 export function accepetInvitation(quinielaId) {
     return dispatch => {
-        API.get(`quinela_invitation/${quinielaId}/accept/`)
+        API.get(`quinela_invitation/${quinielaId}/accept`)
             .then(() => {
                 dispatch(acceptQuiniela(quinielaId));
             }).catch(() => {
@@ -155,7 +155,7 @@ export function accepetInvitation(quinielaId) {
 // REFUSE_INVITATION_QUINIELA
 export function refuseInvitation(quinielaId) {
     return dispatch => {
-        API.get(`quinela_invitation/${quinielaId}/refuse/`)
+        API.get(`quinela_invitation/${quinielaId}/refuse`)
             .then(() => {
                 dispatch(refuseQuiniela(quinielaId));
             }).catch(() => {
@@ -166,7 +166,7 @@ export function refuseInvitation(quinielaId) {
 // GET_QUINIELA_STRUCTURES
 export function getQuinielaStructures() {
     return dispatch => {
-        API.get('structure/')
+        API.get('structure')
             .then(response => {
                 dispatch(setQuinielaStructures(response.data));
             }).catch(e => {
@@ -177,7 +177,7 @@ export function getQuinielaStructures() {
 // POST_QUINIELA
 export function createQuiniela(QuinielaBody) {
     return dispatch => {
-        API.post('quinela/', {
+        API.post('quinela', {
             ...QuinielaBody
         })
             .then(userQuinielas => {
@@ -257,7 +257,7 @@ export function getInivtationsById(quinielaId) {
 // GET_SUPER_EXIST
 export function superQuinielaExist() {
     return dispatch => {
-        API.get('configuration/SUPER_QUINIELA/name/')
+        API.get('configuration/SUPER_QUINIELA/name')
             .then(response => {
                 dispatch(setSuperQuiniela(parseInt(response.data.VALOR, 10)));
             }).catch(e => {
