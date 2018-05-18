@@ -485,7 +485,7 @@ class QuinielaGame extends React.Component {
                                                     <List.Item>
                                                         <List.Item.Meta
                                                             avatar={<Avatar src={avatar} />}
-                                                            title={<a href="https://ant.design">{item.USUARIO.CORREO || 'Nombre no disponible'}</a>}
+                                                            title={item.USUARIO.CORREO || 'Nombre no disponible'}
                                                         />
                                                     </List.Item>
                                                 )}
