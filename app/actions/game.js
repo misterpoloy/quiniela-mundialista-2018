@@ -97,8 +97,8 @@ export function getPredictionsPerUser(QuinielaId, userId) {
         API.get(`quinela_prediction/quiniela/${QuinielaId}/user/${userId}`)
             .then(prediction => {
                 dispatch(predictionSuccess(prediction.data));
-            }).catch(e => {
-                console.log('Error "getGame": ' + e);
+            }).catch(() => {
+                // console.log('Error "getGame": ' + e);
             });
     };
 }
@@ -110,8 +110,8 @@ export function sendPrediction(games) {
         })
         .then(() => {
             dispatch(postSuccesfull());
-        }).catch(e => {
-            console.log('Error sendPrediction": ' + e);
+        }).catch(() => {
+            // console.log('Error sendPrediction": ' + e);
         });
     };
 }
@@ -121,8 +121,8 @@ export function getQuinielaPositions(quinielaId) {
         API.get(`quinela/${quinielaId}/stats`)
             .then(positions => {
                 dispatch(setPositions(positions.data));
-            }).catch(e => {
-                console.log('Error "getQuinielaPositions": ' + e);
+            }).catch(() => {
+                // console.log('Error "getQuinielaPositions": ' + e);
             });
     };
 }
@@ -134,8 +134,8 @@ export function gamesByStructure(gameBody) {
         })
             .then(userQuinielas => {
                 dispatch(setPostGame(userQuinielas));
-            }).catch(e => {
-                console.log('Error al traer "Quiniela": ' + e);
+            }).catch(() => {
+                // console.log('Error al traer "Quiniela": ' + e);
             });
     };
 }
@@ -145,8 +145,8 @@ export function getGame(userId) {
         API.get(`user/${userId}/quinela`)
             .then(game => {
                 dispatch(setGame(game));
-            }).catch(e => {
-                console.log('Error "getGame": ' + e);
+            }).catch(() => {
+                // console.log('Error "getGame": ' + e);
             });
     };
 }
@@ -156,14 +156,14 @@ export function getGroupList() {
         API.get('countries_groups')
             .then(countriesByGroup => {
                 dispatch(setQuinielaByGroups(countriesByGroup.data));
-            }).catch(e => {
-                console.log('Error "getGroupList": ' + e);
+            }).catch(() => {
+                // console.log('Error "getGroupList": ' + e);
             });
     };
 }
 // SET_INVITATIONS
 export function getAllGamesByGroups() {
-    console.log('dispatch');
+    // console.log('dispatch');
     return dispatch => {
         API.get('game/estructura/1') // grupos
             .then(grupos => {
@@ -183,23 +183,23 @@ export function getAllGamesByGroups() {
                                                 API.get('game/estructura/6') // final
                                                     .then(final => {
                                                         dispatch(setFinal(final.data));
-                                                    }).catch(e => {
-                                                        console.log('Error "getAllGamesByGroups 6": ' + e);
+                                                    }).catch(() => {
+                                                        // console.log('Error "getAllGamesByGroups 6": ' + e);
                                                     });
-                                            }).catch(e => {
-                                                console.log('Error "getAllGamesByGroups 5": ' + e);
+                                            }).catch(() => {
+                                                // console.log('Error "getAllGamesByGroups 5": ' + e);
                                             });
-                                    }).catch(e => {
-                                        console.log('Error "getAllGamesByGroups 4": ' + e);
+                                    }).catch(() => {
+                                        // console.log('Error "getAllGamesByGroups 4": ' + e);
                                     });
-                            }).catch(e => {
-                                console.log('Error "getAllGamesByGroups 3": ' + e);
+                            }).catch(() => {
+                                // console.log('Error "getAllGamesByGroups 3": ' + e);
                             });
-                    }).catch(e => {
-                        console.log('Error "getAllGamesByGroups asdasd 2": ' + e);
+                    }).catch(() => {
+                        // console.log('Error "getAllGamesByGroups asdasd 2": ' + e);
                     });
-            }).catch(e => {
-                console.log('Error "getAllGamesByGroups 1": ' + e);
+            }).catch(() => {
+                // console.log('Error "getAllGamesByGroups 1": ' + e);
             });
     };
 }

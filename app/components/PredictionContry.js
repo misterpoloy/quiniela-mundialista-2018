@@ -22,7 +22,6 @@ const japanFlag = {
 class QuinielaGroups extends React.Component {
     render() {
         const { game } = this.props;
-        console.log('render GameComponentRender()');
         // TODO hacer función para ver si el partido ya se jugo y que se ponga de otro color.
 
         return (

@@ -18,8 +18,8 @@ export function login() {
                 const user = res.data.data;
                 dispatch(serCurrentUser(user));
             }
-        }).catch(e => {
-            console.log('Se ha producido un error con PL Connect: ' + e);
+        }).catch(() => {
+            // console.log('Se ha producido un error con PL Connect: ' + e);
         });
     };
 }

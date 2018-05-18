@@ -95,7 +95,7 @@ class QuinielaGame extends React.Component {
         const id = localStorage.getItem('PrensaUserId');
 
         if (this.props.postSuccesfull !== nextProps.postSuccesfull) {
-            console.log('getAllQuinielas');
+            // console.log('getAllQuinielas');
             getPredictionsPerUserActions(quinielaId, id);
         }
     }
@@ -199,10 +199,10 @@ class QuinielaGame extends React.Component {
         const id = localStorage.getItem('PrensaUserId');
 
         if(_.isEmpty(games)) {
-            console.log('no prediction');
+            // console.log('no prediction');
             message.error('Hún no has echo ninguna predicción aún...');
         } else {
-            console.log('mi magia');
+            // console.log('mi magia');
             const prediction = {};
             // 1. For the groups if zero then create a default object
             // 1. Generate the 64 games in one simple array
@@ -344,8 +344,8 @@ class QuinielaGame extends React.Component {
         return Cards;
     };
     setFlag = flag => {
-        console.log('attention!!!');
-        console.log(flag);
+        // console.log('attention!!!');
+        // console.log(flag);
         switch (flag) {
             case 1:
                 return <Avatar src={one} />;
@@ -358,7 +358,7 @@ class QuinielaGame extends React.Component {
         }
     };
     render() {
-        console.log('render container');
+        // console.log('render container');
         const {
             quiniela,
             error,

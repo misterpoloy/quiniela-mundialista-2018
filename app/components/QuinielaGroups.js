@@ -128,7 +128,6 @@ class QuinielaGroups extends React.Component {
         });
     };
     render() {
-        console.log('render QuinielaGroup()');
         const { game, CountriesByGroup } = this.props;
         const isGroups = (game.JUGADOR_1 && game.JUGADOR_1.NOMBRE !== 'null' );
         // Verify is already played the game
