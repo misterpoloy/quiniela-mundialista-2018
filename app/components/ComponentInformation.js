@@ -9,7 +9,7 @@ const CreateQuiniela = () =>
             <p>Al crear una quiniela o aceptar la invitación de un usuario, el participante deberá registrarse en el sitio de Prensa Libre a través de la interfaz PL Connect. </p>
             <p>La plataforma de la quiniela enviará notificaciones de resultados a los participantes, vía correo electrónico.</p>
             <p>Todo usuario que cree una quiniela o acepte participar en una, tendrá que aceptar los términos y condiciones del portal
-                <a href="http://www.prensalibre.com/Terminos">www.prensalibre.com</a>
+                <a href="http://www.prensalibre.com/Terminos"> www.prensalibre.com</a>
             </p>
             <h2>FECHAS PARA PARTICIPAR</h2>
             <p>El usuario podrá hacer pronósticos sobre los resultados del Mundial 2018, previo a la inauguración o durante las diferentes fases del campeonato.</p>
