@@ -103,7 +103,7 @@ class AllQuinielas extends React.Component {
                         <List.Item.Meta
                             avatar={<Avatar src={pelota} />}
                             title={<Link to={'/quiniela/' + item.ID}>{item.NOMBRE}</Link>}
-                            description="Ant Design, a design language for background applications, is refined by Ant UED"
+                            description={item.DESCRIPCION}
                         />
                     </List.Item>
                 )}
