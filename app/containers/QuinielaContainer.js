@@ -545,7 +545,7 @@ function mapStateToProps(state) {
         quiniela: state.quiniela.Quiniela,
         CountriesByGroup: state.game.countriesByGroup,
         refusedInvitations: state.quiniela.refusedInvitations,
-        acceptedInvitations: state.game.acceptedInvitations,
+        acceptedInvitations: state.quiniela.acceptedInvitations,
         quinielaStructures: state.quiniela.quinielaStructures,
         quinielaPositions: state.game.quinielaPositions,
         postSuccesfull: state.game.postSuccesfull,
