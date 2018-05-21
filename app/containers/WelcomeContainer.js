@@ -63,6 +63,11 @@ class Welcome extends React.Component {
     }
     render() {
         const { user } = this.props;
+        const apiToken = user.api_token || '';
+        if (apiToken === 'Token invalido') {
+            localStorage.clear();
+            window.location.href = PlConnectSignOff;
+        }
         return (
             <div>
                 <Layout>
