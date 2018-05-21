@@ -4,9 +4,6 @@
     <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/components/QuinielaGroups.js" afterPath="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" afterPath="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" afterPath="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/WelcomeContainer.js" afterPath="$PROJECT_DIR$/app/containers/WelcomeContainer.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,9 +20,10 @@
       <file leaf-file-name="QuinielaGroups.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+            <state relative-caret-position="38">
+              <caret line="118" column="33" lean-forward="false" selection-start-line="118" selection-start-column="33" selection-end-line="118" selection-end-column="33" />
               <folding>
+                <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#1851#2312#0" expanded="false" />
                 <element signature="e#2784#3250#0" expanded="false" />
               </folding>
@@ -316,28 +314,29 @@
       <workItem from="1526339105675" duration="7108000" />
       <workItem from="1526403100745" duration="402000" />
       <workItem from="1526862950182" duration="7552000" />
-      <workItem from="1526911971544" duration="2440000" />
+      <workItem from="1526911971544" duration="2549000" />
+      <workItem from="1526920435717" duration="637000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318050000" />
+    <option name="totallyTimeSpent" value="318796000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="833" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="833" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27181688" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.397711" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -707,7 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -725,7 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -744,7 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="21" column="87" lean-forward="false" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -752,15 +748,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="87" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        <state relative-caret-position="38">
+          <caret line="118" column="33" lean-forward="false" selection-start-line="118" selection-start-column="33" selection-end-line="118" selection-end-column="33" />
           <folding>
+            <element signature="e#0#26#0" expanded="true" />
             <element signature="e#1851#2312#0" expanded="false" />
             <element signature="e#2784#3250#0" expanded="false" />
           </folding>

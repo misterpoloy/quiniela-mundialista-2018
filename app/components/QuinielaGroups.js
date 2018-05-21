@@ -117,11 +117,9 @@ class QuinielaGroups extends React.Component {
     // select Country 1
     selecCountry1 = country => {
         const newValue = country;
-        console.log(newValue);
-        console.log(this.state.JUEGO_2);
 
         if (newValue === this.state.JUEGO_2 ) {
-            message.error('No puedes seleccionar los mismos equipos');
+            alert('No puedes seleccionar los mismos equipos');
         }
 
         this.setState({ JUEGO_1: newValue }, () => {
@@ -132,7 +130,7 @@ class QuinielaGroups extends React.Component {
         const JUEGO_2 = value;
 
         if (JUEGO_2 === this.state.JUEGO_1 ) {
-            message.error('No puedes seleccionar los mismos equipos');
+            alert('No puedes seleccionar los mismos equipos');
         }
 
         this.setState({ JUEGO_2 }, () => {
@@ -292,7 +290,7 @@ class QuinielaGroups extends React.Component {
                                         {/** options <div>{game.OPCIONES_DE_SELECCION || ''}</div> **/}
                                     </div>
                                 </Col>
-                                <Col xs={{ offset: 2, span: 10 }} lg={{ span: 8, offset: 2 }}>
+                                <Col xs={{ offset: 2, span: 8 }} lg={{ span: 8, offset: 2 }}>
                                     <Select onChange={this.selecCountry2} className={'dropDownCustom'}>
                                         { menuRigth() }
                                     </Select>
