@@ -133,6 +133,7 @@ class QuinielaGame extends React.Component {
     };
     sendInvitation = e => {
         const { inviteToQuiniela } = this.props.actions;
+        const { resetFields } = this.props.form;
 
         e.preventDefault();
         this.props.form.validateFields((err, object) => {
@@ -163,6 +164,8 @@ class QuinielaGame extends React.Component {
                             quinela_id
                         };
                         inviteToQuiniela(body);
+                        console.log(body);
+                        resetFields();
                     });
                     notification.success({
                         message: 'Exito',
