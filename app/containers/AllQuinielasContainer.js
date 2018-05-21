@@ -32,7 +32,9 @@ import {Card, List, Avatar, notification, Badge} from 'antd';
 import { CardMedia, CardTitle} from 'material-ui/Card';
 import pelota from '../src/images/pelota.png';
 import bannerSource from '../src/images/banner3.jpg';
+import {PLCONNECT_SIGNOFF, REACT_URL, URLQUINIELA} from '../constants/urls';
 
+const PlConnectSignOff = PLCONNECT_SIGNOFF + URLQUINIELA + '?incomingUrl=' + REACT_URL;
 
 class AllQuinielas extends React.Component {
     state = {
@@ -40,8 +42,14 @@ class AllQuinielas extends React.Component {
         noTitleKey: 'article'
     };
     componentDidMount() {
-        const { user } = this.props;
+        const { user, location } = this.props;
         const { getUserAllQuinielas, getUserInvitations, loginFunction } = this.props.actions;
+
+        const { search } = location;
+        if (search === '?signOff=yes') {
+            localStorage.clear();
+            window.location.href = PlConnectSignOff;
+        }
 
         const token = localStorage.getItem('PrensaToken');
         const id = localStorage.getItem('PrensaUserId');
@@ -153,7 +161,8 @@ AllQuinielas.propTypes = {
     user: React.PropTypes.object.isRequired,
     actions: React.PropTypes.object.isRequired,
     AllQuinielasArray: React.PropTypes.array.isRequired,
-    UserInvitationsArray: React.PropTypes.array.isRequired
+    UserInvitationsArray: React.PropTypes.array.isRequired,
+    location: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

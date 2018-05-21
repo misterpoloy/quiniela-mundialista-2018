@@ -17,6 +17,9 @@ import { CardMedia, CardTitle} from 'material-ui/Card';
 import { Card, Button, List, Avatar, notification} from 'antd';
 import bannerSource from '../src/images/banner3.jpg';
 import pelota from '../src/images/pelota.png';
+import {PLCONNECT_SIGNOFF, REACT_URL, URLQUINIELA} from '../constants/urls';
+
+const PlConnectSignOff = PLCONNECT_SIGNOFF + URLQUINIELA + '?incomingUrl=' + REACT_URL;
 
 class MyQuinielas extends React.Component {
     constructor(props) {
@@ -26,7 +29,13 @@ class MyQuinielas extends React.Component {
     }
     componentDidMount() {
         const { getUserQuinielas, loginFunction } = this.props.actions;
-        const { user } = this.props;
+        const { user, location } = this.props;
+
+        const { search } = location;
+        if (search === '?signOff=yes') {
+            localStorage.clear();
+            window.location.href = PlConnectSignOff;
+        }
 
         const token = localStorage.getItem('PrensaToken');
         const id = localStorage.getItem('PrensaUserId');
@@ -114,6 +123,7 @@ class MyQuinielas extends React.Component {
 MyQuinielas.propTypes = {
     history: React.PropTypes.object.isRequired,
     user: React.PropTypes.object.isRequired,
+    location: React.PropTypes.object.isRequired,
     actions: React.PropTypes.object.isRequired,
     quinielasByUser: React.PropTypes.array.isRequired
 };

@@ -34,6 +34,10 @@ class Welcome extends React.Component {
         } else {
             const { location } = this.props;
             const { search } = location;
+            if (search === '?signOff=yes') {
+                localStorage.clear();
+                window.location.href = PlConnectSignOff;
+            }
             const urlVars = queryString.parse(search);
             if (urlVars && urlVars.id && urlVars.token) {
                 this.setState(() => ({ ...urlVars }));
