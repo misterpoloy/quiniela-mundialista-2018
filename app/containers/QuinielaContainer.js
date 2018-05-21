@@ -388,7 +388,7 @@ class QuinielaGame extends React.Component {
         _.chain(invitationsTypes)
             .each(item => {
                 invitations[item.propName] = {
-                    invitation: this.props[item.propName],
+                    invitation: _.uniqBy(this.props[item.propName], 'USUARIO.CORREO'),
                     human: item.human,
                     text: item.text
                 };

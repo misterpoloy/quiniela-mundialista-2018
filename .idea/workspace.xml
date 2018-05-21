@@ -20,8 +20,8 @@
       <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="165" column="24" lean-forward="false" selection-start-line="165" selection-start-column="24" selection-end-line="165" selection-end-column="24" />
+            <state relative-caret-position="292">
+              <caret line="390" column="86" lean-forward="true" selection-start-line="390" selection-start-column="86" selection-end-line="390" selection-end-column="86" />
               <folding>
                 <element signature="e#31#57#0" expanded="true" />
                 <element signature="e#147#268#0" expanded="true" />
@@ -36,8 +36,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>invitation</find>
-      <find>operations</find>
       <find>two</find>
       <find>Eliminar</find>
       <find>tabla de</find>
@@ -66,6 +64,8 @@
       <find>ingresa los correos</find>
       <find>sendPredictionAction</find>
       <find>inviteToQuiniela</find>
+      <find>enviadas</find>
+      <find>invitations</find>
     </findStrings>
     <replaceStrings>
       <replace>MainContainer</replace>
@@ -312,12 +312,12 @@
       <workItem from="1526267964472" duration="8997000" />
       <workItem from="1526339105675" duration="7108000" />
       <workItem from="1526403100745" duration="402000" />
-      <workItem from="1526862950182" duration="5473000" />
+      <workItem from="1526862950182" duration="5807000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313531000" />
+    <option name="totallyTimeSpent" value="313865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="833" extended-state="6" />
@@ -759,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="165" column="24" lean-forward="false" selection-start-line="165" selection-start-column="24" selection-end-line="165" selection-end-column="24" />
+        <state relative-caret-position="292">
+          <caret line="390" column="86" lean-forward="true" selection-start-line="390" selection-start-column="86" selection-end-line="390" selection-end-column="86" />
           <folding>
             <element signature="e#31#57#0" expanded="true" />
             <element signature="e#147#268#0" expanded="true" />
