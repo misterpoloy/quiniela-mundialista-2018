@@ -11,7 +11,7 @@ import AppTheme from '../styles/app-material-ui-theme';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import bannerLogo from '../src/images/logo.png';
-import { FacebookIcon } from 'react-share';
+import { FacebookIcon, FacebookShareButton } from 'react-share';
 import {PLCONNECT_SIGNOFF, URLQUINIELA, REACT_URL, PLCONNECT_URL, API_URL} from '../constants/urls';
 
 const PlConnectSignOff = PLCONNECT_SIGNOFF + URLQUINIELA + '?incomingUrl=' + REACT_URL;
@@ -50,7 +50,9 @@ class ComponentHeader extends React.Component {
                     iconElementRight={
                         <div>
                             <FlatButton className={'reglas'} onClick={this.handleClick} label="Reglas" />
-                            <FacebookIcon size={42} round />
+                            <FacebookShareButton url={'https://quiniela.prensalibre.com'}>
+                                <FacebookIcon size={42} round />
+                            </FacebookShareButton>
                         </div>
                     }
                 />
