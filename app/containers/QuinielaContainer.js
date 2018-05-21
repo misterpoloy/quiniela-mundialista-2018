@@ -455,10 +455,10 @@ class QuinielaGame extends React.Component {
                                     <div style={{ margin: '24px 0' }} />
                                     <Form onSubmit={this.sendInvitation} className="login-form">
                                         <FormItem>
-                                            <span>Ingresa el correo</span>
+                                            <span>Ingresa los correos electrónicos separados por coma.</span>
                                             {getFieldDecorator('emailStrings', {
                                                 rules: [{required: true, message: 'Por favor ingresa los correos electrónicos'}],
-                                            })(<Input placeholder="Ingresa los correos electrónicos, separados por coma" />)}
+                                            })(<Input placeholder="Ingresa los correos electrónicos" />)}
                                         </FormItem>
                                         <FormItem>
                                             <Button

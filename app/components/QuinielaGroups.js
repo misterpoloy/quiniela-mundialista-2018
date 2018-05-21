@@ -192,7 +192,7 @@ class QuinielaGroups extends React.Component {
                                 <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 2 }}>
                                     <label style={style}>{game.JUGADOR_1.NOMBRE || 'ADIVINA 1'}</label>
                                 </Col>
-                                <Col xs={{ offset: 5, span: 8 }} lg={{ span: 5, offset: 6 }}>
+                                <Col className={'textAlignRight'} xs={{ offset: 5, span: 8 }} lg={{ span: 5, offset: 6 }}>
                                     <label style={style}>{game.JUGADOR_2.NOMBRE || 'ADIVINA 2'}</label>
                                 </Col>
                             </Row>
@@ -228,27 +228,31 @@ class QuinielaGroups extends React.Component {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col xs={{ offset: 2, span: 9 }} lg={{ span: 8, offset: 2 }}>
-                                    <Badge
-                                        showZero
-                                        count={game.GOLES_2 || this.state.count2}
-                                        style={{ backgroundColor: isPlayed ? '#52c41a' : '' }}
-                                    />
-                                    {(game.JUGADOR_2.ISO === 'JPN') ? (
-                                            <Flag style={{...style, ...japanFlag}} code={game.JUGADOR_2.ISO} height="30" />)
-                                        : (
-                                            <Flag style={style} code={game.JUGADOR_2.ISO} height="30" />
-                                        )}
+                                <Col xs={{ offset: 2, span: 8 }} lg={{ span: 8, offset: 2 }}>
                                     {!isPlayed &&
-                                    <ButtonGroup>
-                                        <Button onClick={this.decline2}>
-                                            <Icon type="minus" />
-                                        </Button>
-                                        <Button onClick={this.increase2}>
-                                            <Icon type="plus" />
-                                        </Button>
-                                    </ButtonGroup>
+                                    <div className={'allignRightLeft'}>
+                                        <ButtonGroup>
+                                            <Button onClick={this.decline2}>
+                                                <Icon type="minus" />
+                                            </Button>
+                                            <Button onClick={this.increase2}>
+                                                <Icon type="plus" />
+                                            </Button>
+                                        </ButtonGroup>
+                                    </div>
                                     }
+                                    <div className={'flagMobile'}>
+                                        <Badge
+                                            showZero
+                                            count={game.GOLES_2 || this.state.count2}
+                                            style={{ backgroundColor: isPlayed ? '#52c41a' : '' }}
+                                        />
+                                        {(game.JUGADOR_2.ISO === 'JPN') ? (
+                                                <Flag style={{...style, ...japanFlag}} code={game.JUGADOR_2.ISO} height="30" />)
+                                            : (
+                                                <Flag style={style} code={game.JUGADOR_2.ISO} height="30" />
+                                        )}
+                                    </div>
                                 </Col>
                             </Row>
                         </div>
@@ -259,7 +263,6 @@ class QuinielaGroups extends React.Component {
                                     <Select onChange={this.selecCountry1} className={'dropDownCustom'}>
                                         { menu() }
                                     </Select>
-                                    <Badge showZero count={this.state.count} />
                                       <ButtonGroup>
                                           <Button onClick={this.decline}>
                                               <Icon type="minus" />
@@ -268,6 +271,7 @@ class QuinielaGroups extends React.Component {
                                               <Icon type="plus" />
                                           </Button>
                                       </ButtonGroup>
+                                    <Badge showZero count={this.state.count} />
                                 </Col>
                                 <Col xs={{ span: 2 }} lg={{ offset: 1 }}>
                                     <div style={{ textAlign: 'center' }}>
