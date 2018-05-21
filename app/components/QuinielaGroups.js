@@ -119,7 +119,7 @@ class QuinielaGroups extends React.Component {
         const newValue = country;
 
         if (newValue === this.state.JUEGO_2 ) {
-            alert('No puedes seleccionar los mismos equipos');
+            alert('No puedes seleccionar el mismo equipo.');
         }
 
         this.setState({ JUEGO_1: newValue }, () => {
@@ -130,7 +130,7 @@ class QuinielaGroups extends React.Component {
         const JUEGO_2 = value;
 
         if (JUEGO_2 === this.state.JUEGO_1 ) {
-            alert('No puedes seleccionar los mismos equipos');
+            alert('No puedes seleccionar el mismo equipo.');
         }
 
         this.setState({ JUEGO_2 }, () => {
