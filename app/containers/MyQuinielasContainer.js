@@ -43,7 +43,7 @@ class MyQuinielas extends React.Component {
     updateToken = () => {
         notification.error({
             message: 'Necesitas iniciar sesión',
-            description: 'Para poder acceder a todas las funcnioes de la Quiniela primero debes de iniciar sesión.',
+            description: 'Para poder acceder a todas las funciones de la Quiniela primero debes de iniciar sesión.',
             placement: 'bottomRight'
         });
         this.props.history.push('/');
