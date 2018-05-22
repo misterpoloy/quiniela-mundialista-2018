@@ -74,7 +74,8 @@ class CreateQuiniela extends  React.Component {
         });
     };
     handleFinish = () => {
-        this.props.history.push('/mis-quinielas');
+        const { recentQuiniela } = this.props;
+        this.props.history.push('/quiniela/' + recentQuiniela.ID);
     };
     sendInvitation = e => {
         const { recentQuiniela } = this.props;
@@ -215,7 +216,7 @@ class CreateQuiniela extends  React.Component {
                         <div style={{ margin: '24px 0' }} />
                         <Row>
                             <Col span={2}>
-                                <Button onClick={this.handleFinish} type="primary" size="large">Ver mis quinielas</Button>
+                                <Button onClick={this.handleFinish} type="primary" size="large">Jugar Quiniela</Button>
                             </Col>
                         </Row>
                     </CardAnt>
