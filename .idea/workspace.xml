@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" afterPath="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/components/QuinielaGroups.js" afterPath="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
+      <change beforePath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" afterPath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,12 +18,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="325" column="35" lean-forward="true" selection-start-line="325" selection-start-column="35" selection-end-line="325" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="89">
+              <caret line="440" column="23" lean-forward="true" selection-start-line="440" selection-start-column="23" selection-end-line="440" selection-end-column="23" />
+              <folding>
+                <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
+                <element signature="n#!!block;n#componentDidMount#0;n#QuinielaGame#0" expanded="false" />
+                <element signature="n#!!block;n#componentWillReceiveProps#0;n#QuinielaGame#0" expanded="false" />
+                <element signature="e#3929#5443#0" expanded="false" />
+                <element signature="e#5513#5629#0" expanded="false" />
+                <element signature="e#5746#6035#0" expanded="false" />
+                <element signature="e#6058#6262#0" expanded="false" />
+                <element signature="e#6294#6863#0" expanded="false" />
+                <element signature="e#6891#8947#0" expanded="false" />
+                <element signature="e#8987#9148#0" expanded="false" />
+                <element signature="e#9187#9381#0" expanded="false" />
+                <element signature="e#10597#14344#0" expanded="false" />
+                <element signature="e#14377#15662#0" expanded="false" />
+                <element signature="e#18063#18106#0" expanded="false" />
+                <element signature="e#18171#18438#0" expanded="false" />
+                <element signature="e#18532#18775#0" expanded="false" />
+                <element signature="e#18853#19160#0" expanded="false" />
+                <element signature="e#19504#19797#0" expanded="false" />
+                <element signature="e#19544#19695#0" expanded="false" />
+                <element signature="e#19814#25776#0" expanded="false" />
+                <element signature="e#25840#26668#0" expanded="false" />
+                <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
+                <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuinielaGroups.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="150" column="38" lean-forward="false" selection-start-line="150" selection-start-column="38" selection-end-line="150" selection-end-column="38" />
+              <folding>
+                <element signature="e#260#317#0" expanded="false" />
+                <element signature="e#337#413#0" expanded="false" />
+                <element signature="n#!!block;n#constructor#0;n#QuinielaGroups#0" expanded="false" />
+                <element signature="e#686#1713#0" expanded="false" />
+                <element signature="e#1736#2142#0" expanded="false" />
+                <element signature="e#2164#2625#0" expanded="false" />
+                <element signature="e#2666#3074#0" expanded="false" />
+                <element signature="e#3097#3563#0" expanded="false" />
+                <element signature="e#3620#3878#0" expanded="false" />
+                <element signature="e#3909#4153#0" expanded="false" />
+                <element signature="e#4682#4977#0" expanded="false" />
+                <element signature="e#5185#5483#0" expanded="false" />
+                <element signature="e#5565#6003#0" expanded="false" />
+                <element signature="e#6069#6507#0" expanded="false" />
+                <element signature="e#7028#7572#0" expanded="false" />
+                <element signature="e#7601#11379#0" expanded="false" />
+                <element signature="e#7639#9012#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -30,19 +84,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Comi</find>
-      <find>push</find>
-      <find>UglifyJs</find>
-      <find>ugli</find>
-      <find>UglifyJsPlugin</find>
-      <find>console.l</find>
-      <find>console</find>
-      <find>PredictionContry</find>
-      <find>predictionCard</find>
-      <find>Quiniela</find>
-      <find>game</find>
       <find>Badge</find>
-      <find>QuinielaGroups</find>
       <find>prediction</find>
       <find>QuinielaGroup</find>
       <find>Flag</find>
@@ -60,6 +102,18 @@
       <find>FacebookIcon</find>
       <find>FacebookShareButton</find>
       <find>Ver mis</find>
+      <find>Groups</find>
+      <find>CountriesByGroup</find>
+      <find>filter</find>
+      <find>utilStructure</find>
+      <find>console.log</find>
+      <find>sourceMapURL</find>
+      <find>orderBy</find>
+      <find>QuinielaGroups</find>
+      <find>update</find>
+      <find>Should</find>
+      <find>VS</find>
+      <find>console.l</find>
     </findStrings>
     <replaceStrings>
       <replace>MainContainer</replace>
@@ -125,14 +179,14 @@
         <option value="$PROJECT_DIR$/app/constants/urls.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/styles/styles.scss" />
-        <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/HeaderContainer.js" />
         <option value="$PROJECT_DIR$/app/index.tpl.html" />
         <option value="$PROJECT_DIR$/app/containers/WelcomeContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" />
-        <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
         <option value="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
+        <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
+        <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
       </list>
     </option>
   </component>
@@ -149,7 +203,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1440" />
+    <option name="width" value="1086" />
     <option name="height" value="833" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -170,6 +224,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,14 +242,12 @@
               <item name="react widget" type="b2602c69:ProjectViewProjectNode" />
               <item name="react widget" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,15 +359,16 @@
       <workItem from="1526862950182" duration="7552000" />
       <workItem from="1526911971544" duration="2549000" />
       <workItem from="1526920435717" duration="846000" />
-      <workItem from="1526953701096" duration="1106000" />
+      <workItem from="1526953701096" duration="6290000" />
+      <workItem from="1527031107636" duration="9952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="320111000" />
+    <option name="totallyTimeSpent" value="335247000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="833" extended-state="0" />
+    <frame x="0" y="22" width="1086" height="833" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27181688" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -324,7 +379,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.397711" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39750957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -336,27 +391,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.397711" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950193" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23962805" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -608,17 +642,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="17">
             <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -721,14 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="121" column="12" lean-forward="false" selection-start-line="121" selection-start-column="12" selection-end-line="121" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1030">
@@ -739,9 +765,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="325" column="35" lean-forward="true" selection-start-line="325" selection-start-column="35" selection-end-line="325" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="89">
+          <caret line="440" column="23" lean-forward="true" selection-start-line="440" selection-start-column="23" selection-end-line="440" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="n#!!block;n#componentDidMount#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="e#3929#5443#0" expanded="false" />
+            <element signature="e#5513#5629#0" expanded="false" />
+            <element signature="e#5746#6035#0" expanded="false" />
+            <element signature="e#6058#6262#0" expanded="false" />
+            <element signature="e#6294#6863#0" expanded="false" />
+            <element signature="e#6891#8947#0" expanded="false" />
+            <element signature="e#8987#9148#0" expanded="false" />
+            <element signature="e#9187#9381#0" expanded="false" />
+            <element signature="e#10597#14344#0" expanded="false" />
+            <element signature="e#14377#15662#0" expanded="false" />
+            <element signature="e#18063#18106#0" expanded="false" />
+            <element signature="e#18171#18438#0" expanded="false" />
+            <element signature="e#18532#18775#0" expanded="false" />
+            <element signature="e#18853#19160#0" expanded="false" />
+            <element signature="e#19504#19797#0" expanded="false" />
+            <element signature="e#19544#19695#0" expanded="false" />
+            <element signature="e#19814#25776#0" expanded="false" />
+            <element signature="e#25840#26668#0" expanded="false" />
+            <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
+            <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="150" column="38" lean-forward="false" selection-start-line="150" selection-start-column="38" selection-end-line="150" selection-end-column="38" />
+          <folding>
+            <element signature="e#260#317#0" expanded="false" />
+            <element signature="e#337#413#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#QuinielaGroups#0" expanded="false" />
+            <element signature="e#686#1713#0" expanded="false" />
+            <element signature="e#1736#2142#0" expanded="false" />
+            <element signature="e#2164#2625#0" expanded="false" />
+            <element signature="e#2666#3074#0" expanded="false" />
+            <element signature="e#3097#3563#0" expanded="false" />
+            <element signature="e#3620#3878#0" expanded="false" />
+            <element signature="e#3909#4153#0" expanded="false" />
+            <element signature="e#4682#4977#0" expanded="false" />
+            <element signature="e#5185#5483#0" expanded="false" />
+            <element signature="e#5565#6003#0" expanded="false" />
+            <element signature="e#6069#6507#0" expanded="false" />
+            <element signature="e#7028#7572#0" expanded="false" />
+            <element signature="e#7601#11379#0" expanded="false" />
+            <element signature="e#7639#9012#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

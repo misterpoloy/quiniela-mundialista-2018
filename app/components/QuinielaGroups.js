@@ -30,7 +30,7 @@ class QuinielaGroups extends React.Component {
         };
     }
     updateGame = () => {
-        const { addGame, game, quinielaId, userId } = this.props;
+        const { addGame, game, quinielaId, userId, utilStructure } = this.props;
         const { count, count2, JUEGO_1, JUEGO_2 } = this.state;
 
         const predictionID = game.ID;
@@ -48,7 +48,16 @@ class QuinielaGroups extends React.Component {
                 JUEGO_2: jugador2ID
             }
         };
+        const winner = (count > count2) ? jugador1ID : jugador2ID;
+        const utilDropdown = {
+            [game.ID]: {
+                id: game.ID,
+                group: game.OPCIONES_DE_SELECCION,
+                winnerId: winner
+            }
+        };
         addGame(prediction);
+        utilStructure(utilDropdown);
     };
     increase = () => {
         const { game } = this.props;
@@ -138,6 +147,7 @@ class QuinielaGroups extends React.Component {
         });
     };
     render() {
+        console.log('QuinielaGroups();');
         const { game, CountriesByGroup } = this.props;
         const isGroups = (game.JUGADOR_1 && game.JUGADOR_1.NOMBRE !== 'null' );
         // Verify is already played the game
@@ -194,6 +204,18 @@ class QuinielaGroups extends React.Component {
                 </Option>
             );
         });
+
+        // Search if defailt value
+        const defaultValue = () => {
+          /** if (!_.isEmpty(order) && order[] === game.OPCIONES_DE_SELECCION) {
+              console.log('there is for this group ')
+          } else {
+              console.log('there is not default value');
+              return '';
+          } **/
+            return '';
+        };
+
         return (
                 <div style={{ width: '100%' }}>
                     { isGroups ? (
@@ -270,7 +292,7 @@ class QuinielaGroups extends React.Component {
                         <div>
                             <Row>
                                 <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 1 }}>
-                                    <Select onChange={this.selecCountry1} className={'dropDownCustom'}>
+                                    <Select defaultValue={defaultValue} onChange={this.selecCountry1} className={'dropDownCustom'}>
                                         { menu() }
                                     </Select>
                                       <ButtonGroup>
@@ -314,6 +336,8 @@ class QuinielaGroups extends React.Component {
 }
 QuinielaGroups.propTypes = {
     game: React.PropTypes.object.isRequired,
+    order: React.PropTypes.array.isRequired,
+    utilStructure: React.PropTypes.func.isRequired,
     addGame: React.PropTypes.func.isRequired,
     quinielaId: React.PropTypes.string.isRequired,
     CountriesByGroup: React.PropTypes.object.isRequired,

@@ -46,7 +46,23 @@ class QuinielaGame extends React.Component {
         super();
         this.state = {
             userId: false,
-            games: {}
+            done: false,
+            isReady: false,
+            groupsGame: {},
+            games: {},
+            A: [],
+            B: [],
+            C: [],
+            D: [],
+            E: [],
+            F: [],
+            G: [],
+            H: [],
+            octavos: [],
+            cuartos: [],
+            semifinal: [],
+            tercero: [],
+            final: []
         };
     }
     componentWillMount() {
@@ -93,6 +109,54 @@ class QuinielaGame extends React.Component {
         const { params } = this.props.match;
         const { quinielaId } = params;
         const id = localStorage.getItem('PrensaUserId');
+        if (!_.isEmpty(nextProps.grupos) && this.state.isReady === false) {
+            const groupsGame = {};
+            _.each(nextProps.grupos, groupGame => {
+                groupsGame[groupGame.ID] = {
+                    id: groupGame.ID,
+                    winnerId: null,
+                    group: groupGame.OPCIONES_DE_SELECCION
+                };
+            });
+            this.setState(() => ({ groupsGame, isReady: true }));
+        }
+        if (!_.isEmpty(nextProps.CountriesByGroup) && this.state.done === false) {
+            const countriesGroupA = _.filter(nextProps.CountriesByGroup, group => {
+                return group.CODIGO === 'A';
+            });
+            const countriesGroupB = _.filter(nextProps.CountriesByGroup, group => {
+                return group.CODIGO === 'B';
+            });
+            const countriesGroupC = _.filter(nextProps.CountriesByGroup, group => {
+                return group.CODIGO === 'C';
+            });
+            const countriesGroupD = _.filter(nextProps.CountriesByGroup, group => {
+                return group.CODIGO === 'D';
+            });
+            const countriesGroupE = _.filter(nextProps.CountriesByGroup, group => {
+                return group.CODIGO === 'E';
+            });
+            const countriesGroupF = _.filter(nextProps.CountriesByGroup, group => {
+                return group.CODIGO === 'F';
+            });
+            const countriesGroupG = _.filter(nextProps.CountriesByGroup, group => {
+                return group.CODIGO === 'G';
+            });
+            const countriesGroupH = _.filter(nextProps.CountriesByGroup, group => {
+                return group.CODIGO === 'H';
+            });
+            this.setState(() => ({
+                countriesGroupA,
+                countriesGroupB,
+                countriesGroupC,
+                countriesGroupD,
+                countriesGroupE,
+                countriesGroupF,
+                countriesGroupG,
+                countriesGroupH,
+                done: true
+            }));
+        }
 
         if (this.props.postSuccesfull !== nextProps.postSuccesfull) {
             // console.log('getAllQuinielas');
@@ -164,7 +228,6 @@ class QuinielaGame extends React.Component {
                             quinela_id
                         };
                         inviteToQuiniela(body);
-                        console.log(body);
                         resetFields();
                     });
                     notification.success({
@@ -192,6 +255,38 @@ class QuinielaGame extends React.Component {
         const gamesCopy = games;
         const updateGames = { ...gamesCopy, ...prediction };
         this.setState(() => ({ games: updateGames }));
+    };
+    utilStructure = structure => {
+        // Get the current structure
+        const index = Object.keys(structure)[0];
+        const structureObject = structure[index];
+        // Create Copy of the state
+        const copy = this.state.groupsGame;
+        const groupsGame = { ...copy, ...structure };
+        const groupATable = {};
+
+        _.chain(groupsGame)
+        .filter((game) => game.group === structureObject.group)
+        .each(game => {
+            // create a unique counter per GROUP GAME per COUNTRY
+            if (!groupATable[game.winnerId] && game.winnerId !== null) {
+                groupATable[game.winnerId] = {
+                    countryId: game.winnerId,
+                    counter: 0
+                };
+            }
+            if (game.winnerId !== null) {
+                groupATable[game.winnerId].counter++;
+            }
+        })
+        .value();
+        // Order the first 2 results
+
+        const temporalContainer = {
+            [structureObject.group]: _.orderBy(groupATable, ['counter'], ['desc'])
+        };
+        // Asign the ID of the 2 results to the state
+        this.setState(() => ({ groupsGame, ...temporalContainer }));
     };
     savePrediction = () => {
         const { grupos } = this.props;
@@ -326,7 +421,9 @@ class QuinielaGame extends React.Component {
                     <QuinielaGroups
                         quinielaId={quinielaId}
                         userId={id}
+                        order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
                         CountriesByGroup={CountriesByGroup}
+                        utilStructure={this.utilStructure}
                         addGame={this.setNewPrediction}
                         game={juego}
                     />
