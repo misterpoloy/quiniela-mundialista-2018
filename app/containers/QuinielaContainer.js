@@ -459,24 +459,25 @@ class QuinielaGame extends React.Component {
         // Asign the ID of the 2 results to the state
         this.setState(() => ({ semiFinalGame, ...temporalContainer }));
     };
-    utilStruOctavos = structure => {
-        console.log('structure');
+    utilStruTercero = structure => {
+        console.log('utilTercero');
         console.log(structure);
         // Get the current structure
         const index = Object.keys(structure)[0];
         const structureObject = structure[index];
         // Create Copy of the state
-        const copy = this.state.octavosGame;
-        const octavosGame = { ...copy, ...structure };
+        const copy = this.state.tercerGame;
+        const tercerGame = { ...copy, ...structure };
         const groupATable = {};
 
-        _.chain(octavosGame)
+        _.chain(tercerGame)
             .filter((game) => game.group === structureObject.group)
             .each(game => {
                 // create a unique counter per GROUP GAME per COUNTRY
                 if (!groupATable[game.winnerId] && game.winnerId !== null) {
                     groupATable[game.winnerId] = {
                         countryId: game.winnerId,
+                        loserId: game.loserId,
                         counter: 0
                     };
                 }
@@ -489,45 +490,8 @@ class QuinielaGame extends React.Component {
         const temporalContainer = {
             [structureObject.group]: _.orderBy(groupATable, ['counter'], ['desc'])
         };
-        console.log('octavosGame');
-        console.log(octavosGame);
         // Asign the ID of the 2 results to the state
-        this.setState(() => ({ octavosGame, ...temporalContainer }));
-    };
-    utilStruOctavos = structure => {
-        console.log('structure');
-        console.log(structure);
-        // Get the current structure
-        const index = Object.keys(structure)[0];
-        const structureObject = structure[index];
-        // Create Copy of the state
-        const copy = this.state.octavosGame;
-        const octavosGame = { ...copy, ...structure };
-        const groupATable = {};
-
-        _.chain(octavosGame)
-            .filter((game) => game.group === structureObject.group)
-            .each(game => {
-                // create a unique counter per GROUP GAME per COUNTRY
-                if (!groupATable[game.winnerId] && game.winnerId !== null) {
-                    groupATable[game.winnerId] = {
-                        countryId: game.winnerId,
-                        counter: 0
-                    };
-                }
-                if (game.winnerId !== null) {
-                    groupATable[game.winnerId].counter++;
-                }
-            })
-            .value();
-        // Order the first 2 results
-        const temporalContainer = {
-            [structureObject.group]: _.orderBy(groupATable, ['counter'], ['desc'])
-        };
-        console.log('octavosGame');
-        console.log(octavosGame);
-        // Asign the ID of the 2 results to the state
-        this.setState(() => ({ octavosGame, ...temporalContainer }));
+        this.setState(() => ({ tercerGame, ...temporalContainer }));
     };
     savePrediction = () => {
         const { grupos } = this.props;
@@ -803,7 +767,7 @@ class QuinielaGame extends React.Component {
                     defaultValue={arrayDefaultValuesTercer[ac]}
                     order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
                     CountriesByGroup={CountriesByGroup}
-                    utilStructure={this.utilStruOctavos}
+                    utilStructure={this.utilStruTercero}
                     addGame={this.setNewPrediction}
                     game={juego}
                 />
@@ -822,7 +786,7 @@ class QuinielaGame extends React.Component {
     };
     renderFinal = () => {
         const { CountriesByGroup, final } = this.props;
-        const { arrayDefaultValues } = this.state;
+        const { arrayDefaultValuesFinal } = this.state;
         const { params } = this.props.match;
         const { quinielaId } = params;
         const id = localStorage.getItem('PrensaUserId');
@@ -836,7 +800,7 @@ class QuinielaGame extends React.Component {
                     key={juego.ID}
                     quinielaId={quinielaId}
                     userId={id}
-                    defaultValue={arrayDefaultValues[ac]}
+                    defaultValue={arrayDefaultValuesFinal[ac]}
                     order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
                     CountriesByGroup={CountriesByGroup}
                     utilStructure={this.utilStruOctavos}
@@ -1096,14 +1060,14 @@ class QuinielaGame extends React.Component {
         const { quinielaId } = params;
         const id = localStorage.getItem('PrensaUserId');
 
-        const groupsID = [ 'a2', 'b2' ];
+        const groupsID = [ 'ter' ];
         let error = false;
         let i = 0;
         _.each(groupsID, groupId => {
             i++;
             const positionTable = this.state[groupId];
             if (_.isEmpty(positionTable)) {
-                message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                message.error('Aún no hay ganadores definidos para el tercer puesto');
                 error = true;
                 return;
             }

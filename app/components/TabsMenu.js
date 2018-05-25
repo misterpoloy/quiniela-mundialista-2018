@@ -34,7 +34,7 @@ class TabsMenu extends React.Component {
         const { UserInvitationsArray, superQuiniela } = this.props;
 
         return(
-            <div style={{position: 'fixed', marginTop: 62, width: '100%', zIndex: 99}}>
+            <div style={{position: 'fixed', marginTop: 62, width: '100%', zIndex: 10}}>
             <Tabs>
                 <Tab
                     style={style}
