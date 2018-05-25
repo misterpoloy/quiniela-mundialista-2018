@@ -56,6 +56,7 @@ class QuinielaGame extends React.Component {
         super();
         this.state = {
             userId: false,
+            playedCounter: 0,
             step: 0,
             done: false,
             groupsGame: {},
@@ -493,6 +494,31 @@ class QuinielaGame extends React.Component {
         // Asign the ID of the 2 results to the state
         this.setState(() => ({ tercerGame, ...temporalContainer }));
     };
+    checkAlreadyPlayed = stru => {
+        const { playedCounter } = this.state;
+
+        let playedCounterCopy = playedCounter;
+        let totalPlayedPerStru = [];
+
+        _.each(this.props[stru], function(juego) {
+            if (juego.GOLES_1 !== null && juego.GOLES_2 !== null) {
+                const stuCopy = totalPlayedPerStru;
+                const winner = (juego.GOLES_1 > juego.GOLES_2) ? juego.JUGADOR_1.ID : juego.JUGADOR_2.ID;
+                const loser = (juego.GOLES_1 > juego.GOLES_2) ? juego.JUGADOR_2.ID : juego.JUGADOR_1.ID;
+                const utilPlayed = [
+                    {
+                        id: juego.ID,
+                        group: juego.OPCIONES_DE_SELECCION,
+                        winnerId: winner,
+                        loserId: loser
+                    }
+                ];
+                playedCounterCopy++;
+                totalPlayedPerStru = [...stuCopy, ...utilPlayed];
+            }
+        });
+        return { playedCounter: playedCounterCopy, totalPlayedPerStru};
+    };
     savePrediction = () => {
         const { grupos } = this.props;
         const { sendPredictionAction } = this.props.actions;
@@ -552,6 +578,8 @@ class QuinielaGame extends React.Component {
             // 2. Mix the predictions with the original value
             const curated = {...prediction, ...games, ...gamesPlayed};
             if (_.size(curated) !== 63) {
+                console.log('attention');
+                console.log(_.size(curated));
                 message.error('Aún hay predicciones en blanco');
             } else {
                 const verifyLeftGame = _.filter(curated, function(verify) { return verify.JUEGO_1 !== null; });
@@ -630,7 +658,7 @@ class QuinielaGame extends React.Component {
             );
         });
         return (
-            <Card type="inner" title={'grupos'}>
+            <Card type="inner" title={'Fase de Grupos'}>
                 <List
                     bordered
                     dataSource={data}
@@ -666,7 +694,7 @@ class QuinielaGame extends React.Component {
             );
         });
         return (
-            <Card type="inner" title={'Octavos'}>
+            <Card type="inner" title={'Fase de Octavos'}>
                 <List
                     bordered
                     dataSource={data}
@@ -702,7 +730,7 @@ class QuinielaGame extends React.Component {
             );
         });
         return (
-            <Card type="inner" title={'Cuartos'}>
+            <Card type="inner" title={'Fase de Cuartos'}>
                 <List
                     bordered
                     dataSource={data}
@@ -738,7 +766,7 @@ class QuinielaGame extends React.Component {
             );
         });
         return (
-            <Card type="inner" title={'Semi final'}>
+            <Card type="inner" title={'Fase de Semifinales'}>
                 <List
                     bordered
                     dataSource={data}
@@ -774,7 +802,7 @@ class QuinielaGame extends React.Component {
             );
         });
         return (
-            <Card type="inner" title={'Octavos'}>
+            <Card type="inner" title={'Tercer y Cuarto Lugar'}>
                 <List
                     bordered
                     dataSource={data}
@@ -810,7 +838,7 @@ class QuinielaGame extends React.Component {
             );
         });
         return (
-            <Card type="inner" title={'Octavos'}>
+            <Card type="inner" title={'Final'}>
                 <List
                     bordered
                     dataSource={data}
@@ -842,9 +870,6 @@ class QuinielaGame extends React.Component {
         window.scrollTo(0, 0);
         this.setState(() => ({ step: this.state.step + 1 }));
     };
-    handleBack = () => {
-        this.setState(() => ({ step: this.state.step - 1 }));
-    };
     // Check if 1th and 2th positions per Group
     checkGroups = () => {
         const { octavos } = this.props;
@@ -855,31 +880,50 @@ class QuinielaGame extends React.Component {
 
         const groupsID = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
         let error = false;
+
+        /** #VALIDATOR1 **/
+        const played = this.checkAlreadyPlayed('grupos');
+        const playedCounter = played.playedCounter;
+        /** VALIDATOR **/
         _.each(groupsID, groupId => {
             const positionTable = this.state[groupId];
             if (_.isEmpty(positionTable)) {
-                message.error('Aún no hay ganadores definidos para el grupo: ' + groupId);
-                error = true;
-                return;
+                /** #VALIDATOR2 **/
+                const isPlayed = _.findIndex(played.totalPlayedPerStru, playedGame => {
+                    return playedGame.group === groupId;
+                });
+                if (isPlayed === -1) {
+                    message.error('Aún no hay ganadores definidos para el grupo: ' + groupId);
+                    error = true;
+                    return;
+                }
+                /** END VALIDATOR **/
             }
             if(positionTable.length < 2) {
-                error = true;
-                message.error('No hay segundo puesto para el grupo ' + groupId);
-                return;
+                /** #VALIDATOR2 **/
+                const isPlayed = _.findIndex(played.totalPlayedPerStru, playedGame => {
+                    return playedGame.group === groupId;
+                });
+                if (isPlayed === -1) {
+                    message.error('No hay segundo puesto para el grupo ' + groupId);
+                    error = true;
+                    return;
+                }
+                /** END VALIDATOR **/
             }
         });
         if(!error) {
             this.handleNext();
             // Default positions
             const arrayDefaultValues = [
-                { optionLeft: A[0].countryId, optionRight: B[1].countryId },
-                { optionLeft: C[0].countryId, optionRight: D[1].countryId },
-                { optionLeft: E[0].countryId, optionRight: F[1].countryId },
-                { optionLeft: G[0].countryId, optionRight: H[1].countryId },
-                { optionLeft: B[0].countryId, optionRight: A[1].countryId },
-                { optionLeft: D[0].countryId, optionRight: C[1].countryId },
-                { optionLeft: F[0].countryId, optionRight: E[1].countryId },
-                { optionLeft: H[0].countryId, optionRight: G[1].countryId }
+                { optionLeft: A[0] && A[0].countryId, optionRight: B[1] && B[1].countryId },
+                { optionLeft: C[0] && C[0].countryId, optionRight: D[1] && D[1].countryId },
+                { optionLeft: E[0] && E[0].countryId, optionRight: F[1] && F[1].countryId },
+                { optionLeft: G[0] && G[0].countryId, optionRight: H[1] && H[1].countryId },
+                { optionLeft: B[0] && B[0].countryId, optionRight: A[1] && A[1].countryId },
+                { optionLeft: D[0] && D[0].countryId, optionRight: C[1] && C[1].countryId },
+                { optionLeft: F[0] && F[0].countryId, optionRight: E[1] && E[1].countryId },
+                { optionLeft: H[0] && H[0].countryId, optionRight: G[1] && G[1].countryId }
             ];
             const octavosGames = {};
             // array counter
@@ -899,7 +943,8 @@ class QuinielaGame extends React.Component {
             });
             const gamesCopy = this.state.games;
             const games = {...gamesCopy, ...octavosGames};
-            this.setState(() => ({ arrayDefaultValues, games }));
+            /** #VALIDATOR3 **/
+            this.setState(() => ({ arrayDefaultValues, games, playedCounter }));
         }
     };
     checkOctavos = () => {
@@ -912,23 +957,33 @@ class QuinielaGame extends React.Component {
         const groupsID = [ 'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'];
         let error = false;
         let i = 0;
+        /** #VALIDATOR1 **/
+        const played = this.checkAlreadyPlayed('octavos');
+        const playedCounter = played.playedCounter;
+        /** VALIDATOR **/
         _.each(groupsID, groupId => {
             i++;
             const positionTable = this.state[groupId];
             if (_.isEmpty(positionTable)) {
-                message.error('Aún no hay ganadores definidos para el juego: ' + i);
-                error = true;
-                return;
+                /** #VALIDATOR2 **/
+                const isPlayed = _.findIndex(played.totalPlayedPerStru, playedGame => {
+                    return playedGame.group === groupId;
+                });
+                if (isPlayed === -1) {
+                    message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                    error = true;
+                    return;
+                }
+                /** END VALIDATOR **/
             }
         });
         if(!error) {
-            console.log('no hay en errores...');
             // Default positions
             const arrayDefaultValuesCuartos = [
-                { optionLeft: a8[0].countryId, optionRight: b8[0].countryId },
-                { optionLeft: c8[0].countryId, optionRight: d8[0].countryId },
-                { optionLeft: e8[0].countryId, optionRight: f8[0].countryId },
-                { optionLeft: g8[0].countryId, optionRight: h8[0].countryId }
+                { optionLeft: a8[0] && a8[0].countryId || '', optionRight: b8[0] && b8[0].countryId || ''},
+                { optionLeft: c8[0] && c8[0].countryId || '', optionRight: d8[0] && d8[0].countryId || ''},
+                { optionLeft: e8[0] && e8[0].countryId || '', optionRight: f8[0] && f8[0].countryId || ''},
+                { optionLeft: g8[0] && g8[0].countryId || '', optionRight: h8[0] && h8[0].countryId || ''}
             ];
             const cuartosGames = {};
             // array counter
@@ -949,7 +1004,8 @@ class QuinielaGame extends React.Component {
             console.log('setstate');
             const gamesCopy = this.state.games;
             const games = {...gamesCopy, ...cuartosGames};
-            this.setState(() => ({ arrayDefaultValuesCuartos, games }), () => {
+            /** #VALIDATOR3 **/
+            this.setState(() => ({ arrayDefaultValuesCuartos, games, playedCounter }), () => {
                 console.log('arrayDefaultValuesCuartos state');
                 this.handleNext();
             });
@@ -965,20 +1021,31 @@ class QuinielaGame extends React.Component {
         const groupsID = [ 'a4', 'b4', 'c4', 'd4'];
         let error = false;
         let i = 0;
+        /** #VALIDATOR1 **/
+        const played = this.checkAlreadyPlayed('cuartos');
+        const playedCounter = played.playedCounter;
+        /** VALIDATOR **/
         _.each(groupsID, groupId => {
             i++;
             const positionTable = this.state[groupId];
             if (_.isEmpty(positionTable)) {
-                message.error('Aún no hay ganadores definidos para el juego: ' + i);
-                error = true;
-                return;
+                /** #VALIDATOR2 **/
+                const isPlayed = _.findIndex(played.totalPlayedPerStru, playedGame => {
+                    return playedGame.group === groupId;
+                });
+                if (isPlayed === -1) {
+                    message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                    error = true;
+                    return;
+                }
+                /** END VALIDATOR **/
             }
         });
         if(!error) {
             // Default positions
             const arrayDefaultValuesSemiFinales = [
-                { optionLeft: a4[0].countryId, optionRight: b4[0].countryId },
-                { optionLeft: c4[0].countryId, optionRight: d4[0].countryId }
+                { optionLeft: a4[0] && a4[0].countryId || '', optionRight: b4[0] && b4[0].countryId || ''},
+                { optionLeft: c4[0] && c4[0].countryId || '', optionRight: d4[0] && d4[0].countryId || '' }
             ];
             const cuartosGames = {};
             // array counter
@@ -996,11 +1063,10 @@ class QuinielaGame extends React.Component {
                     JUEGO_2: arrayDefaultValuesSemiFinales[ac].optionRight
                 };
             });
-            console.log('setstate');
+            /** #VALIDATOR3 **/
             const gamesCopy = this.state.games;
             const games = {...gamesCopy, ...cuartosGames};
-            this.setState(() => ({ arrayDefaultValuesSemiFinales, games }), () => {
-                console.log('arrayDefaultValuesOctavos state');
+            this.setState(() => ({ arrayDefaultValuesSemiFinales, games, playedCounter }), () => {
                 this.handleNext();
             });
         }
@@ -1015,19 +1081,30 @@ class QuinielaGame extends React.Component {
         const groupsID = [ 'a2', 'b2' ];
         let error = false;
         let i = 0;
+        /** #VALIDATOR1 **/
+        const played = this.checkAlreadyPlayed('semiFinales');
+        const playedCounter = played.playedCounter;
+        /** VALIDATOR **/
         _.each(groupsID, groupId => {
             i++;
             const positionTable = this.state[groupId];
             if (_.isEmpty(positionTable)) {
-                message.error('Aún no hay ganadores definidos para el juego: ' + i);
-                error = true;
-                return;
+                /** #VALIDATOR2 **/
+                const isPlayed = _.findIndex(played.totalPlayedPerStru, playedGame => {
+                    return playedGame.group === groupId;
+                });
+                if (isPlayed === -1) {
+                    message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                    error = true;
+                    return;
+                }
+                /** END VALIDATOR **/
             }
         });
         if(!error) {
             // Default positions
             const arrayDefaultValuesTercer = [
-                { optionLeft: a2[0].loserId, optionRight: b2[0].loserId }
+                { optionLeft: a2[0] && a2[0].loserId || '', optionRight: b2[0] && b2[0].loserId || '' }
             ];
             const tercerGames = {};
             // array counter
@@ -1045,10 +1122,10 @@ class QuinielaGame extends React.Component {
                     JUEGO_2: arrayDefaultValuesTercer[ac].optionRight
                 };
             });
-            console.log('setstate');
             const gamesCopy = this.state.games;
             const games = {...gamesCopy, ...tercerGames};
-            this.setState(() => ({ arrayDefaultValuesTercer, games }), () => {
+            /** #VALIDATOR3 **/
+            this.setState(() => ({ arrayDefaultValuesTercer, games, playedCounter }), () => {
                 this.handleNext();
             });
         }
@@ -1063,19 +1140,30 @@ class QuinielaGame extends React.Component {
         const groupsID = [ 'ter' ];
         let error = false;
         let i = 0;
+        /** #VALIDATOR1 **/
+        const played = this.checkAlreadyPlayed('tercer');
+        const playedCounter = played.playedCounter;
+        /** VALIDATOR **/
         _.each(groupsID, groupId => {
             i++;
             const positionTable = this.state[groupId];
             if (_.isEmpty(positionTable)) {
-                message.error('Aún no hay ganadores definidos para el tercer puesto');
-                error = true;
-                return;
+                /** #VALIDATOR2 **/
+                const isPlayed = _.findIndex(played.totalPlayedPerStru, playedGame => {
+                    return playedGame.group === groupId;
+                });
+                if (isPlayed === -1) {
+                    message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                    error = true;
+                    return;
+                }
+                /** END VALIDATOR **/
             }
         });
         if(!error) {
             // Default positions
             const arrayDefaultValuesFinal = [
-                { optionLeft: a2[0].countryId, optionRight: b2[0].countryId }
+                { optionLeft: a2[0] && a2[0].countryId || '', optionRight: b2[0] && b2[0].countryId || '' }
             ];
             const finalGames = {};
             // array counter
@@ -1095,13 +1183,13 @@ class QuinielaGame extends React.Component {
             });
             const gamesCopy = this.state.games;
             const games = {...gamesCopy, ...finalGames};
-            this.setState(() => ({ arrayDefaultValuesFinal, games }), () => {
+            /** #VALIDATOR3 **/
+            this.setState(() => ({ arrayDefaultValuesFinal, games, playedCounter }), () => {
                 this.handleNext();
             });
         }
     };
     checkFinal = () => {
-        console.log('Checkfinal');
         this.savePrediction();
     };
     renderSteps = () => {
@@ -1127,8 +1215,8 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderOctavos() }
                             <ButtonGroup>
-                                <Button onClick={this.handleBack} type="primary" size="large">
-                                    <Icon type="left" />Volver a grupos
+                                <Button onClick={() => location.reload()} type="primary" size="large">
+                                    Comenzar de nuevo
                                 </Button>
                                 <Button onClick={this.checkOctavos} type="primary" size="large">
                                     Ir a cuartos<Icon type="right" />
@@ -1143,8 +1231,8 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderCuartos() }
                             <ButtonGroup>
-                                <Button onClick={this.handleBack} type="primary" size="large">
-                                    <Icon type="left" />Volver a octavos
+                                <Button onClick={() => location.reload()} type="primary" size="large">
+                                    resetear
                                 </Button>
                                 <Button onClick={this.checkCuartos} type="primary" size="large">
                                     ir a semi-finales<Icon type="right" />
@@ -1159,8 +1247,8 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderSemiFinales() }
                             <ButtonGroup>
-                                <Button onClick={this.handleBack} type="primary" size="large">
-                                    <Icon type="left" />Volver a cuartos
+                                <Button onClick={() => location.reload()} type="primary" size="large">
+                                    resetear
                                 </Button>
                                 <Button onClick={this.checkSemiFinal} type="primary" size="large">
                                     ir a tercero<Icon type="right" />
@@ -1175,8 +1263,8 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderTercer() }
                             <ButtonGroup>
-                                <Button onClick={this.handleBack} type="primary" size="large">
-                                    <Icon type="left" />Volver a semi finales
+                                <Button onClick={() => location.reload()} type="primary" size="large">
+                                    resetear
                                 </Button>
                                 <Button onClick={this.checkTercer} type="primary" size="large">
                                     ir a final<Icon type="right" />
@@ -1191,8 +1279,8 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderFinal() }
                             <ButtonGroup>
-                                <Button onClick={this.handleBack} type="primary" size="large">
-                                    <Icon type="left" />Volver a tercero
+                                <Button onClick={() => location.reload()} type="primary" size="large">
+                                    resetear
                                 </Button>
                                 <Button onClick={this.checkFinal} type="primary" size="large">
                                     Colocar Quiniela<Icon type="right" />
@@ -1275,12 +1363,19 @@ class QuinielaGame extends React.Component {
                         <TabPane tab={<span><Icon type="profile" />Mi predicción</span>} key="1">
                         {_.isEmpty(predictionsByUsers) ? (
                             <Card>
+                                <Alert
+                                    message="Completa tu quiniela"
+                                    description="Para comenzar a participar en esta quiniela ingresa todas tus predicciones para cada una de las fases del mundial, nosotros actualizaremos los resultados de los partidos conforme vayan sucediendo. Ingresa constantemente a esta quiniela y descubre tu lugar en la tabla de posiciones."
+                                    type="info"
+                                    showIcon
+                                />
+                                <br />
                                 <Steps current={this.state.step}>
-                                    <Step title="Fase de grupos" />
-                                    <Step title="Fase de octavos" />
-                                    <Step title="Fase de cuartos" />
-                                    <Step title="Semi final" />
-                                    <Step title="Tercer lugar" />
+                                    <Step title="Fase de Grupos" />
+                                    <Step title="Fase de Octavos" />
+                                    <Step title="Fase de Cuartos" />
+                                    <Step title="Semifinales" />
+                                    <Step title="Tercer y Cuarto lugar" />
                                     <Step title="Final" />
                                 </Steps>
                                 {this.renderSteps()}

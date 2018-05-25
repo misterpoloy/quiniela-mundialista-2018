@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/components/PredictionContry.js" afterPath="$PROJECT_DIR$/app/components/PredictionContry.js" />
-      <change beforePath="$PROJECT_DIR$/app/components/TabsMenu.js" afterPath="$PROJECT_DIR$/app/components/TabsMenu.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/components/QuinielaGroups.js" afterPath="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
+      <change beforePath="$PROJECT_DIR$/app/constants/urls.js" afterPath="$PROJECT_DIR$/app/constants/urls.js" />
+      <change beforePath="$PROJECT_DIR$/app/containers/HeaderContainer.js" afterPath="$PROJECT_DIR$/app/containers/HeaderContainer.js" />
       <change beforePath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" afterPath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
-      <change beforePath="$PROJECT_DIR$/app/styles/styles.scss" afterPath="$PROJECT_DIR$/app/styles/styles.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,130 +22,10 @@
     <favorites_list name="react widget" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="42" column="53" lean-forward="false" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#1301#1390#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="n#!!block;n#componentDidMount#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="n#!!block;n#componentWillReceiveProps#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="e#4192#4610#0" expanded="false" />
-                <element signature="e#4716#5139#0" expanded="false" />
-                <element signature="e#5249#5685#0" expanded="false" />
-                <element signature="e#6307#7821#0" expanded="false" />
-                <element signature="e#7959#8075#0" expanded="false" />
-                <element signature="n#!!block;n#shouldComponentUpdate#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="e#8321#8610#0" expanded="false" />
-                <element signature="e#8633#8837#0" expanded="false" />
-                <element signature="e#8869#9438#0" expanded="false" />
-                <element signature="e#9466#11522#0" expanded="false" />
-                <element signature="e#11562#11723#0" expanded="false" />
-                <element signature="e#11762#11956#0" expanded="false" />
-                <element signature="e#11994#13146#0" expanded="false" />
-                <element signature="e#13183#14394#0" expanded="false" />
-                <element signature="e#14431#15642#0" expanded="false" />
-                <element signature="e#15681#16947#0" expanded="false" />
-                <element signature="e#18335#22082#0" expanded="false" />
-                <element signature="e#22115#23400#0" expanded="false" />
-                <element signature="e#23431#24545#0" expanded="false" />
-                <element signature="e#24573#25865#0" expanded="false" />
-                <element signature="e#25893#27199#0" expanded="false" />
-                <element signature="e#27231#28558#0" expanded="false" />
-                <element signature="e#28585#29887#0" expanded="false" />
-                <element signature="e#29913#31211#0" expanded="false" />
-                <element signature="e#31235#31612#0" expanded="false" />
-                <element signature="e#31634#31697#0" expanded="false" />
-                <element signature="e#31746#31846#0" expanded="false" />
-                <element signature="e#31871#31940#0" expanded="false" />
-                <element signature="e#32014#34386#0" expanded="false" />
-                <element signature="e#34413#36545#0" expanded="false" />
-                <element signature="e#36572#38481#0" expanded="false" />
-                <element signature="e#38510#40220#0" expanded="false" />
-                <element signature="e#42035#46516#0" expanded="false" />
-                <element signature="n#!!block;n#render#0;n#QuinielaGame#0" expanded="false" />
-                <element signature="e#46935#46978#0" expanded="false" />
-                <element signature="e#47043#47310#0" expanded="false" />
-                <element signature="e#47404#47647#0" expanded="false" />
-                <element signature="e#48376#48669#0" expanded="false" />
-                <element signature="e#48416#48567#0" expanded="false" />
-                <element signature="e#48904#50439#0" expanded="false" />
-                <element signature="e#50464#53571#0" expanded="false" />
-                <element signature="e#53596#54589#0" expanded="false" />
-                <element signature="e#54658#54865#0" expanded="false" />
-                <element signature="e#54929#55997#0" expanded="false" />
-                <element signature="e#56045#56855#0" expanded="false" />
-                <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuinielaGroups.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="252" column="93" lean-forward="true" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="93" />
-              <folding>
-                <element signature="e#251#308#0" expanded="false" />
-                <element signature="e#328#404#0" expanded="false" />
-                <element signature="n#!!block;n#constructor#0;n#QuinielaGroups#0" expanded="false" />
-                <element signature="e#817#1942#0" expanded="false" />
-                <element signature="e#1965#2100#0" expanded="false" />
-                <element signature="e#2122#2313#0" expanded="false" />
-                <element signature="e#2354#2492#0" expanded="false" />
-                <element signature="e#2515#2711#0" expanded="false" />
-                <element signature="e#2768#3026#0" expanded="false" />
-                <element signature="e#3057#3301#0" expanded="false" />
-                <element signature="e#3845#4140#0" expanded="false" />
-                <element signature="e#4348#4646#0" expanded="false" />
-                <element signature="e#5802#10218#0" expanded="false" />
-                <element signature="e#5836#6380#0" expanded="false" />
-                <element signature="e#6409#10187#0" expanded="false" />
-                <element signature="e#6447#7820#0" expanded="false" />
-                <element signature="e#13258#13656#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PredictionContry.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/PredictionContry.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="34" column="79" lean-forward="false" selection-start-line="34" selection-start-column="79" selection-end-line="34" selection-end-column="79" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.scss" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/styles/styles.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>QuinielaGroups</find>
-      <find>Check p</find>
-      <find>count2</find>
-      <find>utilStructure</find>
-      <find>isReady</find>
-      <find>tercer</find>
-      <find>disable</find>
-      <find>utilStruOctavos</find>
       <find>renderOctavos</find>
       <find>checkOctavos</find>
       <find>arrayDefaultValues</find>
@@ -167,6 +48,14 @@
       <find>tercerGame</find>
       <find>cuartosGames</find>
       <find>QuinielaG</find>
+      <find>currentProp</find>
+      <find>QuinielaGro</find>
+      <find>isPlayed</find>
+      <find>handleBack</find>
+      <find>countryId</find>
+      <find>renderSteps</find>
+      <find>reseat</find>
+      <find>resete</find>
     </findStrings>
     <replaceStrings>
       <replace>MainContainer</replace>
@@ -229,19 +118,19 @@
         <option value="$PROJECT_DIR$/app/constants/axios.js" />
         <option value="$PROJECT_DIR$/webpack.production.config.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/app/constants/urls.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/containers/HeaderContainer.js" />
         <option value="$PROJECT_DIR$/app/index.tpl.html" />
         <option value="$PROJECT_DIR$/app/containers/WelcomeContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
-        <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
         <option value="$PROJECT_DIR$/app/components/TabsMenu.js" />
-        <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
         <option value="$PROJECT_DIR$/app/components/PredictionContry.js" />
         <option value="$PROJECT_DIR$/app/styles/styles.scss" />
+        <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
+        <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
+        <option value="$PROJECT_DIR$/app/constants/urls.js" />
+        <option value="$PROJECT_DIR$/app/containers/HeaderContainer.js" />
       </list>
     </option>
   </component>
@@ -256,9 +145,9 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="995" />
+    <option name="width" value="1440" />
     <option name="height" value="833" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -279,6 +168,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,13 +185,12 @@
               <item name="react widget" type="b2602c69:ProjectViewProjectNode" />
               <item name="react widget" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -417,33 +306,33 @@
       <workItem from="1526953701096" duration="6290000" />
       <workItem from="1527031107636" duration="10052000" />
       <workItem from="1527080051057" duration="394000" />
-      <workItem from="1527101650650" duration="36384000" />
+      <workItem from="1527101650650" duration="36775000" />
+      <workItem from="1527221774393" duration="10586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="372125000" />
+    <option name="totallyTimeSpent" value="383102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="833" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950193" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27110156" sideWeight="0.4783198" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2746781" sideWeight="0.4783198" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3969957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3969957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27110156" sideWeight="0.52168024" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950193" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -457,7 +346,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -687,17 +576,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="17">
             <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -715,31 +604,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-share/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="206" column="31" lean-forward="false" selection-start-line="206" selection-start-column="31" selection-end-line="206" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/constants/urls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/HeaderContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -775,7 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,8 +651,8 @@
         <state relative-caret-position="111">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#31#57#0" expanded="true" />
-            <element signature="e#389#486#0" expanded="true" />
+            <element signature="e#31#57#0" expanded="false" />
+            <element signature="e#389#486#0" expanded="false" />
             <element signature="e#4726#9630#0" expanded="false" />
           </folding>
         </state>
@@ -796,93 +663,6 @@
         <state relative-caret-position="221">
           <caret line="36" column="77" lean-forward="false" selection-start-line="36" selection-start-column="74" selection-end-line="36" selection-end-column="77" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="42" column="53" lean-forward="false" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#1301#1390#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="n#!!block;n#componentDidMount#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="n#!!block;n#componentWillReceiveProps#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="e#4192#4610#0" expanded="false" />
-            <element signature="e#4716#5139#0" expanded="false" />
-            <element signature="e#5249#5685#0" expanded="false" />
-            <element signature="e#6307#7821#0" expanded="false" />
-            <element signature="e#7959#8075#0" expanded="false" />
-            <element signature="n#!!block;n#shouldComponentUpdate#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="e#8321#8610#0" expanded="false" />
-            <element signature="e#8633#8837#0" expanded="false" />
-            <element signature="e#8869#9438#0" expanded="false" />
-            <element signature="e#9466#11522#0" expanded="false" />
-            <element signature="e#11562#11723#0" expanded="false" />
-            <element signature="e#11762#11956#0" expanded="false" />
-            <element signature="e#11994#13146#0" expanded="false" />
-            <element signature="e#13183#14394#0" expanded="false" />
-            <element signature="e#14431#15642#0" expanded="false" />
-            <element signature="e#15681#16947#0" expanded="false" />
-            <element signature="e#18335#22082#0" expanded="false" />
-            <element signature="e#22115#23400#0" expanded="false" />
-            <element signature="e#23431#24545#0" expanded="false" />
-            <element signature="e#24573#25865#0" expanded="false" />
-            <element signature="e#25893#27199#0" expanded="false" />
-            <element signature="e#27231#28558#0" expanded="false" />
-            <element signature="e#28585#29887#0" expanded="false" />
-            <element signature="e#29913#31211#0" expanded="false" />
-            <element signature="e#31235#31612#0" expanded="false" />
-            <element signature="e#31634#31697#0" expanded="false" />
-            <element signature="e#31746#31846#0" expanded="false" />
-            <element signature="e#31871#31940#0" expanded="false" />
-            <element signature="e#32014#34386#0" expanded="false" />
-            <element signature="e#34413#36545#0" expanded="false" />
-            <element signature="e#36572#38481#0" expanded="false" />
-            <element signature="e#38510#40220#0" expanded="false" />
-            <element signature="e#42035#46516#0" expanded="false" />
-            <element signature="n#!!block;n#render#0;n#QuinielaGame#0" expanded="false" />
-            <element signature="e#46935#46978#0" expanded="false" />
-            <element signature="e#47043#47310#0" expanded="false" />
-            <element signature="e#47404#47647#0" expanded="false" />
-            <element signature="e#48376#48669#0" expanded="false" />
-            <element signature="e#48416#48567#0" expanded="false" />
-            <element signature="e#48904#50439#0" expanded="false" />
-            <element signature="e#50464#53571#0" expanded="false" />
-            <element signature="e#53596#54589#0" expanded="false" />
-            <element signature="e#54658#54865#0" expanded="false" />
-            <element signature="e#54929#55997#0" expanded="false" />
-            <element signature="e#56045#56855#0" expanded="false" />
-            <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="252" column="93" lean-forward="true" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="93" />
-          <folding>
-            <element signature="e#251#308#0" expanded="false" />
-            <element signature="e#328#404#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#QuinielaGroups#0" expanded="false" />
-            <element signature="e#817#1942#0" expanded="false" />
-            <element signature="e#1965#2100#0" expanded="false" />
-            <element signature="e#2122#2313#0" expanded="false" />
-            <element signature="e#2354#2492#0" expanded="false" />
-            <element signature="e#2515#2711#0" expanded="false" />
-            <element signature="e#2768#3026#0" expanded="false" />
-            <element signature="e#3057#3301#0" expanded="false" />
-            <element signature="e#3845#4140#0" expanded="false" />
-            <element signature="e#4348#4646#0" expanded="false" />
-            <element signature="e#5802#10218#0" expanded="false" />
-            <element signature="e#5836#6380#0" expanded="false" />
-            <element signature="e#6409#10187#0" expanded="false" />
-            <element signature="e#6447#7820#0" expanded="false" />
-            <element signature="e#13258#13656#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -906,6 +686,116 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="1218" column="53" lean-forward="false" selection-start-line="1218" selection-start-column="53" selection-end-line="1218" selection-end-column="53" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#1160#1218#0" expanded="true" />
+            <element signature="e#1301#1390#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="e#1496#2428#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillMount#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="n#!!block;n#componentDidMount#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="e#4222#4640#0" expanded="false" />
+            <element signature="e#4746#5169#0" expanded="false" />
+            <element signature="e#5279#5715#0" expanded="false" />
+            <element signature="e#6337#7851#0" expanded="false" />
+            <element signature="e#7989#8105#0" expanded="false" />
+            <element signature="n#!!block;n#shouldComponentUpdate#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="e#8351#8640#0" expanded="false" />
+            <element signature="e#8663#8867#0" expanded="false" />
+            <element signature="e#8899#9468#0" expanded="false" />
+            <element signature="e#9496#11552#0" expanded="false" />
+            <element signature="e#11592#11753#0" expanded="false" />
+            <element signature="e#11792#11986#0" expanded="false" />
+            <element signature="e#12024#13176#0" expanded="false" />
+            <element signature="e#13213#14424#0" expanded="false" />
+            <element signature="e#14461#15672#0" expanded="false" />
+            <element signature="e#15711#16977#0" expanded="false" />
+            <element signature="e#17014#18336#0" expanded="false" />
+            <element signature="e#18371#19372#0" expanded="false" />
+            <element signature="e#19401#23236#0" expanded="false" />
+            <element signature="e#23269#24554#0" expanded="false" />
+            <element signature="e#24585#25707#0" expanded="false" />
+            <element signature="e#25735#27035#0" expanded="false" />
+            <element signature="e#27063#28377#0" expanded="false" />
+            <element signature="e#28409#29745#0" expanded="false" />
+            <element signature="e#29772#31088#0" expanded="false" />
+            <element signature="e#31114#32410#0" expanded="false" />
+            <element signature="e#32434#32811#0" expanded="false" />
+            <element signature="e#32833#32896#0" expanded="false" />
+            <element signature="e#32945#33045#0" expanded="false" />
+            <element signature="e#33119#36447#0" expanded="false" />
+            <element signature="e#36474#39193#0" expanded="false" />
+            <element signature="e#39220#41607#0" expanded="false" />
+            <element signature="e#41636#43863#0" expanded="false" />
+            <element signature="e#43889#46101#0" expanded="false" />
+            <element signature="e#46126#46164#0" expanded="false" />
+            <element signature="n#!!block;n#render#0;n#QuinielaGame#0" expanded="false" />
+            <element signature="e#50995#51038#0" expanded="false" />
+            <element signature="e#51103#51370#0" expanded="false" />
+            <element signature="e#51464#51707#0" expanded="false" />
+            <element signature="e#52436#52729#0" expanded="false" />
+            <element signature="e#52476#52627#0" expanded="false" />
+            <element signature="e#52964#55115#0" expanded="false" />
+            <element signature="e#55140#58247#0" expanded="false" />
+            <element signature="e#58272#59265#0" expanded="false" />
+            <element signature="e#59334#59541#0" expanded="false" />
+            <element signature="e#60721#61531#0" expanded="false" />
+            <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="280" column="67" lean-forward="false" selection-start-line="280" selection-start-column="67" selection-end-line="280" selection-end-column="67" />
+          <folding>
+            <element signature="e#251#308#0" expanded="false" />
+            <element signature="e#328#404#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#QuinielaGroups#0" expanded="false" />
+            <element signature="e#817#1942#0" expanded="false" />
+            <element signature="e#1965#2100#0" expanded="false" />
+            <element signature="e#2122#2313#0" expanded="false" />
+            <element signature="e#2354#2492#0" expanded="false" />
+            <element signature="e#2515#2711#0" expanded="false" />
+            <element signature="e#2768#3026#0" expanded="false" />
+            <element signature="e#3057#3301#0" expanded="false" />
+            <element signature="e#3845#4140#0" expanded="false" />
+            <element signature="e#4348#4646#0" expanded="false" />
+            <element signature="e#5802#10219#0" expanded="false" />
+            <element signature="e#13395#13793#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/constants/urls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="11" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/HeaderContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
           <folding />
         </state>
       </provider>

@@ -219,7 +219,7 @@ class QuinielaGroups extends React.Component {
                                         </div>
                                     </div>
                                 </Col>
-                                <Col xs={{ offset: 2, span: 8 }} lg={{ span: 8, offset: 2 }}>
+                                <Col xs={{ offset: 1, span: 10 }} lg={{ span: 8, offset: 2 }}>
                                     {!isPlayed &&
                                     <div className={'allignRightLeft'}>
                                         <ButtonGroup>
@@ -252,6 +252,7 @@ class QuinielaGroups extends React.Component {
                             <Row>
                                 <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 1 }}>
                                     <Select
+                                        style={{ marginBottom: 5 }}
                                         defaultValue={defaultValue.optionLeft || ''}
                                         onChange={this.selecCountry1}
                                         className={'dropDownCustom'}
@@ -275,8 +276,9 @@ class QuinielaGroups extends React.Component {
                                         {/** options <div>{game.OPCIONES_DE_SELECCION || ''}</div> **/}
                                     </div>
                                 </Col>
-                                <Col xs={{ offset: 2, span: 9 }} lg={{ span: 8, offset: 2 }}>
+                                <Col xs={{ offset: 3, span: 9 }} lg={{ span: 8, offset: 2 }}>
                                     <Select
+                                        style={{ marginBottom: 5 }}
                                         defaultValue={defaultValue.optionRight || ''}
                                         onChange={this.selecCountry2}
                                         className={'dropDownCustom'}
