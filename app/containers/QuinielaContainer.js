@@ -2,19 +2,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
+import {bindActionCreators} from 'redux';
 
 // Design
-import { Card, Button, Icon, Tabs, List, Modal, message, Avatar, Input, Row, Col, Form, Alert, notification} from 'antd';
+import { Steps, Card, Button, Icon, Tabs, List, Modal, message, Avatar, Input, Row, Col, Form, Alert, notification} from 'antd';
 import { CardMedia, CardTitle} from 'material-ui/Card';
 import bannerSource from '../src/images/banner4.jpg';
 import avatar from '../src/images/avatar.png';
 import one from '../src/images/1.png';
 import two from '../src/images/2.png';
 import three from '../src/images/3.png';
-const confirm = Modal.confirm;
-const TabPane = Tabs.TabPane;
 // instances
 const FormItem = Form.Item;
+const Step = Steps.Step;
+const ButtonGroup = Button.Group;
+const confirm = Modal.confirm;
+const TabPane = Tabs.TabPane;
 
 // Actions
 import {login} from '../actions/auth';
@@ -32,7 +35,6 @@ import {getQuiniela,
     getInivtationsById,
     getQuinielaStructures
 } from '../actions/quiniela';
-import {bindActionCreators} from 'redux';
 
 // util
 const _ = require('lodash');
@@ -41,15 +43,28 @@ const _ = require('lodash');
 import QuinielaGroups from '../components/QuinielaGroups';
 import PredictionContry from '../components/PredictionContry';
 
+const DownStyle = {
+    position: 'fixed',
+    bottom: 25,
+    right: 25,
+    width: 50,
+    opacity: 0.7
+};
+
 class QuinielaGame extends React.Component {
     constructor() {
         super();
         this.state = {
             userId: false,
+            step: 0,
             done: false,
-            isReady: false,
             groupsGame: {},
             games: {},
+            groupsIsReady: false,
+            octavosIsReady: false,
+            cuartosIsReady: false,
+            semiIsReady: false,
+            thirdIsReady: false,
             A: [],
             B: [],
             C: [],
@@ -58,6 +73,22 @@ class QuinielaGame extends React.Component {
             F: [],
             G: [],
             H: [],
+            a8: [],
+            b8: [],
+            c8: [],
+            d8: [],
+            e8: [],
+            f8: [],
+            g8: [],
+            h8: [],
+            a4: [],
+            b4: [],
+            c4: [],
+            d4: [],
+            a2: [],
+            b2: [],
+            ter: [],
+            fin: [],
             octavos: [],
             cuartos: [],
             semifinal: [],
@@ -109,17 +140,60 @@ class QuinielaGame extends React.Component {
         const { params } = this.props.match;
         const { quinielaId } = params;
         const id = localStorage.getItem('PrensaUserId');
-        if (!_.isEmpty(nextProps.grupos) && this.state.isReady === false) {
+        // PART OF NEW CODE START
+        // SET GROUPS
+        if (!_.isEmpty(nextProps.grupos) && this.state.groupsIsReady === false) {
             const groupsGame = {};
             _.each(nextProps.grupos, groupGame => {
                 groupsGame[groupGame.ID] = {
                     id: groupGame.ID,
                     winnerId: null,
+                    loserId: null,
                     group: groupGame.OPCIONES_DE_SELECCION
                 };
             });
-            this.setState(() => ({ groupsGame, isReady: true }));
+            this.setState(() => ({ groupsGame, groupsIsReady: true }));
         }
+        // SET OCTAVOS
+        if (!_.isEmpty(nextProps.octavos) && this.state.octavosIsReady === false) {
+            const octavosGame = {};
+            _.each(nextProps.octavos, groupGame => {
+                octavosGame[groupGame.ID] = {
+                    id: groupGame.ID,
+                    winnerId: null,
+                    loserId: null,
+                    group: groupGame.OPCIONES_DE_SELECCION
+                };
+            });
+            this.setState(() => ({ octavosGame, octavosIsReady: true }));
+        }
+        // SET SEMIFINALS
+        if (!_.isEmpty(nextProps.semiFinales) && this.state.semiIsReady === false) {
+            const semiFinalesGame = {};
+            _.each(nextProps.semiFinales, groupGame => {
+                semiFinalesGame[groupGame.ID] = {
+                    id: groupGame.ID,
+                    winnerId: null,
+                    loserId: null,
+                    group: groupGame.OPCIONES_DE_SELECCION
+                };
+            });
+            this.setState(() => ({ semiFinalesGame, semiIsReady: true }));
+        }
+        // SET THIRD
+        if (!_.isEmpty(nextProps.tercer) && this.state.thirdIsReady === false) {
+            const tercerGame = {};
+            _.each(nextProps.tercer, groupGame => {
+                tercerGame[groupGame.ID] = {
+                    id: groupGame.ID,
+                    winnerId: null,
+                    loserId: null,
+                    group: tercerGame.OPCIONES_DE_SELECCION
+                };
+            });
+            this.setState(() => ({ tercerGame, thirdIsReady: true }));
+        }
+        // COUNTRIES
         if (!_.isEmpty(nextProps.CountriesByGroup) && this.state.done === false) {
             const countriesGroupA = _.filter(nextProps.CountriesByGroup, group => {
                 return group.CODIGO === 'A';
@@ -157,14 +231,17 @@ class QuinielaGame extends React.Component {
                 done: true
             }));
         }
-
+        // PART OF NEW CODE END
+        // to render succes quiniela
         if (this.props.postSuccesfull !== nextProps.postSuccesfull) {
             // console.log('getAllQuinielas');
             getPredictionsPerUserActions(quinielaId, id);
         }
     }
-    shouldComponentUpdate(nextProps) {
-        return this.props !== nextProps;
+    shouldComponentUpdate(nextProps, nextState) {
+        const stepChange = nextState.step !== this.state.step;
+        const propsChange = this.props !== nextProps;
+        return propsChange || stepChange;
     }
     updateToken = () => {
         notification.error({
@@ -256,7 +333,7 @@ class QuinielaGame extends React.Component {
         const updateGames = { ...gamesCopy, ...prediction };
         this.setState(() => ({ games: updateGames }));
     };
-    utilStructure = structure => {
+    utilStructure = structure =>    {
         // Get the current structure
         const index = Object.keys(structure)[0];
         const structureObject = structure[index];
@@ -287,6 +364,170 @@ class QuinielaGame extends React.Component {
         };
         // Asign the ID of the 2 results to the state
         this.setState(() => ({ groupsGame, ...temporalContainer }));
+    };
+    utilStruOctavos = structure => {
+        // Get the current structure
+        const index = Object.keys(structure)[0];
+        const structureObject = structure[index];
+        // Create Copy of the state
+        const copy = this.state.octavosGame;
+        const octavosGame = { ...copy, ...structure };
+        const groupATable = {};
+
+        _.chain(octavosGame)
+            .filter((game) => game.group === structureObject.group)
+            .each(game => {
+                // create a unique counter per GROUP GAME per COUNTRY
+                if (!groupATable[game.winnerId] && game.winnerId !== null) {
+                    groupATable[game.winnerId] = {
+                        countryId: game.winnerId,
+                        counter: 0
+                    };
+                }
+                if (game.winnerId !== null) {
+                    groupATable[game.winnerId].counter++;
+                }
+            })
+            .value();
+        // Order the first 2 results
+        const temporalContainer = {
+            [structureObject.group]: _.orderBy(groupATable, ['counter'], ['desc'])
+        };
+        // Asign the ID of the 2 results to the state
+        this.setState(() => ({ octavosGame, ...temporalContainer }));
+    };
+    utilStruCuartos = structure => {
+        // Get the current structure
+        const index = Object.keys(structure)[0];
+        const structureObject = structure[index];
+        // Create Copy of the state
+        const copy = this.state.cuartosGame;
+        const cuartosGame = { ...copy, ...structure };
+        const groupATable = {};
+
+        _.chain(cuartosGame)
+            .filter((game) => game.group === structureObject.group)
+            .each(game => {
+                // create a unique counter per GROUP GAME per COUNTRY
+                if (!groupATable[game.winnerId] && game.winnerId !== null) {
+                    groupATable[game.winnerId] = {
+                        countryId: game.winnerId,
+                        counter: 0
+                    };
+                }
+                if (game.winnerId !== null) {
+                    groupATable[game.winnerId].counter++;
+                }
+            })
+            .value();
+        // Order the first 2 results
+        const temporalContainer = {
+            [structureObject.group]: _.orderBy(groupATable, ['counter'], ['desc'])
+        };
+        // Asign the ID of the 2 results to the state
+        this.setState(() => ({ cuartosGame, ...temporalContainer }));
+    };
+    utilStruSemiFinal = structure => {
+        // Get the current structure
+        const index = Object.keys(structure)[0];
+        const structureObject = structure[index];
+        // Create Copy of the state
+        const copy = this.state.semiFinalGame;
+        const semiFinalGame = { ...copy, ...structure };
+        const groupATable = {};
+
+        _.chain(semiFinalGame)
+            .filter((game) => game.group === structureObject.group)
+            .each(game => {
+                // create a unique counter per GROUP GAME per COUNTRY
+                if (!groupATable[game.winnerId] && game.winnerId !== null) {
+                    groupATable[game.winnerId] = {
+                        countryId: game.winnerId,
+                        loserId: game.loserId,
+                        counter: 0
+                    };
+                }
+                if (game.winnerId !== null) {
+                    groupATable[game.winnerId].counter++;
+                }
+            })
+            .value();
+        // Order the first 2 results
+        const temporalContainer = {
+            [structureObject.group]: _.orderBy(groupATable, ['counter'], ['desc'])
+        };
+        // Asign the ID of the 2 results to the state
+        this.setState(() => ({ semiFinalGame, ...temporalContainer }));
+    };
+    utilStruOctavos = structure => {
+        console.log('structure');
+        console.log(structure);
+        // Get the current structure
+        const index = Object.keys(structure)[0];
+        const structureObject = structure[index];
+        // Create Copy of the state
+        const copy = this.state.octavosGame;
+        const octavosGame = { ...copy, ...structure };
+        const groupATable = {};
+
+        _.chain(octavosGame)
+            .filter((game) => game.group === structureObject.group)
+            .each(game => {
+                // create a unique counter per GROUP GAME per COUNTRY
+                if (!groupATable[game.winnerId] && game.winnerId !== null) {
+                    groupATable[game.winnerId] = {
+                        countryId: game.winnerId,
+                        counter: 0
+                    };
+                }
+                if (game.winnerId !== null) {
+                    groupATable[game.winnerId].counter++;
+                }
+            })
+            .value();
+        // Order the first 2 results
+        const temporalContainer = {
+            [structureObject.group]: _.orderBy(groupATable, ['counter'], ['desc'])
+        };
+        console.log('octavosGame');
+        console.log(octavosGame);
+        // Asign the ID of the 2 results to the state
+        this.setState(() => ({ octavosGame, ...temporalContainer }));
+    };
+    utilStruOctavos = structure => {
+        console.log('structure');
+        console.log(structure);
+        // Get the current structure
+        const index = Object.keys(structure)[0];
+        const structureObject = structure[index];
+        // Create Copy of the state
+        const copy = this.state.octavosGame;
+        const octavosGame = { ...copy, ...structure };
+        const groupATable = {};
+
+        _.chain(octavosGame)
+            .filter((game) => game.group === structureObject.group)
+            .each(game => {
+                // create a unique counter per GROUP GAME per COUNTRY
+                if (!groupATable[game.winnerId] && game.winnerId !== null) {
+                    groupATable[game.winnerId] = {
+                        countryId: game.winnerId,
+                        counter: 0
+                    };
+                }
+                if (game.winnerId !== null) {
+                    groupATable[game.winnerId].counter++;
+                }
+            })
+            .value();
+        // Order the first 2 results
+        const temporalContainer = {
+            [structureObject.group]: _.orderBy(groupATable, ['counter'], ['desc'])
+        };
+        console.log('octavosGame');
+        console.log(octavosGame);
+        // Asign the ID of the 2 results to the state
+        this.setState(() => ({ octavosGame, ...temporalContainer }));
     };
     savePrediction = () => {
         const { grupos } = this.props;
@@ -404,44 +645,216 @@ class QuinielaGame extends React.Component {
         });
         return predictionCard;
     };
-    renderFases = () => {
-        const { quinielaStructures, CountriesByGroup } = this.props;
+    renderGroupGames = () => {
+        const { CountriesByGroup, grupos } = this.props;
         const { params } = this.props.match;
         const { quinielaId } = params;
         const id = localStorage.getItem('PrensaUserId');
-        const fasesState = ['grupos', 'octavos', 'cuartos', 'semiFinales', 'tercer', 'final'];
 
-        let i = 0;
-        const Cards = _.map(quinielaStructures, fase => {
-            const currentProp = fasesState[i];
-            const currentFaseProps = this.props[currentProp];
-
-            const data = currentFaseProps.map((juego) => {
-                return (
-                    <QuinielaGroups
-                        quinielaId={quinielaId}
-                        userId={id}
-                        order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
-                        CountriesByGroup={CountriesByGroup}
-                        utilStructure={this.utilStructure}
-                        addGame={this.setNewPrediction}
-                        game={juego}
-                    />
-                );
-            });
-            i++;
+        const data = grupos.map((juego) => {
             return (
-                <Card type="inner" title={'Fase de ' + fase.NOMBRE}>
-                    <List
-                        bordered
-                        dataSource={data}
-                        locale={{ emptyText: 'Cargando paises, banderas y opciones. Por favor espera...' }}
-                        renderItem={item => (<List.Item>{item}</List.Item>)}
-                    />
-                </Card>
+                <QuinielaGroups
+                    key={juego.ID}
+                    quinielaId={quinielaId}
+                    userId={id}
+                    order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
+                    CountriesByGroup={CountriesByGroup}
+                    utilStructure={this.utilStructure}
+                    addGame={this.setNewPrediction}
+                    game={juego}
+                />
             );
         });
-        return Cards;
+        return (
+            <Card type="inner" title={'grupos'}>
+                <List
+                    bordered
+                    dataSource={data}
+                    locale={{ emptyText: 'Cargando paises, banderas y opciones. Por favor espera...' }}
+                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                />
+            </Card>
+        );
+    };
+    renderOctavos = () => {
+        const { CountriesByGroup, octavos } = this.props;
+        const { arrayDefaultValues } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        // array counter
+        let ac = -1;
+        const data = octavos.map((juego) => {
+            ac++;
+            return (
+                <QuinielaGroups
+                    key={juego.ID}
+                    quinielaId={quinielaId}
+                    userId={id}
+                    defaultValue={arrayDefaultValues[ac]}
+                    order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
+                    CountriesByGroup={CountriesByGroup}
+                    utilStructure={this.utilStruOctavos}
+                    addGame={this.setNewPrediction}
+                    game={juego}
+                />
+            );
+        });
+        return (
+            <Card type="inner" title={'Octavos'}>
+                <List
+                    bordered
+                    dataSource={data}
+                    locale={{ emptyText: 'Cargando paises, banderas y opciones. Por favor espera...' }}
+                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                />
+            </Card>
+        );
+    };
+    renderCuartos = () => {
+        const { CountriesByGroup, cuartos } = this.props;
+        const { arrayDefaultValuesCuartos } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        // array counter
+        let ac = -1;
+        const data = cuartos.map((juego) => {
+            ac++;
+            return (
+                <QuinielaGroups
+                    key={juego.ID}
+                    quinielaId={quinielaId}
+                    userId={id}
+                    defaultValue={arrayDefaultValuesCuartos[ac]}
+                    order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
+                    CountriesByGroup={CountriesByGroup}
+                    utilStructure={this.utilStruCuartos}
+                    addGame={this.setNewPrediction}
+                    game={juego}
+                />
+            );
+        });
+        return (
+            <Card type="inner" title={'Cuartos'}>
+                <List
+                    bordered
+                    dataSource={data}
+                    locale={{ emptyText: 'Cargando paises, banderas y opciones. Por favor espera...' }}
+                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                />
+            </Card>
+        );
+    };
+    renderSemiFinales = () => {
+        const { CountriesByGroup, semiFinales } = this.props;
+        const { arrayDefaultValuesSemiFinales } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        // array counter
+        let ac = -1;
+        const data = semiFinales.map((juego) => {
+            ac++;
+            return (
+                <QuinielaGroups
+                    key={juego.ID}
+                    quinielaId={quinielaId}
+                    userId={id}
+                    defaultValue={arrayDefaultValuesSemiFinales[ac]}
+                    order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
+                    CountriesByGroup={CountriesByGroup}
+                    utilStructure={this.utilStruSemiFinal}
+                    addGame={this.setNewPrediction}
+                    game={juego}
+                />
+            );
+        });
+        return (
+            <Card type="inner" title={'Semi final'}>
+                <List
+                    bordered
+                    dataSource={data}
+                    locale={{ emptyText: 'Cargando paises, banderas y opciones. Por favor espera...' }}
+                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                />
+            </Card>
+        );
+    };
+    renderTercer = () => {
+        const { CountriesByGroup, tercer } = this.props;
+        const { arrayDefaultValuesTercer } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        // array counter
+        let ac = -1;
+        const data = tercer.map((juego) => {
+            ac++;
+            return (
+                <QuinielaGroups
+                    key={juego.ID}
+                    quinielaId={quinielaId}
+                    userId={id}
+                    defaultValue={arrayDefaultValuesTercer[ac]}
+                    order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
+                    CountriesByGroup={CountriesByGroup}
+                    utilStructure={this.utilStruOctavos}
+                    addGame={this.setNewPrediction}
+                    game={juego}
+                />
+            );
+        });
+        return (
+            <Card type="inner" title={'Octavos'}>
+                <List
+                    bordered
+                    dataSource={data}
+                    locale={{ emptyText: 'Cargando paises, banderas y opciones. Por favor espera...' }}
+                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                />
+            </Card>
+        );
+    };
+    renderFinal = () => {
+        const { CountriesByGroup, final } = this.props;
+        const { arrayDefaultValues } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        // array counter
+        let ac = -1;
+        const data = final.map((juego) => {
+            ac++;
+            return (
+                <QuinielaGroups
+                    key={juego.ID}
+                    quinielaId={quinielaId}
+                    userId={id}
+                    defaultValue={arrayDefaultValues[ac]}
+                    order={this.state[juego.OPCIONES_DE_SELECCION] || [] }
+                    CountriesByGroup={CountriesByGroup}
+                    utilStructure={this.utilStruOctavos}
+                    addGame={this.setNewPrediction}
+                    game={juego}
+                />
+            );
+        });
+        return (
+            <Card type="inner" title={'Octavos'}>
+                <List
+                    bordered
+                    dataSource={data}
+                    locale={{ emptyText: 'Cargando paises, banderas y opciones. Por favor espera...' }}
+                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                />
+            </Card>
+        );
     };
     setFlag = flag => {
         // console.log('attention!!!');
@@ -457,8 +870,383 @@ class QuinielaGame extends React.Component {
                 return <Avatar src={avatar} />;
         }
     };
+    _goDown = () => {
+        window.scrollTo(0, document.body.scrollHeight);
+    };
+    // New stepper code
+    handleNext = () => {
+        window.scrollTo(0, 0);
+        this.setState(() => ({ step: this.state.step + 1 }));
+    };
+    handleBack = () => {
+        this.setState(() => ({ step: this.state.step - 1 }));
+    };
+    // Check if 1th and 2th positions per Group
+    checkGroups = () => {
+        const { octavos } = this.props;
+        const { A, B, C, D, E, F, G, H } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        const groupsID = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        let error = false;
+        _.each(groupsID, groupId => {
+            const positionTable = this.state[groupId];
+            if (_.isEmpty(positionTable)) {
+                message.error('Aún no hay ganadores definidos para el grupo: ' + groupId);
+                error = true;
+                return;
+            }
+            if(positionTable.length < 2) {
+                error = true;
+                message.error('No hay segundo puesto para el grupo ' + groupId);
+                return;
+            }
+        });
+        if(!error) {
+            this.handleNext();
+            // Default positions
+            const arrayDefaultValues = [
+                { optionLeft: A[0].countryId, optionRight: B[1].countryId },
+                { optionLeft: C[0].countryId, optionRight: D[1].countryId },
+                { optionLeft: E[0].countryId, optionRight: F[1].countryId },
+                { optionLeft: G[0].countryId, optionRight: H[1].countryId },
+                { optionLeft: B[0].countryId, optionRight: A[1].countryId },
+                { optionLeft: D[0].countryId, optionRight: C[1].countryId },
+                { optionLeft: F[0].countryId, optionRight: E[1].countryId },
+                { optionLeft: H[0].countryId, optionRight: G[1].countryId }
+            ];
+            const octavosGames = {};
+            // array counter
+            let ac = -1;
+            _.map(octavos, juego => {
+                ac++;
+                // add by default the games prediction to octavos
+                octavosGames[juego.ID] = {
+                    JUEGO: juego.ID,
+                    QUINIELA: quinielaId,
+                    USUARIO: id,
+                    GOL_1: 0,
+                    GOL_2: 0,
+                    JUEGO_1: arrayDefaultValues[ac].optionLeft,
+                    JUEGO_2: arrayDefaultValues[ac].optionRight
+                };
+            });
+            const gamesCopy = this.state.games;
+            const games = {...gamesCopy, ...octavosGames};
+            this.setState(() => ({ arrayDefaultValues, games }));
+        }
+    };
+    checkOctavos = () => {
+        const { cuartos } = this.props;
+        const { a8, b8, c8, d8, e8, f8, g8, h8 } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        const groupsID = [ 'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'];
+        let error = false;
+        let i = 0;
+        _.each(groupsID, groupId => {
+            i++;
+            const positionTable = this.state[groupId];
+            if (_.isEmpty(positionTable)) {
+                message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                error = true;
+                return;
+            }
+        });
+        if(!error) {
+            console.log('no hay en errores...');
+            // Default positions
+            const arrayDefaultValuesCuartos = [
+                { optionLeft: a8[0].countryId, optionRight: b8[0].countryId },
+                { optionLeft: c8[0].countryId, optionRight: d8[0].countryId },
+                { optionLeft: e8[0].countryId, optionRight: f8[0].countryId },
+                { optionLeft: g8[0].countryId, optionRight: h8[0].countryId }
+            ];
+            const cuartosGames = {};
+            // array counter
+            let ac = -1;
+            _.map(cuartos, juego => {
+                ac++;
+                // add by default the games prediction to octavos
+                cuartosGames[juego.ID] = {
+                    JUEGO: juego.ID,
+                    QUINIELA: quinielaId,
+                    USUARIO: id,
+                    GOL_1: 0,
+                    GOL_2: 0,
+                    JUEGO_1: arrayDefaultValuesCuartos[ac].optionLeft,
+                    JUEGO_2: arrayDefaultValuesCuartos[ac].optionRight
+                };
+            });
+            console.log('setstate');
+            const gamesCopy = this.state.games;
+            const games = {...gamesCopy, ...cuartosGames};
+            this.setState(() => ({ arrayDefaultValuesCuartos, games }), () => {
+                console.log('arrayDefaultValuesCuartos state');
+                this.handleNext();
+            });
+        }
+    };
+    checkCuartos = () => {
+        const { semiFinales } = this.props;
+        const { a4, b4, c4, d4 } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        const groupsID = [ 'a4', 'b4', 'c4', 'd4'];
+        let error = false;
+        let i = 0;
+        _.each(groupsID, groupId => {
+            i++;
+            const positionTable = this.state[groupId];
+            if (_.isEmpty(positionTable)) {
+                message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                error = true;
+                return;
+            }
+        });
+        if(!error) {
+            // Default positions
+            const arrayDefaultValuesSemiFinales = [
+                { optionLeft: a4[0].countryId, optionRight: b4[0].countryId },
+                { optionLeft: c4[0].countryId, optionRight: d4[0].countryId }
+            ];
+            const cuartosGames = {};
+            // array counter
+            let ac = -1;
+            _.map(semiFinales, juego => {
+                ac++;
+                // add by default the games prediction to octavos
+                cuartosGames[juego.ID] = {
+                    JUEGO: juego.ID,
+                    QUINIELA: quinielaId,
+                    USUARIO: id,
+                    GOL_1: 0,
+                    GOL_2: 0,
+                    JUEGO_1: arrayDefaultValuesSemiFinales[ac].optionLeft,
+                    JUEGO_2: arrayDefaultValuesSemiFinales[ac].optionRight
+                };
+            });
+            console.log('setstate');
+            const gamesCopy = this.state.games;
+            const games = {...gamesCopy, ...cuartosGames};
+            this.setState(() => ({ arrayDefaultValuesSemiFinales, games }), () => {
+                console.log('arrayDefaultValuesOctavos state');
+                this.handleNext();
+            });
+        }
+    };
+    checkSemiFinal = () => {
+        const { tercer } = this.props;
+        const { a2, b2 } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        const groupsID = [ 'a2', 'b2' ];
+        let error = false;
+        let i = 0;
+        _.each(groupsID, groupId => {
+            i++;
+            const positionTable = this.state[groupId];
+            if (_.isEmpty(positionTable)) {
+                message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                error = true;
+                return;
+            }
+        });
+        if(!error) {
+            // Default positions
+            const arrayDefaultValuesTercer = [
+                { optionLeft: a2[0].loserId, optionRight: b2[0].loserId }
+            ];
+            const tercerGames = {};
+            // array counter
+            let ac = -1;
+            _.map(tercer, juego => {
+                ac++;
+                // add by default the games prediction to octavos
+                tercerGames[juego.ID] = {
+                    JUEGO: juego.ID,
+                    QUINIELA: quinielaId,
+                    USUARIO: id,
+                    GOL_1: 0,
+                    GOL_2: 0,
+                    JUEGO_1: arrayDefaultValuesTercer[ac].optionLeft,
+                    JUEGO_2: arrayDefaultValuesTercer[ac].optionRight
+                };
+            });
+            console.log('setstate');
+            const gamesCopy = this.state.games;
+            const games = {...gamesCopy, ...tercerGames};
+            this.setState(() => ({ arrayDefaultValuesTercer, games }), () => {
+                this.handleNext();
+            });
+        }
+    };
+    checkTercer = () => {
+        const { final } = this.props;
+        const { a2, b2 } = this.state;
+        const { params } = this.props.match;
+        const { quinielaId } = params;
+        const id = localStorage.getItem('PrensaUserId');
+
+        const groupsID = [ 'a2', 'b2' ];
+        let error = false;
+        let i = 0;
+        _.each(groupsID, groupId => {
+            i++;
+            const positionTable = this.state[groupId];
+            if (_.isEmpty(positionTable)) {
+                message.error('Aún no hay ganadores definidos para el juego: ' + i);
+                error = true;
+                return;
+            }
+        });
+        if(!error) {
+            // Default positions
+            const arrayDefaultValuesFinal = [
+                { optionLeft: a2[0].countryId, optionRight: b2[0].countryId }
+            ];
+            const finalGames = {};
+            // array counter
+            let ac = -1;
+            _.map(final, juego => {
+                ac++;
+                // add by default the games prediction to octavos
+                finalGames[juego.ID] = {
+                    JUEGO: juego.ID,
+                    QUINIELA: quinielaId,
+                    USUARIO: id,
+                    GOL_1: 0,
+                    GOL_2: 0,
+                    JUEGO_1: arrayDefaultValuesFinal[ac].optionLeft,
+                    JUEGO_2: arrayDefaultValuesFinal[ac].optionRight
+                };
+            });
+            const gamesCopy = this.state.games;
+            const games = {...gamesCopy, ...finalGames};
+            this.setState(() => ({ arrayDefaultValuesFinal, games }), () => {
+                this.handleNext();
+            });
+        }
+    };
+    checkFinal = () => {
+        console.log('Checkfinal');
+        this.savePrediction();
+    };
+    renderSteps = () => {
+        const {step} = this.state;
+
+        switch (step) {
+            case 0:
+                return(
+                    <div>
+                        <Row>
+                            { this.renderGroupGames() }
+                            <Col>
+                                <Button onClick={this.checkGroups} type="primary" size="large">
+                                    Siguiente<Icon type="right" />
+                                </Button>
+                            </Col>
+                        </Row>
+                    </div>
+                );
+            case 1:
+                return(
+                    <div>
+                        <Row>
+                            { this.renderOctavos() }
+                            <ButtonGroup>
+                                <Button onClick={this.handleBack} type="primary" size="large">
+                                    <Icon type="left" />Volver a grupos
+                                </Button>
+                                <Button onClick={this.checkOctavos} type="primary" size="large">
+                                    Ir a cuartos<Icon type="right" />
+                                </Button>
+                            </ButtonGroup>
+                        </Row>
+                    </div>
+                );
+            case 2:
+                return(
+                    <div>
+                        <Row>
+                            { this.renderCuartos() }
+                            <ButtonGroup>
+                                <Button onClick={this.handleBack} type="primary" size="large">
+                                    <Icon type="left" />Volver a octavos
+                                </Button>
+                                <Button onClick={this.checkCuartos} type="primary" size="large">
+                                    ir a semi-finales<Icon type="right" />
+                                </Button>
+                            </ButtonGroup>
+                        </Row>
+                    </div>
+                );
+            case 3:
+                return(
+                    <div>
+                        <Row>
+                            { this.renderSemiFinales() }
+                            <ButtonGroup>
+                                <Button onClick={this.handleBack} type="primary" size="large">
+                                    <Icon type="left" />Volver a cuartos
+                                </Button>
+                                <Button onClick={this.checkSemiFinal} type="primary" size="large">
+                                    ir a tercero<Icon type="right" />
+                                </Button>
+                            </ButtonGroup>
+                        </Row>
+                    </div>
+                );
+            case 4:
+                return(
+                    <div>
+                        <Row>
+                            { this.renderTercer() }
+                            <ButtonGroup>
+                                <Button onClick={this.handleBack} type="primary" size="large">
+                                    <Icon type="left" />Volver a semi finales
+                                </Button>
+                                <Button onClick={this.checkTercer} type="primary" size="large">
+                                    ir a final<Icon type="right" />
+                                </Button>
+                            </ButtonGroup>
+                        </Row>
+                    </div>
+                );
+            case 5:
+                return(
+                    <div>
+                        <Row>
+                            { this.renderFinal() }
+                            <ButtonGroup>
+                                <Button onClick={this.handleBack} type="primary" size="large">
+                                    <Icon type="left" />Volver a tercero
+                                </Button>
+                                <Button onClick={this.checkFinal} type="primary" size="large">
+                                    Colocar Quiniela<Icon type="right" />
+                                </Button>
+                            </ButtonGroup>
+                        </Row>
+                    </div>
+                );
+            default:
+                return(
+                    <div style={{ margin: '24px 0', padding: '25px' }}>
+                        Has ido demasiado lejos!! :O
+                    </div>
+                );
+        }
+    };
+    // End of new stepper code
     render() {
-        // console.log('render container');
         const {
             quiniela,
             error,
@@ -522,19 +1310,17 @@ class QuinielaGame extends React.Component {
                     >
                         <TabPane tab={<span><Icon type="profile" />Mi predicción</span>} key="1">
                         {_.isEmpty(predictionsByUsers) ? (
-                            <Row>
-                                { this.renderFases() }
-                                <Col>
-                                    <Button
-                                        type="primary"
-                                        size="large"
-                                        style={{ marginTop: 15 }}
-                                        onClick={this.savePrediction}
-                                    >
-                                        Colocar mi quiniela
-                                    </Button>
-                                </Col>
-                            </Row>
+                            <Card>
+                                <Steps current={this.state.step}>
+                                    <Step title="Fase de grupos" />
+                                    <Step title="Fase de octavos" />
+                                    <Step title="Fase de cuartos" />
+                                    <Step title="Semi final" />
+                                    <Step title="Tercer lugar" />
+                                    <Step title="Final" />
+                                </Steps>
+                                {this.renderSteps()}
+                            </Card>
                         ) : (
                             <div>
                                 <Alert
@@ -615,6 +1401,13 @@ class QuinielaGame extends React.Component {
                         </TabPane>
                     </Tabs>
                 </Card>
+                <Button
+                    onClick={this._goDown}
+                    style={DownStyle}
+                    size="large"
+                    type="primary"
+                    icon="down"
+                />
             </div>
         );
     }
@@ -627,13 +1420,18 @@ QuinielaGame.propTypes = {
     quiniela: React.PropTypes.object.isRequired,
     error: React.PropTypes.bool.isRequired,
     grupos: React.PropTypes.array.isRequired,
+    octavos: React.PropTypes.array.isRequired,
+    cuartos: React.PropTypes.object.isRequired,
+    tercer: React.PropTypes.object.isRequired,
+    semiFinales: React.PropTypes.object.isRequired,
+    final: React.PropTypes.object.isRequired,
     postSuccesfull: React.PropTypes.bool.isRequired,
-    CountriesByGroup: React.PropTypes.object.isRequired,
+    CountriesByGroup: React.PropTypes.array.isRequired,
     refusedInvitations: React.PropTypes.array.isRequired,
     acceptedInvitations: React.PropTypes.array.isRequired,
     sendInvitations: React.PropTypes.array.isRequired,
     quinielaPositions: React.PropTypes.array.isRequired,
-    predictionsByUsers: React.PropTypes.array.isRequired,
+    predictionsByUsers: React.PropTypes.object.isRequired,
     quinielaStructures: React.PropTypes.array.isRequired,
     form: React.PropTypes.object.isRequired
 };

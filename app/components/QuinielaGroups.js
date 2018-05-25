@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Select, Icon, Badge, Row, Col, message} from 'antd';
+import {Button, Select, Icon, Badge, Row, Col} from 'antd';
 const Option = Select.Option;
 const ButtonGroup = Button.Group;
 import Flag from 'react-world-flags'; // Flags
@@ -19,14 +19,14 @@ const japanFlag = {
 };
 
 class QuinielaGroups extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             count: 0,
             count2: 0,
-            JUEGO_1: null,
-            JUEGO_2: null,
-            show: true,
+            JUEGO_1: this.props.defaultValue && this.props.defaultValue.optionLeft || null,
+            JUEGO_2: this.props.defaultValue && this.props.defaultValue.optionRight || null,
+            show: true
         };
     }
     updateGame = () => {
@@ -49,40 +49,25 @@ class QuinielaGroups extends React.Component {
             }
         };
         const winner = (count > count2) ? jugador1ID : jugador2ID;
+        const loser = (count > count2) ? jugador2ID : jugador1ID;
         const utilDropdown = {
             [game.ID]: {
                 id: game.ID,
                 group: game.OPCIONES_DE_SELECCION,
-                winnerId: winner
+                winnerId: winner,
+                loserId: loser
             }
         };
         addGame(prediction);
         utilStructure(utilDropdown);
     };
     increase = () => {
-        const { game } = this.props;
-        const { JUEGO_1 } = this.state;
-        const exist = !!JUEGO_1;
-
-        if (game.JUGADOR_1.NOMBRE === 'null' && !exist ) {
-            message.error('Tienes que ingresar el pais uno primero');
-            return;
-        }
-
         const count = this.state.count + 1;
         this.setState({ count }, () => {
             this.updateGame();
         });
     };
     decline = () => {
-        const { game } = this.props;
-        const { JUEGO_1 } = this.state;
-        const exist = !!JUEGO_1;
-
-        if (game.JUGADOR_1.NOMBRE === 'null' && !exist ) {
-            message.error('Tienes que ingresar el pais uno primero');
-            return;
-        }
         let count = this.state.count - 1;
         if (count < 0) {
             count = 0;
@@ -93,28 +78,12 @@ class QuinielaGroups extends React.Component {
     };
     // Country 2
     increase2 = () => {
-        const { game } = this.props;
-        const { JUEGO_2 } = this.state;
-        const exist = !!JUEGO_2;
-
-        if (game.JUGADOR_2.NOMBRE === 'null' && !exist ) {
-            message.error('Tienes que ingresar el pais dos primero');
-            return;
-        }
         const count2 = this.state.count2 + 1;
         this.setState({ count2 }, () => {
             this.updateGame();
         });
     };
     decline2 = () => {
-        const { game } = this.props;
-        const { JUEGO_2 } = this.state;
-        const exist = !!JUEGO_2;
-
-        if (game.JUGADOR_2.NOMBRE === 'null' && !exist ) {
-            message.error('Tienes que ingresar el pais dos primero');
-            return;
-        }
         let count2 = this.state.count2 - 1;
         if (count2 < 0) {
             count2 = 0;
@@ -148,7 +117,8 @@ class QuinielaGroups extends React.Component {
     };
     render() {
         console.log('QuinielaGroups();');
-        const { game, CountriesByGroup } = this.props;
+        const { game, CountriesByGroup, defaultValue } = this.props;
+
         const isGroups = (game.JUGADOR_1 && game.JUGADOR_1.NOMBRE !== 'null' );
         // Verify is already played the game
         const isPlayed = (game.GOLES_1 !== null && game.GOLES_2 !== null);
@@ -184,7 +154,7 @@ class QuinielaGroups extends React.Component {
 
         const menu = () => _.map(optionsPerGame, pais => {
             return (
-                <Option key={pais.PAIS} key={pais.PAIS}>
+                <Option value={pais.PAIS} key={pais.PAIS}>
                     {(pais.ISO === 'JPN') ? (
                         <Flag style={{...style, ...japanFlag}} code={pais.ISO} height="20" />
                     ) : (
@@ -195,7 +165,7 @@ class QuinielaGroups extends React.Component {
         });
         const menuRigth = () => _.map(optionsPerGameR, pais => {
             return (
-                <Option key={pais.PAIS} key={pais.PAIS}>
+                <Option value={pais.PAIS} key={pais.PAIS}>
                     {(pais.ISO === 'JPN') ? (
                         <Flag style={{...style, ...japanFlag}} code={pais.ISO} height="20" />
                     ) : (
@@ -204,17 +174,6 @@ class QuinielaGroups extends React.Component {
                 </Option>
             );
         });
-
-        // Search if defailt value
-        const defaultValue = () => {
-          /** if (!_.isEmpty(order) && order[] === game.OPCIONES_DE_SELECCION) {
-              console.log('there is for this group ')
-          } else {
-              console.log('there is not default value');
-              return '';
-          } **/
-            return '';
-        };
 
         return (
                 <div style={{ width: '100%' }}>
@@ -292,7 +251,11 @@ class QuinielaGroups extends React.Component {
                         <div>
                             <Row>
                                 <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 1 }}>
-                                    <Select defaultValue={defaultValue} onChange={this.selecCountry1} className={'dropDownCustom'}>
+                                    <Select
+                                        defaultValue={defaultValue.optionLeft || ''}
+                                        onChange={this.selecCountry1}
+                                        className={'dropDownCustom'}
+                                    >
                                         { menu() }
                                     </Select>
                                       <ButtonGroup>
@@ -312,8 +275,12 @@ class QuinielaGroups extends React.Component {
                                         {/** options <div>{game.OPCIONES_DE_SELECCION || ''}</div> **/}
                                     </div>
                                 </Col>
-                                <Col xs={{ offset: 2, span: 8 }} lg={{ span: 8, offset: 2 }}>
-                                    <Select onChange={this.selecCountry2} className={'dropDownCustom'}>
+                                <Col xs={{ offset: 2, span: 9 }} lg={{ span: 8, offset: 2 }}>
+                                    <Select
+                                        defaultValue={defaultValue.optionRight || ''}
+                                        onChange={this.selecCountry2}
+                                        className={'dropDownCustom'}
+                                    >
                                         { menuRigth() }
                                     </Select>
                                     <Badge showZero count={this.state.count2} />
@@ -339,6 +306,7 @@ QuinielaGroups.propTypes = {
     order: React.PropTypes.array.isRequired,
     utilStructure: React.PropTypes.func.isRequired,
     addGame: React.PropTypes.func.isRequired,
+    defaultValue: React.PropTypes.object.isRequired,
     quinielaId: React.PropTypes.string.isRequired,
     CountriesByGroup: React.PropTypes.object.isRequired,
     userId: React.PropTypes.string.isRequired
