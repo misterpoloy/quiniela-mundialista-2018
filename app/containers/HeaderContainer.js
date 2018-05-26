@@ -42,17 +42,19 @@ class ComponentHeader extends React.Component {
     render() {
         const { user } = this.props;
         return(
-            <div>
+            <div style={{ zIndex: 10 }}>
                 <AppBar
                     onLeftIconButtonClick={this.handleToggle}
-                    style={{backgroundColor: this.props.theme.primary1Color, position: 'fixed', width: '100%'}}
+                    style={{backgroundColor: this.props.theme.primary1Color, position: 'fixed', width: '100%', zindex: 10}}
                     title={<img src={bannerLogo} width={230} alt="Prensa Libre 2018" />}
                     iconElementRight={
                         <div>
                             <FlatButton className={'reglas'} onClick={this.handleClick} label="Reglas" />
-                            <FacebookShareButton url={FACEBOOK_SHARE}>
-                                <FacebookIcon size={42} round />
-                            </FacebookShareButton>
+                            <a href="#">
+                                <FacebookShareButton url={FACEBOOK_SHARE}>
+                                    <FacebookIcon size={42} round />
+                                </FacebookShareButton>
+                            </a>
                         </div>
                     }
                 />

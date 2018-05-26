@@ -2,7 +2,7 @@
  * por que no puede estar react y el API separados
  * */
 export const URLQUINIELA = 'quiniela.com'; // Dominio autorizado por PL Connect
-export const FACEBOOK_SHARE = 'quiniela.prensalibre.com'; // URL para compartir en FB.
+export const FACEBOOK_SHARE = 'http://www.prensalibre.com/deportes/mundial-rusia-2018/quiniela-copa-del-mundo-2018'; // URL para compartir en FB.
 export const REACT_URL = 'http://www.quiniela.com:5050/'; // Dirección de la aplicación de Quiniela Widget
 export const API_URL = 'http://www.quiniela.com:8080/'; // Dirección de dominio donde esta el API
 export const PLCONNECT_URL = 'https://plconnect.prensalibre.com/ingresa/'; // Dominio de PL Connect
