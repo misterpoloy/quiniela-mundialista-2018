@@ -58,50 +58,54 @@ const UpStyle = {
     opacity: 0.7
 };
 
+const initialState = {
+    userId: false,
+    playedCounter: 0,
+    step: 0,
+    done: false,
+    groupsGame: {},
+    games: {},
+    groupsIsReady: false,
+    octavosIsReady: false,
+    cuartosIsReady: false,
+    semiIsReady: false,
+    thirdIsReady: false,
+    A: [],
+    B: [],
+    C: [],
+    D: [],
+    E: [],
+    F: [],
+    G: [],
+    H: [],
+    a8: [],
+    b8: [],
+    c8: [],
+    d8: [],
+    e8: [],
+    f8: [],
+    g8: [],
+    h8: [],
+    a4: [],
+    b4: [],
+    c4: [],
+    d4: [],
+    a2: [],
+    b2: [],
+    ter: [],
+    fin: [],
+    octavos: [],
+    cuartos: [],
+    semifinal: [],
+    tercero: [],
+    final: []
+};
+
 class QuinielaGame extends React.Component {
     constructor() {
         super();
         this.state = {
-            userId: false,
-            playedCounter: 0,
-            step: 0,
-            done: false,
-            groupsGame: {},
-            games: {},
-            groupsIsReady: false,
-            octavosIsReady: false,
-            cuartosIsReady: false,
-            semiIsReady: false,
-            thirdIsReady: false,
-            A: [],
-            B: [],
-            C: [],
-            D: [],
-            E: [],
-            F: [],
-            G: [],
-            H: [],
-            a8: [],
-            b8: [],
-            c8: [],
-            d8: [],
-            e8: [],
-            f8: [],
-            g8: [],
-            h8: [],
-            a4: [],
-            b4: [],
-            c4: [],
-            d4: [],
-            a2: [],
-            b2: [],
-            ter: [],
-            fin: [],
-            octavos: [],
-            cuartos: [],
-            semifinal: [],
-            tercero: [],
-            final: []
+            ...initialState
         };
     }
     componentWillMount() {
@@ -1206,6 +1210,15 @@ class QuinielaGame extends React.Component {
     checkFinal = () => {
         this.savePrediction();
     };
+    reset = () => {
+        this._goDown();
+        this.setState(() => ({ ...initialState }));
+    };
+    ResetButton = () => (
+        <Button onClick={this.reset} type="primary" size="large">
+            Comenzar de nuevo
+        </Button>
+    );
     renderSteps = () => {
         const {step} = this.state;
 
@@ -1229,9 +1242,7 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderOctavos() }
                             <ButtonGroup>
-                                <Button onClick={() => location.reload()} type="primary" size="large">
-                                    Comenzar de nuevo
-                                </Button>
+                                {this.ResetButton()}
                                 <Button onClick={this.checkOctavos} type="primary" size="large">
                                     Ir a cuartos<Icon type="right" />
                                 </Button>
@@ -1245,9 +1256,7 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderCuartos() }
                             <ButtonGroup>
-                                <Button onClick={() => location.reload()} type="primary" size="large">
-                                    resetear
-                                </Button>
+                                {this.ResetButton()}
                                 <Button onClick={this.checkCuartos} type="primary" size="large">
                                     ir a semi-finales<Icon type="right" />
                                 </Button>
@@ -1261,9 +1270,7 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderSemiFinales() }
                             <ButtonGroup>
-                                <Button onClick={() => location.reload()} type="primary" size="large">
-                                    resetear
-                                </Button>
+                                {this.ResetButton()}
                                 <Button onClick={this.checkSemiFinal} type="primary" size="large">
                                     ir a tercero<Icon type="right" />
                                 </Button>
@@ -1277,9 +1284,7 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderTercer() }
                             <ButtonGroup>
-                                <Button onClick={() => location.reload()} type="primary" size="large">
-                                    resetear
-                                </Button>
+                                {this.ResetButton()}
                                 <Button onClick={this.checkTercer} type="primary" size="large">
                                     ir a final<Icon type="right" />
                                 </Button>
@@ -1293,9 +1298,7 @@ class QuinielaGame extends React.Component {
                         <Row>
                             { this.renderFinal() }
                             <ButtonGroup>
-                                <Button onClick={() => location.reload()} type="primary" size="large">
-                                    resetear
-                                </Button>
+                                {this.ResetButton()}
                                 <Button onClick={this.checkFinal} type="primary" size="large">
                                     Colocar Quiniela<Icon type="right" />
                                 </Button>
