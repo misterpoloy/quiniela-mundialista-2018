@@ -595,6 +595,10 @@ class QuinielaGame extends React.Component {
                         cancelText: 'No, aún no',
                         onOk() {
                             window.scrollTo(0, 0);
+                            // #newFunction
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                            // #newFunction_end
                             sendPredictionAction(verifyRigth);
                         }
                     });
@@ -868,6 +872,10 @@ class QuinielaGame extends React.Component {
     // New stepper code
     handleNext = () => {
         window.scrollTo(0, 0);
+        // #newFunction
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        // #newFunction_end
         this.setState(() => ({ step: this.state.step + 1 }));
     };
     // Check if 1th and 2th positions per Group
