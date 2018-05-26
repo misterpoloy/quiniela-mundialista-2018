@@ -43,7 +43,7 @@ class TabsMenu extends React.Component {
                     onActive={this.handleActive} />
                 <Tab
                     style={style}
-                    label={<div>Todas <Badge showZero style={style} count={UserInvitationsArray.length}/></div>}
+                    label={<div>Invitaciones <Badge showZero style={style} count={UserInvitationsArray.length}/></div>}
                     data-route="/quinielas"
                     onActive={this.handleActive} />
 

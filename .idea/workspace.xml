@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" afterPath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
+      <change beforePath="$PROJECT_DIR$/app/components/TabsMenu.js" afterPath="$PROJECT_DIR$/app/components/TabsMenu.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,11 +19,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="884" column="44" lean-forward="true" selection-start-line="884" selection-start-column="44" selection-end-line="884" selection-end-column="44" />
+            <state relative-caret-position="309">
+              <caret line="600" column="47" lean-forward="true" selection-start-line="600" selection-start-column="47" selection-end-line="600" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabsMenu.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/components/TabsMenu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="47" column="51" lean-forward="true" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -34,8 +43,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkOctavos</find>
-      <find>arrayDefaultValues</find>
       <find>window</find>
       <find>renderCuartos</find>
       <find>octavosGame</find>
@@ -64,6 +71,8 @@
       <find>reseat</find>
       <find>resete</find>
       <find>window.scrollTo(0, 0</find>
+      <find>#</find>
+      <find>scroll</find>
     </findStrings>
     <replaceStrings>
       <replace>MainContainer</replace>
@@ -132,13 +141,13 @@
         <option value="$PROJECT_DIR$/app/containers/AllQuinielasContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/MyQuinielasContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
-        <option value="$PROJECT_DIR$/app/components/TabsMenu.js" />
         <option value="$PROJECT_DIR$/app/components/PredictionContry.js" />
         <option value="$PROJECT_DIR$/app/styles/styles.scss" />
         <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
         <option value="$PROJECT_DIR$/app/constants/urls.js" />
         <option value="$PROJECT_DIR$/app/containers/HeaderContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
+        <option value="$PROJECT_DIR$/app/components/TabsMenu.js" />
       </list>
     </option>
   </component>
@@ -194,7 +203,7 @@
               <item name="react widget" type="b2602c69:ProjectViewProjectNode" />
               <item name="react widget" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -317,18 +326,18 @@
       <workItem from="1527101650650" duration="36775000" />
       <workItem from="1527221774393" duration="11382000" />
       <workItem from="1527260526062" duration="219000" />
-      <workItem from="1527355180242" duration="1481000" />
+      <workItem from="1527355180242" duration="2319000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="385598000" />
+    <option name="totallyTimeSpent" value="386436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="833" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2811159" sideWeight="0.4783198" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2811159" sideWeight="0.4783198" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -664,13 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/TabsMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="36" column="77" lean-forward="false" selection-start-line="36" selection-start-column="74" selection-end-line="36" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/app-material-ui-theme.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -722,8 +724,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="884" column="44" lean-forward="true" selection-start-line="884" selection-start-column="44" selection-end-line="884" selection-end-column="44" />
+        <state relative-caret-position="309">
+          <caret line="600" column="47" lean-forward="true" selection-start-line="600" selection-start-column="47" selection-end-line="600" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/TabsMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="47" column="51" lean-forward="true" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
           <folding />
         </state>
       </provider>
