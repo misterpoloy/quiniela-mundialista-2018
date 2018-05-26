@@ -50,6 +50,13 @@ const DownStyle = {
     width: 50,
     opacity: 0.7
 };
+const UpStyle = {
+    position: 'fixed',
+    bottom: 70,
+    right: 25,
+    width: 50,
+    opacity: 0.7
+};
 
 class QuinielaGame extends React.Component {
     constructor() {
@@ -594,11 +601,7 @@ class QuinielaGame extends React.Component {
                         okText: '¡Si! Guardar',
                         cancelText: 'No, aún no',
                         onOk() {
-                            window.scrollTo(0, 0);
-                            // #newFunction
-                            document.body.scrollTop = 0;
-                            document.documentElement.scrollTop = 0;
-                            // #newFunction_end
+                            this._goUp();
                             sendPredictionAction(verifyRigth);
                         }
                     });
@@ -866,16 +869,19 @@ class QuinielaGame extends React.Component {
                 return <Avatar src={avatar} />;
         }
     };
-    _goDown = () => {
+    _goDown() {
         window.scrollTo(0, document.body.scrollHeight);
-    };
-    // New stepper code
-    handleNext = () => {
+    }
+    _goUp() {
         window.scrollTo(0, 0);
         // #newFunction
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
         // #newFunction_end
+    }
+    // New stepper code
+    handleNext = () => {
+        this._goUp();
         this.setState(() => ({ step: this.state.step + 1 }));
     };
     // Check if 1th and 2th positions per Group
@@ -1469,6 +1475,13 @@ class QuinielaGame extends React.Component {
                         </TabPane>
                     </Tabs>
                 </Card>
+                <Button
+                    onClick={this._goUp}
+                    style={UpStyle}
+                    size="large"
+                    type="primary"
+                    icon="up"
+                />
                 <Button
                     onClick={this._goDown}
                     style={DownStyle}
