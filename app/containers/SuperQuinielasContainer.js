@@ -70,6 +70,7 @@ class SuperQuiniela extends React.Component {
                             avatar="https://upload.wikimedia.org/wikipedia/commons/0/0c/Claro.svg"
                         />
                         <CardMedia
+                            className={'banner'}
                             overlay={<CardTitle title="¡Participa en la Super Quiniela!" subtitle="Participa en muchos premios" />}
                         >
                             <img src={bannerSource} alt="" />

@@ -138,6 +138,7 @@ class AllQuinielas extends React.Component {
         return (
             <div>
                 <CardMedia
+                    className={'banner'}
                     overlay={<CardTitle title="Todas las quinielas" subtitle="Juega, únete y disfruta de todas tus predicciones" />}
                 >
                     <img src={bannerSource} alt="" />

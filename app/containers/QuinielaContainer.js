@@ -1356,9 +1356,10 @@ class QuinielaGame extends React.Component {
         return (
             <div>
                 <CardMedia
+                    className={'banner'}
                     overlay={<CardTitle
-                        title={quiniela.NOMBRE || '' }
-                        subtitle={quiniela.DESCRIPCION || '' }
+                        title={quiniela.NOMBRE || 'cargando...' }
+                        subtitle={quiniela.DESCRIPCION || 'cargando descripción...' }
                     />}
                 >
                     <img src={bannerSource} alt="" />
