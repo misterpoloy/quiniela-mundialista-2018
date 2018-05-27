@@ -2,20 +2,80 @@ import React from 'react';
 import {Button, Select, Icon, Badge, Row, Col} from 'antd';
 const Option = Select.Option;
 const ButtonGroup = Button.Group;
-import Flag from 'react-world-flags'; // Flags
+import RUS from '../src/images/flags/RUS.png';
+import EGY from '../src/images/flags/EGY.png';
+import SAU from '../src/images/flags/SAU.png';
+import URY from '../src/images/flags/URY.png';
+import PRT from '../src/images/flags/PRT.png';
+import MAR from '../src/images/flags/MAR.png';
+import ESP from '../src/images/flags/ESP.png';
+import IRN from '../src/images/flags/IRN.png';
+import FRA from '../src/images/flags/FRA.png';
+import PER from '../src/images/flags/PER.png';
+import AUS from '../src/images/flags/AUS.png';
+import DNK from '../src/images/flags/DNK.png';
+import ARG from '../src/images/flags/ARG.png';
+import HRV from '../src/images/flags/HRV.png';
+import ISL from '../src/images/flags/ISL.png';
+import NGA from '../src/images/flags/NGA.png';
+import BRA from '../src/images/flags/BRA.png';
+import CRI from '../src/images/flags/CRI.png';
+import CHE from '../src/images/flags/CHE.png';
+import SRB from '../src/images/flags/SRB.png';
+import DEU from '../src/images/flags/DEU.png';
+import SWE from '../src/images/flags/SWE.png';
+import MEX from '../src/images/flags/MEX.png';
+import KOR from '../src/images/flags/KOR.png';
+import BEL from '../src/images/flags/BEL.png';
+import TUN from '../src/images/flags/TUN.png';
+import GBR from '../src/images/flags/GBR.png';
+import PAN from '../src/images/flags/PAN.png';
+import POL from '../src/images/flags/POL.png';
+import COL from '../src/images/flags/COL.png';
+import SEN from '../src/images/flags/SEN.png';
+import JPN from '../src/images/flags/JPN.png';
 
 // util
 const _ = require('lodash');
-
 const style = {
-    margin: '5px',
-    width: 46,
-    borderRadius: 5
+    marginLeft: 2,
+    marginRight: 5,
+    marginTop: 5
 };
-const japanFlag = {
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#e1e1e1'
+
+const flag = {
+    RUS,
+    EGY,
+    SAU,
+    URY,
+    PRT,
+    MAR,
+    ESP,
+    IRN,
+    FRA,
+    PER,
+    AUS,
+    DNK,
+    ARG,
+    HRV,
+    ISL,
+    NGA,
+    BRA,
+    CRI,
+    CHE,
+    SRB,
+    DEU,
+    SWE,
+    MEX,
+    KOR,
+    BEL,
+    TUN,
+    GBR,
+    PAN,
+    POL,
+    COL,
+    SEN,
+    JPN
 };
 
 class QuinielaGroups extends React.Component {
@@ -116,7 +176,6 @@ class QuinielaGroups extends React.Component {
         });
     };
     render() {
-        console.log('QuinielaGroups();');
         const { game, CountriesByGroup, defaultValue } = this.props;
 
         const isGroups = (game.JUGADOR_1 && game.JUGADOR_1.NOMBRE !== 'null' );
@@ -155,10 +214,7 @@ class QuinielaGroups extends React.Component {
         const menu = () => _.map(optionsPerGame, pais => {
             return (
                 <Option value={pais.PAIS} key={pais.PAIS}>
-                    {(pais.ISO === 'JPN') ? (
-                        <Flag style={{...style, ...japanFlag}} code={pais.ISO} height="20" />
-                    ) : (
-                        <Flag style={{...style, width: 28, marginLeft: 8}} code={pais.ISO} height="20" />)}
+                    <img style={{...style, marginLeft: -8 }} width={30} style={{marginLeft: 8}} src={flag[pais.ISO]} />
                     {pais.NOMBRE}
                 </Option>
             );
@@ -166,10 +222,7 @@ class QuinielaGroups extends React.Component {
         const menuRigth = () => _.map(optionsPerGameR, pais => {
             return (
                 <Option value={pais.PAIS} key={pais.PAIS}>
-                    {(pais.ISO === 'JPN') ? (
-                        <Flag style={{...style, ...japanFlag}} code={pais.ISO} height="20" />
-                    ) : (
-                        <Flag style={{...style, width: 28, marginLeft: 8}} code={pais.ISO} height="20" />)}
+                    <img style={{...style, marginLeft: -8 }} width={30} style={{marginLeft: 8}} src={flag[pais.ISO]} />
                     {pais.NOMBRE}
                 </Option>
             );
@@ -181,10 +234,10 @@ class QuinielaGroups extends React.Component {
                         <div>
                             <Row>
                                 <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 2 }}>
-                                    <label style={style}>{game.JUGADOR_1.NOMBRE || 'ADIVINA 1'}</label>
+                                    <label>{game.JUGADOR_1.NOMBRE || 'ADIVINA 1'}</label>
                                 </Col>
                                 <Col className={'textAlignRight'} xs={{ offset: 5, span: 8 }} lg={{ span: 5, offset: 6 }}>
-                                    <label style={style}>{game.JUGADOR_2.NOMBRE || 'ADIVINA 2'}</label>
+                                    <label>{game.JUGADOR_2.NOMBRE || 'ADIVINA 2'}</label>
                                 </Col>
                             </Row>
                             <Row>
@@ -199,11 +252,7 @@ class QuinielaGroups extends React.Component {
                                           </Button>
                                       </ButtonGroup>
                                     }
-                                    {(game.JUGADOR_1.ISO === 'JPN') ? (
-                                            <Flag style={{...style, ...japanFlag}} code={game.JUGADOR_1.ISO} height="30" />)
-                                        : (
-                                            <Flag style={style} code={game.JUGADOR_1.ISO} height="30" />
-                                    )}
+                                    <img style={style} width={40} src={flag[game.JUGADOR_1.ISO]} alt=""/>
                                     <Badge
                                         showZero
                                         count={game.GOLES_1 || this.state.count}
@@ -238,11 +287,7 @@ class QuinielaGroups extends React.Component {
                                             count={game.GOLES_2 || this.state.count2}
                                             style={{ backgroundColor: isPlayed ? '#52c41a' : '' }}
                                         />
-                                        {(game.JUGADOR_2.ISO === 'JPN') ? (
-                                                <Flag style={{...style, ...japanFlag}} code={game.JUGADOR_2.ISO} height="30" />)
-                                            : (
-                                                <Flag style={style} code={game.JUGADOR_2.ISO} height="30" />
-                                        )}
+                                        <img style={style} width={40} src={flag[game.JUGADOR_2.ISO]} alt=""/>
                                     </div>
                                 </Col>
                             </Row>

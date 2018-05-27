@@ -605,7 +605,11 @@ class QuinielaGame extends React.Component {
                         okText: '¡Si! Guardar',
                         cancelText: 'No, aún no',
                         onOk() {
-                            this._goUp();
+                            window.scrollTo(0, 0);
+                            // #newFunction
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                            // #newFunction_end
                             sendPredictionAction(verifyRigth);
                         }
                     });

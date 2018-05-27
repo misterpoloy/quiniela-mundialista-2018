@@ -56,11 +56,14 @@
 			margin-top: 0px !important;
 		}
 	}
+	.ant-message {
+		z-index: 3000;
+	}
 	.banner {
 		height: 350px;
 	}
 	.banner img {
-		margin-top: -300px;
+		margin-top: -350px;
 	}
 	.estadio {
 		color: #86c5ff;
@@ -88,8 +91,5 @@
 	.ant-badge {
 		margin-left: 2px !important;
 		margin-right: 2px !important;
-	}
-	.ant-message {
-		z-index: 2010;
 	}
 }
