@@ -1389,7 +1389,7 @@ class QuinielaGame extends React.Component {
                 >
                     <img src={bannerSource} alt="" />
                 </CardMedia>
-                <Card>
+                <Card style={{ width: '100%' }}>
                     <Tabs
                         defaultActiveKey="1"
                         tabBarExtraContent={quiniela.CREADO_POR === userId ? operations : ''}

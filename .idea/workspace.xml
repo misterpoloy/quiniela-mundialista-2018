@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/actions/quiniela.js" afterPath="$PROJECT_DIR$/app/actions/quiniela.js" />
-      <change beforePath="$PROJECT_DIR$/app/components/QuinielaGroups.js" afterPath="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
-      <change beforePath="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" afterPath="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
       <change beforePath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" afterPath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
-      <change beforePath="$PROJECT_DIR$/app/src/images/flags/NGA.png" afterPath="$PROJECT_DIR$/app/src/images/flags/NGA.png" />
-      <change beforePath="$PROJECT_DIR$/app/src/images/flags/Nigeria.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/src/images/flags/SWE.png" afterPath="$PROJECT_DIR$/app/src/images/flags/SWE.png" />
-      <change beforePath="$PROJECT_DIR$/app/src/images/flags/Sweden.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/app/styles/styles.scss" afterPath="$PROJECT_DIR$/app/styles/styles.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,13 +19,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MyQuinielasContainer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/containers/MyQuinielasContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="42" column="51" lean-forward="true" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
+            <state relative-caret-position="104">
+              <caret line="1390" column="28" lean-forward="true" selection-start-line="1390" selection-start-column="28" selection-end-line="1390" selection-end-column="28" />
               <folding>
                 <element signature="e#189#317#0" expanded="true" />
+                <element signature="e#1160#1218#0" expanded="true" />
                 <element signature="e#1301#1390#0" expanded="false" />
                 <element signature="e#1408#1497#0" expanded="false" />
                 <element signature="e#1521#2125#0" expanded="false" />
@@ -69,34 +71,12 @@
                 <element signature="e#42403#44630#0" expanded="false" />
                 <element signature="e#44656#46868#0" expanded="false" />
                 <element signature="e#47070#47175#0" expanded="false" />
-                <element signature="e#60422#61490#0" expanded="false" />
+                <element signature="e#59959#60160#0" expanded="false" />
+                <element signature="e#60177#60384#0" expanded="false" />
+                <element signature="e#60448#61516#0" expanded="false" />
                 <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
                 <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuinielaGroups.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="309" column="45" lean-forward="true" selection-start-line="309" selection-start-column="45" selection-end-line="309" selection-end-column="45" />
-              <folding>
-                <element signature="e#1782#2072#0" expanded="false" />
-                <element signature="e#7120#10935#0" expanded="false" />
-                <element signature="e#8864#9473#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.scss" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/styles/styles.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="38" column="41" lean-forward="true" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -133,8 +113,8 @@
       <find>POST_INVITE_QUINIELA_USER</find>
       <find>sendQuinielaInvitations</find>
       <find>el su</find>
-      <find>inviteToQuiniela</find>
       <find>customVersus</find>
+      <find>inviteToQuiniela</find>
     </findStrings>
     <replaceStrings>
       <replace>MainContainer</replace>
@@ -207,10 +187,10 @@
         <option value="$PROJECT_DIR$/app/reducers/quiniela.js" />
         <option value="$PROJECT_DIR$/app/actions/types.js" />
         <option value="$PROJECT_DIR$/app/actions/quiniela.js" />
-        <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
         <option value="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
         <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
         <option value="$PROJECT_DIR$/app/styles/styles.scss" />
+        <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
       </list>
     </option>
   </component>
@@ -225,9 +205,9 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="854" />
+    <option name="width" value="1440" />
     <option name="height" value="833" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -264,7 +244,7 @@
               <item name="react widget" type="b2602c69:ProjectViewProjectNode" />
               <item name="react widget" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -390,15 +370,15 @@
       <workItem from="1527221774393" duration="11382000" />
       <workItem from="1527260526062" duration="219000" />
       <workItem from="1527355180242" duration="15525000" />
-      <workItem from="1527517267126" duration="3396000" />
+      <workItem from="1527517267126" duration="3832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403038000" />
+    <option name="totallyTimeSpent" value="403474000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="833" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="833" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28397712" sideWeight="0.4783198" order="0" side_tool="false" content_ui="combo" />
@@ -681,17 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/AllQuinielasContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="143" column="24" lean-forward="false" selection-start-line="143" selection-start-column="24" selection-end-line="143" selection-end-column="24" />
-          <folding>
-            <element signature="e#346#388#0" expanded="false" />
-            <element signature="e#613#674#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/SuperQuinielasContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -723,6 +692,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -766,14 +736,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="61" column="25" lean-forward="false" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/MyQuinielasContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="77" column="40" lean-forward="true" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -820,12 +785,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="309" column="45" lean-forward="true" selection-start-line="309" selection-start-column="45" selection-end-line="309" selection-end-column="45" />
+          <folding>
+            <element signature="e#1782#2072#0" expanded="false" />
+            <element signature="e#7120#10935#0" expanded="false" />
+            <element signature="e#8864#9473#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/styles.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="31" column="15" lean-forward="false" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/AllQuinielasContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="143" column="24" lean-forward="false" selection-start-line="143" selection-start-column="24" selection-end-line="143" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/MyQuinielasContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="42" column="51" lean-forward="true" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
+        <state relative-caret-position="104">
+          <caret line="1390" column="28" lean-forward="true" selection-start-line="1390" selection-start-column="28" selection-end-line="1390" selection-end-column="28" />
           <folding>
             <element signature="e#189#317#0" expanded="true" />
+            <element signature="e#1160#1218#0" expanded="true" />
             <element signature="e#1301#1390#0" expanded="false" />
             <element signature="e#1408#1497#0" expanded="false" />
             <element signature="e#1521#2125#0" expanded="false" />
@@ -860,30 +862,12 @@
             <element signature="e#42403#44630#0" expanded="false" />
             <element signature="e#44656#46868#0" expanded="false" />
             <element signature="e#47070#47175#0" expanded="false" />
-            <element signature="e#60422#61490#0" expanded="false" />
+            <element signature="e#59959#60160#0" expanded="false" />
+            <element signature="e#60177#60384#0" expanded="false" />
+            <element signature="e#60448#61516#0" expanded="false" />
             <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
             <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="309" column="45" lean-forward="true" selection-start-line="309" selection-start-column="45" selection-end-line="309" selection-end-column="45" />
-          <folding>
-            <element signature="e#1782#2072#0" expanded="false" />
-            <element signature="e#7120#10935#0" expanded="false" />
-            <element signature="e#8864#9473#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/styles.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="38" column="41" lean-forward="true" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
