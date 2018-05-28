@@ -316,13 +316,23 @@ class QuinielaGame extends React.Component {
                             email,
                             quinela_id
                         };
-                        inviteToQuiniela(body);
+                        inviteToQuiniela(body, function(error) {
+                            if (!error) {
+                                notification.success({
+                                    message: 'Exito',
+                                    description: 'La invitación se ha enviado con exito a ' + email,
+                                    placement: 'bottomRight'
+                                });
+                            } else {
+                                notification.error({
+                                    message: 'Usuario ya invitado',
+                                    description: 'El usuario ' + email + ', ya ha sido invitado a esta quiniela',
+                                    placement: 'bottomRight'
+                                });
+                            }
+                        });
+
                         resetFields();
-                    });
-                    notification.success({
-                        message: 'Exito',
-                        description: 'La invitación se ha enviado con exito a ' + totalEmailString,
-                        placement: 'bottomRight'
                     });
                 } else {
                     notification.error({
@@ -1234,7 +1244,7 @@ class QuinielaGame extends React.Component {
                             { this.renderGroupGames() }
                             <Col>
                                 <Button onClick={this.checkGroups} type="primary" size="large">
-                                    Siguiente<Icon type="right" />
+                                    Ir a octavos<Icon type="right" />
                                 </Button>
                             </Col>
                         </Row>
@@ -1330,6 +1340,8 @@ class QuinielaGame extends React.Component {
         const { api_token } = user;
         const { userId } = this.state;
         const { getFieldDecorator } = this.props.form;
+        const quinielaPositionsFilter = _.orderBy(quinielaPositions, ['PUNTOS'], ['desc'] );
+        const quinielaPositionsArray = _.map(quinielaPositionsFilter, position => ({...position}));
 
         // Check if is valid token
         if (api_token === 'Token invalido') {
@@ -1465,7 +1477,7 @@ class QuinielaGame extends React.Component {
                         <TabPane tab={<span className={'posiciones'}><Icon type="trophy" />Posiciones </span>} key="3">
                             <List
                                 itemLayout="horizontal"
-                                dataSource={quinielaPositions}
+                                dataSource={quinielaPositionsArray}
                                 renderItem={item => {
                                     x++;
                                     return (

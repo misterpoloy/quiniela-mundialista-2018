@@ -107,14 +107,23 @@ class CreateQuiniela extends  React.Component {
                             email,
                             quinela_id
                         };
-                        inviteToQuiniela(body);
+                        inviteToQuiniela(body, function(error) {
+                            if (!error) {
+                                notification.success({
+                                    message: 'Exito',
+                                    description: 'La invitación se ha enviado con exito a ' + email,
+                                    placement: 'bottomRight'
+                                });
+                            } else {
+                                notification.error({
+                                    message: 'Usuario ya invitado',
+                                    description: 'El usuario ' + email + ', ya ha sido invitado a esta quiniela',
+                                    placement: 'bottomRight'
+                                });
+                            }
+                        });
                     });
                     this.handleNext();
-                    notification.success({
-                        message: 'Exito',
-                        description: 'La invitación se ha enviado con exito a ' + totalEmailString,
-                        placement: 'bottomRight'
-                    });
                 } else {
                     notification.error({
                         message: 'Se ha producido un error',

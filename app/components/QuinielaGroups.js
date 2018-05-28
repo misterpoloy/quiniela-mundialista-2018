@@ -295,7 +295,7 @@ class QuinielaGroups extends React.Component {
                     ) : (
                         <div>
                             <Row>
-                                <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 1 }}>
+                                <Col xs={{ offset: 0, span: 11 }} lg={{ span: 8, offset: 1 }}>
                                     <Select
                                         style={{ marginBottom: 5 }}
                                         defaultValue={defaultValue.optionLeft || ''}
@@ -314,14 +314,14 @@ class QuinielaGroups extends React.Component {
                                       </ButtonGroup>
                                     <Badge showZero count={this.state.count} />
                                 </Col>
-                                <Col xs={{ span: 2 }} lg={{ offset: 1 }}>
+                                <Col xs={{ span: 1 }} lg={{ offset: 1 }}>
                                     <div style={{ textAlign: 'center' }}>
                                         <h1 className={'customVersus'}>VS</h1>
                                         <h4 className={'estadio'}>{game.UBICACION.NOMBRE}</h4>
                                         {/** options <div>{game.OPCIONES_DE_SELECCION || ''}</div> **/}
                                     </div>
                                 </Col>
-                                <Col xs={{ offset: 3, span: 9 }} lg={{ span: 8, offset: 2 }}>
+                                <Col xs={{ offset: 1, span: 11 }} lg={{ span: 8, offset: 2 }}>
                                     <Select
                                         style={{ marginBottom: 5 }}
                                         defaultValue={defaultValue.optionRight || ''}

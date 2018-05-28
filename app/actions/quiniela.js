@@ -112,6 +112,12 @@ export function setUserInvited() {
         type: types.POST_INVITE_QUINIELA_USER
     };
 }
+// POST_INVITE_QUINIELA_USER FAIL
+export function setUserInvitedFail() {
+    return {
+        type: types.POST_INVITE_QUINIELA_USER_FAIL
+    };
+}
 // QUINIELAS_BY_TYPE
 export function setQuinielasByType(quinielasByType) {
     return {
@@ -277,12 +283,14 @@ export function getQuinielaPositionsAndUsers(quinielaId) {
     };
 }
 // POST_INVITE_QUINIELA_USER
-export function sendQuinielaInvitations(invitationBody) {
+export function sendQuinielaInvitations(invitationBody, callback) {
     return dispatch => {
         API.post('quinela_invitation/invite/byEmail', {
             ...invitationBody
         })
-            .then(() => {
+            .then(response => {
+                const error = (response.data.message === 'El usuario ya fue invitado');
+                callback(error);
                 dispatch(setUserInvited());
             }).catch(e => {
                 console.log('Error "sendQuinielaInvitations": ' + e);
