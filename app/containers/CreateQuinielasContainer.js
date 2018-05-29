@@ -104,7 +104,7 @@ class CreateQuiniela extends  React.Component {
                     eachMail.forEach(function(email) {
                         totalEmailString += email;
                         const body = {
-                            email,
+                            email: email.replace(/\s+/g, ''),
                             quinela_id
                         };
                         inviteToQuiniela(body, function(error) {
