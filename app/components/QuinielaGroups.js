@@ -39,8 +39,7 @@ import JPN from '../src/images/flags/JPN.png';
 const _ = require('lodash');
 const style = {
     marginLeft: 2,
-    marginRight: 5,
-    marginTop: 5
+    marginRight: 5
 };
 
 const flag = {
@@ -214,7 +213,7 @@ class QuinielaGroups extends React.Component {
         const menu = () => _.map(optionsPerGame, pais => {
             return (
                 <Option value={pais.PAIS} key={pais.PAIS}>
-                    <img style={{...style, marginLeft: -8 }} width={30} style={{marginLeft: 8}} src={flag[pais.ISO]} />
+                    <img style={style} width={30} src={flag[pais.ISO]} />
                     {pais.NOMBRE}
                 </Option>
             );
@@ -222,7 +221,7 @@ class QuinielaGroups extends React.Component {
         const menuRigth = () => _.map(optionsPerGameR, pais => {
             return (
                 <Option value={pais.PAIS} key={pais.PAIS}>
-                    <img style={{...style, marginLeft: -8 }} width={30} style={{marginLeft: 8}} src={flag[pais.ISO]} />
+                    <img style={style} width={30} src={flag[pais.ISO]} />
                     {pais.NOMBRE}
                 </Option>
             );

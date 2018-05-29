@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1eaf503c-36d2-404e-ab40-996499ef9a8b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" afterPath="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/components/QuinielaGroups.js" afterPath="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,24 +20,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MyQuinielasContainer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/containers/MyQuinielasContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuinielaContainer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="1390" column="28" lean-forward="true" selection-start-line="1390" selection-start-column="28" selection-end-line="1390" selection-end-column="28" />
+            <state relative-caret-position="349">
+              <caret line="42" column="53" lean-forward="false" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
               <folding>
+                <element signature="e#31#57#0" expanded="true" />
                 <element signature="e#189#317#0" expanded="true" />
-                <element signature="e#1160#1218#0" expanded="true" />
+                <element signature="e#767#805#0" expanded="true" />
                 <element signature="e#1301#1390#0" expanded="false" />
                 <element signature="e#1408#1497#0" expanded="false" />
                 <element signature="e#1521#2125#0" expanded="false" />
@@ -66,7 +58,6 @@
                 <element signature="n#!!block;n#_goDown#0;n#QuinielaGame#0" expanded="false" />
                 <element signature="e#33721#33812#0" expanded="false" />
                 <element signature="e#33886#37214#0" expanded="false" />
-                <element signature="e#37241#39960#0" expanded="false" />
                 <element signature="e#39987#42374#0" expanded="false" />
                 <element signature="e#42403#44630#0" expanded="false" />
                 <element signature="e#44656#46868#0" expanded="false" />
@@ -81,11 +72,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="QuinielaGroups.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="287" column="42" lean-forward="true" selection-start-line="287" selection-start-column="42" selection-end-line="287" selection-end-column="42" />
+              <folding>
+                <element signature="e#1764#2054#0" expanded="false" />
+                <element signature="e#8754#9363#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bANNER</find>
       <find>z</find>
       <find>sendPredictionAction</find>
       <find>newFunction</find>
@@ -99,13 +102,11 @@
       <find>allignRightLeft</find>
       <find>flag</find>
       <find>&lt;Flag</find>
-      <find>8</find>
       <find>marginLeft</find>
       <find>_goUp</find>
       <find>VS</find>
       <find>console</find>
       <find>.banner img {</find>
-      <find>img</find>
       <find>quinielapositions</find>
       <find>invitations</find>
       <find>sendInvitation</find>
@@ -115,6 +116,9 @@
       <find>el su</find>
       <find>customVersus</find>
       <find>inviteToQuiniela</find>
+      <find>8</find>
+      <find>style</find>
+      <find>img</find>
     </findStrings>
     <replaceStrings>
       <replace>MainContainer</replace>
@@ -188,9 +192,9 @@
         <option value="$PROJECT_DIR$/app/actions/types.js" />
         <option value="$PROJECT_DIR$/app/actions/quiniela.js" />
         <option value="$PROJECT_DIR$/app/containers/CreateQuinielasContainer.js" />
-        <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
         <option value="$PROJECT_DIR$/app/styles/styles.scss" />
         <option value="$PROJECT_DIR$/app/containers/QuinielaContainer.js" />
+        <option value="$PROJECT_DIR$/app/components/QuinielaGroups.js" />
       </list>
     </option>
   </component>
@@ -250,8 +254,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -370,28 +374,29 @@
       <workItem from="1527221774393" duration="11382000" />
       <workItem from="1527260526062" duration="219000" />
       <workItem from="1527355180242" duration="15525000" />
-      <workItem from="1527517267126" duration="3832000" />
+      <workItem from="1527517267126" duration="4114000" />
+      <workItem from="1527609444769" duration="1299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403474000" />
+    <option name="totallyTimeSpent" value="405055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="833" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28397712" sideWeight="0.4783198" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28755364" sideWeight="0.4783198" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3969957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27110156" sideWeight="0.52168024" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27110156" sideWeight="0.52168024" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -605,17 +610,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="17">
             <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -676,7 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="40" column="20" lean-forward="false" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -684,7 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,7 +695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -736,9 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="61" column="25" lean-forward="false" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -757,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="25" column="69" lean-forward="false" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -785,23 +783,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="309" column="45" lean-forward="true" selection-start-line="309" selection-start-column="45" selection-end-line="309" selection-end-column="45" />
-          <folding>
-            <element signature="e#1782#2072#0" expanded="false" />
-            <element signature="e#7120#10935#0" expanded="false" />
-            <element signature="e#8864#9473#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/styles.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="31" column="15" lean-forward="false" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,7 +800,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/MyQuinielasContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
+        <state relative-caret-position="1628">
           <caret line="83" column="20" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="45" />
           <folding />
         </state>
@@ -823,11 +808,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/QuinielaContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="1390" column="28" lean-forward="true" selection-start-line="1390" selection-start-column="28" selection-end-line="1390" selection-end-column="28" />
+        <state relative-caret-position="349">
+          <caret line="42" column="53" lean-forward="false" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
           <folding>
+            <element signature="e#31#57#0" expanded="true" />
             <element signature="e#189#317#0" expanded="true" />
-            <element signature="e#1160#1218#0" expanded="true" />
+            <element signature="e#767#805#0" expanded="true" />
             <element signature="e#1301#1390#0" expanded="false" />
             <element signature="e#1408#1497#0" expanded="false" />
             <element signature="e#1521#2125#0" expanded="false" />
@@ -857,7 +843,6 @@
             <element signature="n#!!block;n#_goDown#0;n#QuinielaGame#0" expanded="false" />
             <element signature="e#33721#33812#0" expanded="false" />
             <element signature="e#33886#37214#0" expanded="false" />
-            <element signature="e#37241#39960#0" expanded="false" />
             <element signature="e#39987#42374#0" expanded="false" />
             <element signature="e#42403#44630#0" expanded="false" />
             <element signature="e#44656#46868#0" expanded="false" />
@@ -867,6 +852,17 @@
             <element signature="e#60448#61516#0" expanded="false" />
             <element signature="n#!!block;n#mapStateToProps#0" expanded="false" />
             <element signature="n#!!block;n#mapDispatchToProps#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/QuinielaGroups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="287" column="42" lean-forward="true" selection-start-line="287" selection-start-column="42" selection-end-line="287" selection-end-column="42" />
+          <folding>
+            <element signature="e#1764#2054#0" expanded="false" />
+            <element signature="e#8754#9363#0" expanded="false" />
           </folding>
         </state>
       </provider>
