@@ -598,7 +598,7 @@ class QuinielaGame extends React.Component {
             });
             // 2. Mix the predictions with the original value
             const curated = {...prediction, ...games, ...gamesPlayed};
-            if (_.size(curated) !== 63) {
+            if (_.size(curated) !== 64) {
                 console.log('attention');
                 console.log(_.size(curated));
                 message.error('Aún hay predicciones en blanco');
@@ -607,7 +607,7 @@ class QuinielaGame extends React.Component {
                 const verifyRigth = _.filter(verifyLeftGame, function(verify) { return verify.JUEGO_2 !== null; });
                 // 3. Check if there is no null.
                 // 4. Save the prediction.
-                if (_.size(verifyRigth) === 63) {
+                if (_.size(verifyRigth) === 64) {
                     // Let's save the game!
                     confirm({
                         title: '¿Estás seguro que quieres guardar tu quiniela?',
@@ -891,10 +891,10 @@ class QuinielaGame extends React.Component {
         window.scrollTo(0, document.body.scrollHeight);
     }
     _goUp() {
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 600);
         // #newFunction
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 600;
+        document.documentElement.scrollTop = 600;
         // #newFunction_end
     }
     // New stepper code
@@ -1229,7 +1229,7 @@ class QuinielaGame extends React.Component {
         this.setState(() => ({ ...initialState }));
     };
     ResetButton = () => (
-        <Button onClick={this.reset} type="primary" size="large">
+        <Button onClick={this.reset} style={{ background: '#454545', border: '#454545' }} type="primary" size="large">
             Comenzar de nuevo
         </Button>
     );

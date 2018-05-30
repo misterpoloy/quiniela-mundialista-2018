@@ -221,7 +221,7 @@ class QuinielaGroups extends React.Component {
         const menuRigth = () => _.map(optionsPerGameR, pais => {
             return (
                 <Option value={pais.PAIS} key={pais.PAIS}>
-                    <img style={style} width={30} src={flag[pais.ISO]} />
+                    <img style={{...style, marginLeft: 0 }} width={30} src={flag[pais.ISO]} />
                     {pais.NOMBRE}
                 </Option>
             );
@@ -231,32 +231,36 @@ class QuinielaGroups extends React.Component {
                 <div style={{ width: '100%' }}>
                     { isGroups ? (
                         <div>
-                            <Row>
-                                <Col xs={{ offset: 0, span: 10 }} lg={{ span: 8, offset: 2 }}>
+                            <Row style={{ marginBottom: 4 }}>
+                                <Col xs={{ span: 11 }} lg={{ span: 16 }}>
                                     <label>{game.JUGADOR_1.NOMBRE || 'ADIVINA 1'}</label>
                                 </Col>
-                                <Col className={'textAlignRight'} xs={{ offset: 5, span: 8 }} lg={{ span: 5, offset: 6 }}>
-                                    <label>{game.JUGADOR_2.NOMBRE || 'ADIVINA 2'}</label>
+                                <Col className={'textAlignRight'} xs={{ offset: 5, span: 8 }} lg={{ span: 3 }}>
+                                    <label className={'alignRightName'}>{game.JUGADOR_2.NOMBRE || 'ADIVINA 2'}</label>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col xs={{ offset: 0, span: 9 }} lg={{ span: 8, offset: 2 }}>
+                                <Col xs={{ offset: 0, span: 9 }} lg={{ span: 10 }}>
                                     {!isPlayed &&
-                                      <ButtonGroup>
-                                          <Button onClick={this.decline}>
-                                              <Icon type="minus" />
-                                          </Button>
-                                          <Button onClick={this.increase}>
-                                              <Icon type="plus" />
-                                          </Button>
-                                      </ButtonGroup>
+                                      <div>
+                                          <ButtonGroup>
+                                              <Button onClick={this.decline}>
+                                                  <Icon type="minus" />
+                                              </Button>
+                                              <Button onClick={this.increase}>
+                                                  <Icon type="plus" />
+                                              </Button>
+                                          </ButtonGroup>
+                                      </div>
                                     }
-                                    <img style={style} width={40} src={flag[game.JUGADOR_1.ISO]} alt=""/>
-                                    <Badge
-                                        showZero
-                                        count={game.GOLES_1 || this.state.count}
-                                        style={{ backgroundColor: isPlayed ? '#52c41a' : '' }}
-                                    />
+                                    <div>
+                                        <img style={{...style, marginTop: 5 }} width={40} src={flag[game.JUGADOR_1.ISO]} alt=""/>
+                                        <Badge
+                                            showZero
+                                            count={game.GOLES_1 || this.state.count}
+                                            style={{ backgroundColor: isPlayed ? '#52c41a' : '', marginTop: 5 }}
+                                        />
+                                    </div>
                                 </Col>
                                 <Col xs={{ offset: 0, span: 4 }} lg={{ span: 4 }}>
                                     <div style={{ textAlign: 'center' }}>
@@ -284,9 +288,9 @@ class QuinielaGroups extends React.Component {
                                         <Badge
                                             showZero
                                             count={game.GOLES_2 || this.state.count2}
-                                            style={{ backgroundColor: isPlayed ? '#52c41a' : '' }}
+                                            style={{ backgroundColor: isPlayed ? '#52c41a' : '', marginTop: 5 }}
                                         />
-                                        <img style={style} width={40} src={flag[game.JUGADOR_2.ISO]} alt=""/>
+                                        <img style={{...style, marginTop: 5 }} width={40} src={flag[game.JUGADOR_2.ISO]} alt=""/>
                                     </div>
                                 </Col>
                             </Row>
@@ -294,7 +298,7 @@ class QuinielaGroups extends React.Component {
                     ) : (
                         <div>
                             <Row>
-                                <Col xs={{ offset: 0, span: 11 }} lg={{ span: 8, offset: 1 }}>
+                                <Col xs={{ span: 11 }} lg={{ span: 10 }}>
                                     <Select
                                         style={{ marginBottom: 5 }}
                                         defaultValue={defaultValue.optionLeft || ''}
@@ -303,24 +307,25 @@ class QuinielaGroups extends React.Component {
                                     >
                                         { menu() }
                                     </Select>
-                                      <ButtonGroup>
-                                          <Button onClick={this.decline}>
-                                              <Icon type="minus" />
-                                          </Button>
-                                          <Button onClick={this.increase} style={{ marginRight: 5 }}>
-                                              <Icon type="plus" />
-                                          </Button>
-                                      </ButtonGroup>
-                                    <Badge showZero count={this.state.count} />
+                                      <div>
+                                          <ButtonGroup>
+                                              <Button onClick={this.decline}>
+                                                  <Icon type="minus" />
+                                              </Button>
+                                              <Button onClick={this.increase} style={{ marginRight: 5 }}>
+                                                  <Icon type="plus" />
+                                              </Button>
+                                          </ButtonGroup>
+                                          <Badge showZero count={this.state.count} />
+                                      </div>
                                 </Col>
                                 <Col xs={{ span: 1 }} lg={{ offset: 1 }}>
                                     <div style={{ textAlign: 'center' }}>
                                         <h1 className={'customVersus'}>VS</h1>
                                         <h4 className={'estadio'}>{game.UBICACION.NOMBRE}</h4>
-                                        {/** options <div>{game.OPCIONES_DE_SELECCION || ''}</div> **/}
                                     </div>
                                 </Col>
-                                <Col xs={{ offset: 1, span: 11 }} lg={{ span: 8, offset: 2 }}>
+                                <Col className={'alignRightName'} xs={{ offset: 1, span: 11 }} lg={{ span: 4, offset: 8 }}>
                                     <Select
                                         style={{ marginBottom: 5 }}
                                         defaultValue={defaultValue.optionRight || ''}
@@ -329,15 +334,17 @@ class QuinielaGroups extends React.Component {
                                     >
                                         { menuRigth() }
                                     </Select>
-                                    <Badge showZero count={this.state.count2} />
-                                    <ButtonGroup>
-                                        <Button onClick={this.decline2}>
-                                            <Icon type="minus" />
-                                        </Button>
-                                        <Button onClick={this.increase2} style={{ marginRight: 5 }}>
-                                            <Icon type="plus" />
-                                        </Button>
-                                    </ButtonGroup>
+                                   <div>
+                                       <Badge showZero count={this.state.count2} />
+                                       <ButtonGroup>
+                                           <Button onClick={this.decline2}>
+                                               <Icon type="minus" />
+                                           </Button>
+                                           <Button onClick={this.increase2} style={{ marginRight: 5 }}>
+                                               <Icon type="plus" />
+                                           </Button>
+                                       </ButtonGroup>
+                                   </div>
                                 </Col>
                             </Row>
                         </div>

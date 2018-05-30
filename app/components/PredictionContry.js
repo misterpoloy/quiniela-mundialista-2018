@@ -88,26 +88,28 @@ class QuinielaGroups extends React.Component {
                 <div style={{ width: '100%' }}>
                         <div>
                             <Row>
-                                <Col xs={{ span: 6, offset: 2 }} xl={{ span: 6, offset: 4 }}>
+                                <Col xs={{ span: 8 }} xl={{ span: 12 }}>
                                     <label style={style}>{game.JUEGO_1.NOMBRE || 'ADIVINA 1'}</label>
                                 </Col>
                                 <Col xs={{ span: 8, offset: 8 }} xl={{ span: 4 }}>
-                                    <label style={style}>{game.JUEGO_2.NOMBRE || 'ADIVINA 2'}</label>
+                                    <label className={'alignRightName'} style={style}>{game.JUEGO_2.NOMBRE || 'ADIVINA 2'}</label>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col xs={{ span: 6, offset: 2 }} xl={{ span: 4, offset: 4 }}>
+                                <Col xs={{ span: 8 }} xl={{ span: 4 }}>
                                     <img style={style} width={40} src={flag[game.JUEGO_1.ISO]}/>
-                                    <Badge showZero count={game.GOL_1} />
+                                    <Badge style={style} showZero count={game.GOL_1} />
                                 </Col>
-                                <Col xs={{ offset: 2, span: 2 }} xl={{ span: 4 }}>
+                                <Col xs={{ offset: 3, span: 1 }} xl={{ span: 2, offset: 7 }}>
                                     <div style={{ textAlign: 'center' }}>
-                                        <h1 style={{ color: '#d6d6d6', marginTop: -15 }}>VS</h1>
+                                        <h1 style={{ color: '#d6d6d6', marginTop: -15, marginLeft: -5 }}>VS</h1>
                                     </div>
                                 </Col>
-                                <Col xs={{ offset: 4, span: 8 }} xl={{ span: 4 }}>
-                                    <Badge showZero count={game.GOL_2} />
-                                    <img style={style} width={40} src={flag[game.JUEGO_2.ISO]}/>
+                                <Col xs={{ offset: 4, span: 8 }} xl={{ span: 4, offset: 7 }}>
+                                    <div className={'allignRightLeft'}>
+                                        <Badge style={style} showZero count={game.GOL_2} />
+                                        <img style={style} width={40} src={flag[game.JUEGO_2.ISO]}/>
+                                    </div>
                                 </Col>
                             </Row>
                             <Row>

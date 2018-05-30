@@ -53,8 +53,24 @@
 			height: 240px !important;
 		}
 		.banner img {
-			margin-top: 0px !important;
+			margin-top: 15px !important;
 		}
+	}
+	.flagMobile {
+		display: block;
+		text-align: right;
+		margin-right: -4px;
+	}
+	.allignRightLeft {
+		display: block;
+		text-align: right;
+	}
+	.alignRightName {
+		display: block;
+		text-align: right;
+	}
+	.ant-select-selection__rendered {
+		margin-left: 3px !important;
 	}
 	.ant-message {
 		z-index: 3000;

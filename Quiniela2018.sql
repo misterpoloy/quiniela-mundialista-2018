@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-05-2018 a las 11:28:41
+-- Tiempo de generación: 30-05-2018 a las 08:25:28
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 5.6.32
 
@@ -55,15 +55,6 @@ CREATE TABLE `ADMINISTRADORES_TOKENS` (
   `ADMINISTRADOR` int(11) DEFAULT NULL,
   `TOKEN` varchar(180) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `ADMINISTRADORES_TOKENS`
---
-
-INSERT INTO `ADMINISTRADORES_TOKENS` (`ID`, `ADMINISTRADOR`, `TOKEN`) VALUES
-(7, 1, '5af3f6aa3d0c4'),
-(8, 1, '5af6064fd5ed5'),
-(9, 1, '5afb0e505f6f0');
 
 -- --------------------------------------------------------
 
@@ -165,36 +156,36 @@ INSERT INTO `JUEGOS` (`ID`, `ESTRUCTURA`, `FECHA`, `UBICACION`, `JUGADOR_1`, `JU
 (2, 1, '2018-06-15 01:14:15', 1, 2, 4, NULL, NULL, 'A', '', ''),
 (3, 1, '2018-06-15 01:14:22', 3, 1, 2, NULL, NULL, 'A', '', ''),
 (4, 1, '2018-06-20 01:14:29', 4, 4, 3, NULL, NULL, 'A', '', ''),
-(5, 1, '2018-06-20 01:14:36', 10, 4, 1, NULL, NULL, 'A', '', ''),
-(6, 1, '2018-06-25 01:14:55', 2, 3, 2, NULL, NULL, 'A', '', ''),
-(7, 1, '2018-06-25 01:15:06', 12, 5, 7, NULL, NULL, 'B', '', ''),
-(8, 1, '2018-06-16 01:30:52', 3, 6, 8, NULL, NULL, 'B', '', ''),
+(5, 1, '2018-06-20 01:14:36', 10, 3, 2, NULL, NULL, 'A', '', ''),
+(6, 1, '2018-06-25 01:14:55', 2, 4, 1, NULL, NULL, 'A', '', ''),
+(7, 1, '2018-06-25 01:15:06', 12, 6, 8, NULL, NULL, 'B', '', ''),
+(8, 1, '2018-06-16 01:30:52', 3, 5, 7, NULL, NULL, 'B', '', ''),
 (9, 1, '2018-06-16 00:00:00', 8, 5, 6, NULL, NULL, 'B', '', ''),
 (10, 1, '2018-06-21 01:32:28', 5, 8, 7, NULL, NULL, 'B', '', ''),
 (11, 1, '2018-06-22 01:32:34', 2, 8, 5, NULL, NULL, 'B', '', ''),
 (12, 1, '2018-06-26 01:32:38', 3, 7, 6, NULL, NULL, 'B', '', ''),
 (13, 1, '2018-06-26 01:36:09', 4, 9, 11, NULL, NULL, 'C', '', ''),
 (14, 1, '2018-06-17 01:36:29', 4, 10, 12, NULL, NULL, 'C', '', ''),
-(15, 1, '2018-06-17 01:36:34', 10, 9, 10, NULL, NULL, 'C', '', ''),
-(16, 1, '2018-06-22 01:36:40', 3, 12, 11, NULL, NULL, 'C', '', ''),
-(17, 1, '2018-06-22 01:36:57', 8, 12, 9, NULL, NULL, 'C', '', ''),
-(18, 1, '2018-06-27 01:37:10', 9, 11, 10, NULL, NULL, 'C', '', ''),
+(15, 1, '2018-06-17 01:36:34', 10, 12, 11, NULL, NULL, 'C', '', ''),
+(16, 1, '2018-06-22 01:36:40', 3, 9, 10, NULL, NULL, 'C', '', ''),
+(17, 1, '2018-06-22 01:36:57', 8, 11, 10, NULL, NULL, 'C', '', ''),
+(18, 1, '2018-06-27 01:37:10', 9, 12, 9, NULL, NULL, 'C', '', ''),
 (19, 1, '2018-06-27 00:00:00', 5, 13, 15, NULL, NULL, 'D', '', ''),
 (20, 1, '2018-06-17 03:25:02', 4, 14, 16, NULL, NULL, 'D', '', ''),
-(21, 1, '2018-06-17 03:25:13', 10, 13, 14, NULL, NULL, 'D', '', ''),
-(22, 1, '2018-06-22 03:25:30', 3, 16, 15, NULL, NULL, 'D', '', ''),
-(23, 1, '2018-06-22 03:25:42', 8, 16, 13, NULL, NULL, 'D', '', ''),
-(24, 1, '2018-06-27 03:26:20', 9, 15, 14, NULL, NULL, 'D', '', ''),
-(25, 1, '2018-06-27 03:26:33', 5, 17, 19, NULL, NULL, 'E', '', ''),
-(26, 1, '2018-06-17 04:11:28', 6, 18, 20, NULL, NULL, 'E', '', ''),
+(21, 1, '2018-06-17 03:25:13', 10, 16, 15, NULL, NULL, 'D', '', ''),
+(22, 1, '2018-06-22 03:25:30', 3, 13, 14, NULL, NULL, 'D', '', ''),
+(23, 1, '2018-06-22 03:25:42', 8, 15, 14, NULL, NULL, 'D', '', ''),
+(24, 1, '2018-06-27 03:26:20', 9, 16, 13, NULL, NULL, 'D', '', ''),
+(25, 1, '2018-06-27 03:26:33', 5, 18, 20, NULL, NULL, 'E', '', ''),
+(26, 1, '2018-06-17 04:11:28', 6, 17, 19, NULL, NULL, 'E', '', ''),
 (27, 1, '2018-06-18 04:11:36', 5, 17, 18, NULL, NULL, 'E', '', ''),
 (28, 1, '2018-06-23 04:11:49', 12, 20, 19, NULL, NULL, 'E', '', ''),
 (29, 1, '2018-06-23 04:11:55', 4, 20, 17, NULL, NULL, 'E', '', ''),
 (30, 1, '2018-06-27 04:13:47', 7, 19, 18, NULL, NULL, 'E', '', ''),
-(31, 1, '2018-06-27 04:13:53', 1, 21, 23, NULL, NULL, 'F', '', ''),
-(32, 1, '2018-06-18 04:41:43', 12, 22, 24, NULL, NULL, 'F', '', ''),
-(33, 1, '2018-06-18 04:41:53', 2, 21, 22, NULL, NULL, 'F', '', ''),
-(34, 1, '2018-06-23 04:42:00', 6, 24, 23, NULL, NULL, 'F', '', ''),
+(31, 1, '2018-06-27 04:13:53', 1, 22, 24, NULL, NULL, 'F', '', ''),
+(32, 1, '2018-06-18 04:41:43', 12, 21, 23, NULL, NULL, 'F', '', ''),
+(33, 1, '2018-06-18 04:41:53', 2, 24, 23, NULL, NULL, 'F', '', ''),
+(34, 1, '2018-06-23 04:42:00', 6, 21, 22, NULL, NULL, 'F', '', ''),
 (35, 1, '2018-06-24 04:42:22', 5, 24, 21, NULL, NULL, 'F', '', ''),
 (36, 1, '2018-06-28 04:42:32', 8, 23, 22, NULL, NULL, 'F', '', ''),
 (37, 1, '2018-06-28 04:42:37', 11, 25, 28, NULL, NULL, 'G', '', ''),
@@ -202,28 +193,29 @@ INSERT INTO `JUEGOS` (`ID`, `ESTRUCTURA`, `FECHA`, `UBICACION`, `JUGADOR_1`, `JU
 (39, 1, '2018-06-19 05:01:01', 11, 25, 26, NULL, NULL, 'G', '', ''),
 (40, 1, '2018-06-24 05:01:09', 7, 27, 28, NULL, NULL, 'G', '', ''),
 (41, 1, '2018-06-24 05:01:18', 1, 27, 25, NULL, NULL, 'G', '', ''),
-(42, 1, '2018-06-28 05:01:35', 10, 29, 31, NULL, NULL, 'H', '', ''),
-(43, 1, '2018-06-30 05:09:09', 12, 30, 32, NULL, NULL, 'H', '', ''),
-(44, 1, '2018-06-30 05:09:14', 7, 29, 30, NULL, NULL, 'H', '', ''),
-(45, 1, '2018-07-01 05:09:22', 9, 32, 31, NULL, NULL, 'H', '', ''),
-(46, 1, '2018-07-01 05:09:32', 5, 32, 30, NULL, NULL, 'H', '', ''),
-(47, 1, '2018-07-02 05:09:48', 10, 31, 30, NULL, NULL, 'H', '', ''),
-(48, 2, '2018-07-02 05:10:02', 12, 99, 99, NULL, NULL, 'a8', 'A', 'B'),
-(49, 2, '2018-07-03 05:10:19', 7, 99, 99, NULL, NULL, 'b8', 'C', 'D'),
-(50, 2, '2018-07-03 05:10:30', 3, 99, 99, NULL, NULL, 'c8', 'E', 'F'),
-(51, 2, '2018-07-06 05:11:13', 6, 99, 99, NULL, NULL, 'd8', 'G', 'H'),
-(52, 2, '2018-07-06 05:11:19', 7, 99, 99, NULL, NULL, 'e8', 'B', 'A'),
-(53, 2, '2018-07-07 05:11:28', 12, 99, 99, NULL, NULL, 'f8', 'D', 'C'),
-(54, 2, '2018-07-07 05:11:34', 10, 99, 99, NULL, NULL, 'g8', 'F', 'E'),
-(55, 2, '2018-07-10 05:25:03', 3, 99, 99, NULL, NULL, 'h8', 'H', 'G'),
-(56, 3, '2018-07-11 05:25:09', 6, 99, 99, NULL, NULL, 'a4', 'A,B', 'C,D'),
-(57, 3, '2018-07-14 05:25:14', 5, 99, 99, NULL, NULL, 'b4', 'E,F', 'G,H'),
-(58, 3, '2018-07-15 05:25:19', 10, 99, 99, NULL, NULL, 'c4', 'A,B', 'C,D'),
-(59, 3, '2018-07-11 00:54:48', 3, 99, 99, NULL, NULL, 'd4', 'E,F', 'G,H'),
-(60, 4, '2018-07-11 00:54:42', 6, 99, 99, NULL, NULL, 'a2', 'A,B,C,D', 'E,F,G,H'),
-(61, 4, '2018-07-14 00:54:18', 3, 99, 99, NULL, NULL, 'b2', 'A,B,C,D', 'E,F,G,H'),
-(62, 5, '2018-07-15 00:54:09', 6, 99, 99, NULL, NULL, 'ter', 'A,B,C,D,E,F,G,H', 'A,B,C,D,E,F,G,H'),
-(63, 6, '2018-05-07 01:06:45', 6, 99, 99, NULL, NULL, 'fin', 'A,B,C,D,E,F,G,H', 'A,B,C,D,E,F,G,H');
+(42, 1, '2018-06-28 03:43:31', 11, 28, 26, NULL, NULL, 'G', '', ''),
+(43, 1, '2018-06-28 05:01:35', 10, 30, 32, NULL, NULL, 'H', '', ''),
+(44, 1, '2018-06-30 05:09:09', 12, 29, 31, NULL, NULL, 'H', '', ''),
+(45, 1, '2018-06-30 05:09:14', 7, 32, 31, NULL, NULL, 'H', '', ''),
+(46, 1, '2018-07-01 05:09:22', 9, 29, 30, NULL, NULL, 'H', '', ''),
+(47, 1, '2018-07-01 05:09:32', 5, 32, 29, NULL, NULL, 'H', '', ''),
+(48, 1, '2018-07-02 05:09:48', 10, 31, 30, NULL, NULL, 'H', '', ''),
+(49, 2, '2018-07-02 05:10:02', 12, 99, 99, NULL, NULL, 'a8', 'A', 'B'),
+(50, 2, '2018-07-03 05:10:19', 7, 99, 99, NULL, NULL, 'b8', 'C', 'D'),
+(51, 2, '2018-07-03 05:10:30', 3, 99, 99, NULL, NULL, 'c8', 'E', 'F'),
+(52, 2, '2018-07-06 05:11:13', 6, 99, 99, NULL, NULL, 'd8', 'G', 'H'),
+(53, 2, '2018-07-06 05:11:19', 7, 99, 99, NULL, NULL, 'e8', 'B', 'A'),
+(54, 2, '2018-07-07 05:11:28', 12, 99, 99, NULL, NULL, 'f8', 'D', 'C'),
+(55, 2, '2018-07-07 05:11:34', 10, 99, 99, NULL, NULL, 'g8', 'F', 'E'),
+(56, 2, '2018-07-10 05:25:03', 3, 99, 99, NULL, NULL, 'h8', 'H', 'G'),
+(57, 3, '2018-07-11 05:25:09', 6, 99, 99, NULL, NULL, 'a4', 'A,B', 'C,D'),
+(58, 3, '2018-07-14 05:25:14', 5, 99, 99, NULL, NULL, 'b4', 'E,F', 'G,H'),
+(59, 3, '2018-07-15 05:25:19', 10, 99, 99, NULL, NULL, 'c4', 'A,B', 'C,D'),
+(60, 3, '2018-07-11 00:54:48', 3, 99, 99, NULL, NULL, 'd4', 'E,F', 'G,H'),
+(61, 4, '2018-07-11 00:54:42', 6, 99, 99, NULL, NULL, 'a2', 'A,B,C,D', 'E,F,G,H'),
+(62, 4, '2018-07-14 00:54:18', 3, 99, 99, NULL, NULL, 'b2', 'A,B,C,D', 'E,F,G,H'),
+(63, 5, '2018-07-15 00:54:09', 6, 99, 99, NULL, NULL, 'ter', 'A,B,C,D,E,F,G,H', 'A,B,C,D,E,F,G,H'),
+(64, 6, '2018-05-07 01:06:45', 6, 99, 99, NULL, NULL, 'fin', 'A,B,C,D,E,F,G,H', 'A,B,C,D,E,F,G,H');
 
 -- --------------------------------------------------------
 
@@ -262,7 +254,7 @@ INSERT INTO `PAISES` (`ID`, `NOMBRE`, `ISO`) VALUES
 (17, 'Brasil', 'BRA'),
 (18, 'Costa Rica', 'CRI'),
 (19, 'Suiza', 'CHE'),
-(20, 'Serbia', '688'),
+(20, 'Serbia', 'SRB'),
 (21, 'Alemania', 'DEU'),
 (22, 'Suecia', 'SWE'),
 (23, 'México', 'MEX'),
@@ -684,19 +676,19 @@ ALTER TABLE `PAISES_GRUPOS`
 -- AUTO_INCREMENT de la tabla `QUINIELAS`
 --
 ALTER TABLE `QUINIELAS`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `QUINIELA_INVITACIONES`
 --
 ALTER TABLE `QUINIELA_INVITACIONES`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `QUINIELA_PREDICCIONES`
 --
 ALTER TABLE `QUINIELA_PREDICCIONES`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `QUINIELA_PREMIOS`
@@ -714,7 +706,7 @@ ALTER TABLE `QUINIELA_TIPOS`
 -- AUTO_INCREMENT de la tabla `QUINIELA_USUARIOS`
 --
 ALTER TABLE `QUINIELA_USUARIOS`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `UBICACIONES`
@@ -726,13 +718,13 @@ ALTER TABLE `UBICACIONES`
 -- AUTO_INCREMENT de la tabla `USUARIOS`
 --
 ALTER TABLE `USUARIOS`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `USUARIOS_TOKENS`
 --
 ALTER TABLE `USUARIOS_TOKENS`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
