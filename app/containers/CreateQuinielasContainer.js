@@ -241,7 +241,7 @@ class CreateQuiniela extends  React.Component {
         return(
             <div>
                 <CardMedia
-                    className={'banner'}
+                    className={'banner2'}
                     overlay={<CardTitle title="Crea tus propias quinielas" subtitle="Diviértete y juega con tu familia y amigos" />}>
                     <img src={bannerSource} alt="" />
                 </CardMedia>
