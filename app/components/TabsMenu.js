@@ -32,6 +32,8 @@ class TabsMenu extends React.Component {
             backgroundColor: this.props.theme.primary1Color,
         };
         const { UserInvitationsArray, superQuiniela } = this.props;
+        const counter = UserInvitationsArray.length;
+        const text = counter ? <div>todas <span style={{ fontSize: 9 }}>invitaciones </span><Badge showZero style={style} count={counter}/></div> : <div>todas</div>;
 
         return(
             <div style={{position: 'fixed', marginTop: 62, width: '100%', zIndex: 10}}>
@@ -43,7 +45,7 @@ class TabsMenu extends React.Component {
                     onActive={this.handleActive} />
                 <Tab
                     style={style}
-                    label={<div>Invitaciones <Badge showZero style={style} count={UserInvitationsArray.length}/></div>}
+                    label={text}
                     data-route="/quinielas"
                     onActive={this.handleActive} />
 
