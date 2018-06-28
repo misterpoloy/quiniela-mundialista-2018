@@ -32,6 +32,7 @@ import POL from '../src/images/flags/POL.png';
 import COL from '../src/images/flags/COL.png';
 import SEN from '../src/images/flags/SEN.png';
 import JPN from '../src/images/flags/JPN.png';
+import moment from 'moment-timezone';
 
 const flag = {
     RUS,
@@ -82,7 +83,9 @@ const esatdioStyle = {
 class QuinielaGroups extends React.Component {
     render() {
         const { game } = this.props;
-        // TODO hacer función para ver si el partido ya se jugo y que se ponga de otro color.
+        // Moment date to user:
+        const date = moment(game.FECHA).locale('es');
+        const fecha = date.tz('America/Guatemala').format('MMM DD YYYY, h:mm:ss a');
 
         return (
                 <div style={{ width: '100%' }}>
@@ -115,6 +118,13 @@ class QuinielaGroups extends React.Component {
                             <Row>
                                 <Col>
                                     <h4 style={esatdioStyle}>{game.JUEGO.UBICACION.NOMBRE}</h4>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col style={{ textAlign: 'center', marginTop: 10 }}>
+                                    <div>
+                                        <h4 style={{ color: '#aca9a9' }}>{fecha}</h4>
+                                    </div>
                                 </Col>
                             </Row>
                         </div>

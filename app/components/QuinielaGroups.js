@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Select, Icon, Badge, Row, Col} from 'antd';
 const Option = Select.Option;
 const ButtonGroup = Button.Group;
+import moment from 'moment-timezone';
 import RUS from '../src/images/flags/RUS.png';
 import EGY from '../src/images/flags/EGY.png';
 import SAU from '../src/images/flags/SAU.png';
@@ -226,6 +227,9 @@ class QuinielaGroups extends React.Component {
                 </Option>
             );
         });
+        // Moment date to user:
+        const date = moment(game.FECHA).locale('es');
+        const fecha = date.tz('America/Guatemala').format('MMM DD YYYY, h:mm:ss a');
 
         return (
                 <div style={{ width: '100%' }}>
@@ -345,6 +349,13 @@ class QuinielaGroups extends React.Component {
                                            </Button>
                                        </ButtonGroup>
                                    </div>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col style={{ textAlign: 'center', marginLeft: -40, marginTop: 10 }}>
+                                    <div>
+                                        <h4 style={{ color: '#aca9a9' }}>{fecha}</h4>
+                                    </div>
                                 </Col>
                             </Row>
                         </div>
